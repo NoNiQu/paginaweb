@@ -136,14 +136,21 @@ export default function Header() {
                       <IconClose className="h-8 w-8 text-white" />
                     </Disclosure.Button>
 
-                    {/* LOGO (sin invertir) */}
+                    {/* LOGO linkeado a Home (móvil) */}
                     <div className="flex justify-center mb-6">
-                      <img
-                        src="/LOGO.svg"
-                        alt="Escudo Cofradía"
-                        className="h-24 w-auto select-none"
-                        draggable={false}
-                      />
+                      <Link
+                        to="/"
+                        aria-label="Inicio"
+                        className="inline-flex"
+                        onClick={() => close()} // cerrar el panel al navegar
+                      >
+                        <img
+                          src="/LOGO.svg"
+                          alt="Escudo Cofradía"
+                          className="h-24 w-auto select-none"
+                          draggable={false}
+                        />
+                      </Link>
                     </div>
 
                     {/* Items en orden */}
