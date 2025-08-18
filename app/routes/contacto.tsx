@@ -38,7 +38,11 @@ export default function Contacto() {
             iconSrc="/copy.svg"
             iconAlt="Copiar correo"
             iconClassName="w-6 h-6 invert hover:cursor-pointer"
-            className="font-semibold break-all text-xs sm:text-sm md:text-base text-white/90"
+            // Limita el ancho solo en móvil para que se trunque
+            className="font-semibold text-xs sm:text-sm md:text-base text-white/90 cursor-pointer max-w-[240px] md:max-w-none"
+            // Trunca en móvil, muestra completo en desktop
+            textClassName="whitespace-nowrap overflow-hidden truncate md:whitespace-normal md:overflow-visible"
+            truncate
           />
         </Card>
 

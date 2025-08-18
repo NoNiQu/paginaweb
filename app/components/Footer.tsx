@@ -23,7 +23,7 @@ export default function Footer() {
         <img
           src="/b.png"
           alt="Logo de la Cofradía"
-          className="block sm:hidden h-24 w-auto select-none"
+          className="block sm:hidden h-60 w-auto select-none"
           draggable={false}
         />
 
