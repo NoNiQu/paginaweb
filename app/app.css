@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;600;700&family=Roboto:wght@300;400;500;700');
+@import "tailwindcss";
+
+/* =========================
+   TOKENS / BASE
+========================= */
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --cofra-verde: #053C2F;
+  --cofra-verde-hover: #0A5C49;
+  --cofra-gris-texto: #d9d9d9;
+  --cofra-sombra: #4a4a4a;
+  --cofra-text: #111111; /* Negro */
+  --max: 1120px;
+}
+
+/* deja tu .container como está */
+.container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+/* modificadores de anchura */
+.container--wide { --max: 1280px; }   /* ancho medio */
+.container--xl   { --max: 1440px; }   /* más ancho */
+.container--2xl  { --max: 1600px; }   /* súper ancho */
+
+html, body { background-color: #ffffff; }
+
+/* Tipografías utilitarias */
+@layer utilities {
+  .font-display { font-family: "Playfair Display", serif; }
+  .font-body { font-family: Roboto, ui-sans-serif, system-ui, sans-serif; }
+  .sc { font-variant: small-caps; letter-spacing: .03em; }
+}
+
+/* Layout */
+.container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+.hazte-btn {
+  background: var(--cofra-verde);
+  color: #ffffff; /* mejor contraste */
+  text-shadow: none;
+  font-variant: small-caps;
+}
+.hazte-btn:hover { background: var(--cofra-verde-hover); }
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.514),
+    rgba(114, 114, 114, 0.637),
+    rgba(114, 114, 114, 0.37),
+    rgba(255, 255, 255, 0.123)
+  ) !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Links top-nav: subrayado animado en hover */
+.nav-link {
+  color: var(--cofra-text); /* negro */
+  text-shadow: none;
+  letter-spacing: .02em;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative; /* para el ::after */
+  transition: color .2s ease;
+}
+
+/* Línea verde animada solo en hover (navbar) */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--cofra-text);
+  transform: translateX(-50%);
+  transition: width .2s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Quitar subrayado específicamente en los botones de dropdown */
+.no-underline::after { content: none !important; }
+
+/* Botón de dropdown con icono a la derecha */
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+/* Flecha: 180º por defecto; gira con hover (desktop) o al abrir (móvil/desktop) */
+.dropdown-trigger .chevron {
+  width: 14px;
+  height: 14px;
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+  transition: transform .2s ease;
+}
+
+/* Cuando el contenedor está "abierto" (estado JS), rota a 0º */
+.dropdown-open .chevron { transform: rotate(0deg); }
+
+/* En dispositivos con hover, también rota al pasar el ratón por el botón */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-trigger:hover .chevron { transform: rotate(0deg); }
+}
+
+.nav-link:focus,
+.nav-link:focus-visible { outline: none; box-shadow: none; }
+
+/* =========================
+   DROPDOWN PANEL
+========================= */
+.dropdown-panel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  top: calc(100% + 8px);
+  min-width: 240px;
+  background: rgba(255,255,255,.98);
+  border: none;
+  border-radius: 12px;
+  padding: .5rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  z-index: 50;
+}
+
+/* Items del submenu (Playfair + versalitas, without import extra) */
+.submenu-link {
+  display: block;
+  padding: .55rem .75rem;
+  border-radius: 8px;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: 16px;
+  color: var(--cofra-text) !important;
+  text-shadow: none;
+  transition: color .2s ease, background .2s ease;
+}
+.submenu-link:hover { background: rgba(0,0,0,.04); }
+.submenu-link:focus,
+.submenu-link:focus-visible {
+  outline: 2px solid rgba(0,0,0,.25);
+  outline-offset: 2px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer { background: var(--cofra-verde); color: var(--cofra-gris-texto); }
+.footer a { color: var(--cofra-gris-texto); text-decoration: none; }
+.footer a:hover { opacity: .85; }
+.footer-legal a { padding: .25rem .5rem; border-radius: 8px; }
+.social-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 9999px;
+  border: 1px solid rgba(0,0,0,.2);
+}
+.social-link:hover { background: rgba(0,0,0,.08); }
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 640px) {
+  /* ajustes móviles si hace falta */
+}
