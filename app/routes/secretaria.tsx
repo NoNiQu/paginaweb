@@ -3,11 +3,10 @@ import { SectionContainer } from "../components/shared/SectionContainer";
 import { Card } from "../components/ui/Card";
 import { CopiableText } from "../components/ui/CopiableText";
 import { config } from "../config";
-import { Link } from "react-router-dom";
 
 export default function Secretaria() {
   return (
-    <SectionContainer className="relative">
+    <SectionContainer className="relative overflow-hidden">
       {/* Título móvil encima de la imagen */}
       <h1 className="block md:hidden mb-4 text-3xl font-display font-semibold tracking-tight text-center">
         ¿Quieres hacerte hermano/a?
@@ -15,14 +14,15 @@ export default function Secretaria() {
 
       {/* Layout: imagen + texto. En móvil se apilan */}
       <div className="grid md:grid-cols-2 gap-10 items-start">
-        {/* Imagen (izquierda en desktop, arriba en móvil) */}
-        <div>
+        {/* Imagen */}
+        <div className="relative">
           <img
             src="portada.jpg"
             alt="Nuestra Señora de la Esperanza"
-            className="w-full h-[340px] sm:h-[420px] md:h-[520px] lg:h-[575px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
 
         {/* Texto */}
@@ -32,12 +32,28 @@ export default function Secretaria() {
             ¿Quieres hacerte hermano/a?
           </h1>
 
-          <p className="text-base sm:text-lg leading-relaxed">
-            La cuota de hermano es de <span className="font-semibold">10€</span>{" "}
-            anuales. Puedes hacerte hermano de manera online enviando un correo
-            a:
+          <p className="text-sm sm:text-base leading-relaxed text-gray-900">
+            Para hacerte hermano/a, solo tienes que descargar la solicitud,
+            cumplimentarla y enviarla por correo electrónico a la Secretaría.
           </p>
 
+          {/* Botón descarga solicitud */}
+          <Card
+            as="a"
+            href="/descargas/solicitud_hermano.pdf"
+            className="bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 font-medium"
+            download
+            aria-label="Descargar solicitud para hacerse hermano (PDF)"
+          >
+            <span className="text-emerald-900">
+              Descargar solicitud de hermano
+            </span>
+            <img
+              src="/descargar.svg"
+              alt="Descargar"
+              className="w-5 h-5 invert"
+            />
+          </Card>
           {/* Email copiable */}
           <Card className="bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2">
             <CopiableText
@@ -51,20 +67,6 @@ export default function Secretaria() {
               truncate
             />
           </Card>
-
-          <p className="text-base leading-relaxed">
-            La Secretaría te pedirá los datos necesarios para el ingreso. Para
-            el método de pago, tienes aquí la página de{" "}
-            <Link
-              to="/donativo"
-              className="underline font-medium hover:text-emerald-700"
-            >
-              Bizum
-            </Link>
-            ; por favor, indica tu{" "}
-            <span className="font-medium">nombre completo</span> para
-            identificar la persona.
-          </p>
 
           <div className="space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold">
@@ -82,8 +84,8 @@ export default function Secretaria() {
             </h2>
             <p className="text-base leading-relaxed">
               También puedes hacerlo en las semanas de fiestas de la Novena y en
-              el Día del Patrocinio. Allí puedes realizar también el pago de la
-              cuota anual en persona.
+              el Día del Patrocinio. Allí la Secretaría recogerá las
+              inscripciones de nuevos hermanos y actualizará datos en persona.
             </p>
           </div>
         </div>

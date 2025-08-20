@@ -27,7 +27,7 @@ export default function Header() {
     <Disclosure>
       {({ open, close }) => (
         <header className="w-full font-body">
-          {/* Barra superior: en móvil se oculta si el menú está abierto */}
+          {/* Barra superior */}
           <div
             className={`hazte-btn text-center text-[18px] tracking-wide py-2 font-display sc lg:block ${
               open ? "hidden" : "block"
@@ -99,36 +99,45 @@ export default function Header() {
               </div>
 
               {/* ---- Mobile ---- */}
-              {/* 1) Cuando está CERRADO: botón hamburguesa en la barra */}
+              {/* CERRADO */}
               {!open && (
-                <div className="flex items-center justify-end lg:hidden py-4">
-                  <Disclosure.Button className="p-2" aria-label="Abrir menú">
-                    <IconBurger className="h-8 w-8 text-black" />
-                  </Disclosure.Button>
+                <div className="lg:hidden py-4 px-4 grid grid-cols-3 items-center">
+                  <div />
+                  <div className="flex justify-center">
+                    <Link to="/" aria-label="Inicio" className="inline-flex">
+                      <img
+                        src="/LOGO.svg"
+                        alt="Escudo Cofradía"
+                        className="h-30 w-auto select-none" // más grande
+                        draggable={false}
+                      />
+                    </Link>
+                  </div>
+                  <div className="flex justify-end items-center">
+                    <Disclosure.Button className="p-2" aria-label="Abrir menú">
+                      <IconBurger className="h-8 w-8 text-black" />
+                    </Disclosure.Button>
+                  </div>
                 </div>
               )}
 
-              {/* 2) Cuando está ABIERTO: overlay + panel verde con botón X dentro */}
+              {/* ABIERTO */}
               {open && (
                 <div className="lg:hidden">
-                  {/* Backdrop para cerrar al click fuera */}
                   <div
                     className="fixed inset-0 z-40 bg-transparent"
                     onClick={() => close()}
                   />
-
-                  {/* Panel verde */}
                   <div
                     className="
                       absolute left-0 right-0 top-0 z-50
                       bg-[#053C2F] text-white
                       flex flex-col items-center
-                      px-4 pt-8 pb-6 space-y-6
+                      px-4 pt-8 pb-6 space-y-8
                       shadow-lg
                       rounded-b-2xl
                     "
                   >
-                    {/* Botón X dentro del panel */}
                     <Disclosure.Button
                       className="absolute top-4 right-4 p-2"
                       aria-label="Cerrar menú"
@@ -136,24 +145,30 @@ export default function Header() {
                       <IconClose className="h-8 w-8 text-white" />
                     </Disclosure.Button>
 
-                    {/* LOGO linkeado a Home (móvil) */}
-                    <div className="flex justify-center mb-6">
+                    <div className="flex justify-center mb-8">
                       <Link
                         to="/"
                         aria-label="Inicio"
                         className="inline-flex"
-                        onClick={() => close()} // cerrar el panel al navegar
+                        onClick={() => close()}
                       >
                         <img
                           src="/LOGO.svg"
                           alt="Escudo Cofradía"
-                          className="h-24 w-auto select-none"
+                          className="h-28 w-auto select-none" // más grande
                           draggable={false}
                         />
                       </Link>
                     </div>
 
-                    {/* Items en orden */}
+                    {/* Home separado */}
+                    <NavItemMobile
+                      to="/"
+                      label="HOME"
+                      onClick={() => close()}
+                      inverted
+                    />
+
                     <Accordion
                       label="COFRADÍA"
                       items={[
@@ -166,7 +181,6 @@ export default function Header() {
                       onNavigate={() => close()}
                       tone="inverted"
                     />
-
                     <NavItemMobile
                       to="/virgendelaesperanza"
                       label="TITULAR"
@@ -179,7 +193,6 @@ export default function Header() {
                       onClick={() => close()}
                       inverted
                     />
-
                     <Accordion
                       label="SECRETARÍA"
                       items={[
@@ -204,7 +217,6 @@ export default function Header() {
 }
 
 /* ====== Subcomponentes ====== */
-
 function TopLink({ to, label }: { to: string; label: string }) {
   return (
     <NavLink
@@ -303,7 +315,6 @@ function HoverDropdown({
 }
 
 /* ===== MÓVIL: Items y acordeón ===== */
-
 function NavItemMobile({
   to,
   label,
@@ -338,34 +349,32 @@ export function Accordion({
   const isInverted = tone === "inverted";
   const btnColor = isInverted ? "text-white" : "text-black";
   const itemColor = isInverted ? "text-white" : "text-black";
-  const panelBg = isInverted ? "bg-white/10" : "bg-black/5";
-  const border = isInverted ? "border-white/20" : "border-black/10";
 
   return (
     <Disclosure>
       {({ open, close }) => (
-        <div className={`rounded-xl ${border} border w-full max-w-sm`}>
+        <div className="w-full max-w-sm">
           <Disclosure.Button
-            className={`w-full px-4 py-3 font-display sc flex justify-between items-center ${btnColor}`}
+            className={`w-full px-4 py-3 font-display sc flex items-center justify-center ${btnColor}`}
           >
-            <span className="mx-auto">{label}</span>
+            <span className="text-lg sm:text-xl">{label}</span>
             <img
               src="/flecha.svg"
               alt=""
               aria-hidden="true"
-              className={`w-4 h-4 transition-transform ${
-                open ? "rotate-0" : "rotate-180"
+              className={`ml-2 w-4 h-4 transition-transform ${
+                open ? "rotate-0" : "-rotate-180"
               } ${isInverted ? "invert" : ""}`}
             />
           </Disclosure.Button>
 
-          <Disclosure.Panel className={`${panelBg} rounded-b-xl`}>
+          <Disclosure.Panel>
             <ul className="px-2 pb-2 space-y-1">
               {items.map((i) => (
                 <li key={i.to}>
                   <NavLink
                     to={i.to}
-                    className={`block px-3 py-2 rounded-md text-[18px] ${itemColor} text-center`}
+                    className={`block px-3 py-2 text-center text-lg sm:text-xl ${itemColor}`}
                     onClick={() => {
                       close();
                       onNavigate?.();

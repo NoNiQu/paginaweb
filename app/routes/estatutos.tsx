@@ -18,6 +18,11 @@ export default function Estatutos() {
           con sencillez, unidad y caridad.
         </p>
         <p className="leading-relaxed">
+          Los Reglamentos de los Portadores aseguran que el porte de Nuestra
+          Señora se realice con devoción, disciplina y continuidad, manteniendo
+          viva la tradición transmitida de generación en generación.
+        </p>
+        <p className="leading-relaxed">
           Te invitamos a conocer y custodiar estos textos, para caminar juntos
           con un mismo corazón.
         </p>
@@ -38,13 +43,13 @@ export default function Estatutos() {
 
         <Card
           as="a"
-          href="/descargas/estatutos-portadores.pdf"
+          href="/descargas/Reglamentos_Portadores_Virgen_Esperanza.pdf"
           className="flex items-center gap-3 justify-center text-lg font-body font-medium min-h-[120px]"
           download
-          aria-label="Descargar Estatutos de los Portadores (PDF)"
+          aria-label="Descargar Reglamentos de los Portadores (PDF)"
         >
           <img src="/descargar.svg" alt="Descargar" className="w-6 h-6" />
-          Estatutos de los Portadores
+          Reglamentos de los Portadores
         </Card>
       </div>
     </SectionContainer>

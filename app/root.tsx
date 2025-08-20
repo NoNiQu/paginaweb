@@ -14,10 +14,11 @@ import Footer from "./components/Footer";
 
 /** Título global (y meta básicos) */
 export const meta = () => [
-  { title: "Cofradía de Nuestra Señora de la Esperanza" },
+  { title: "Cofradía de Nuestra Señora de la Esperanza de Toledo" },
   {
     name: "description",
-    content: "Web oficial de la Cofradía de Nuestra Señora de la Esperanza.",
+    content:
+      "Web oficial de la Cofradía de Nuestra Señora de la Esperanza de Toledo.",
   },
   { name: "theme-color", content: "#053C2F" },
 ];

@@ -20,7 +20,7 @@ export default function SerPortador() {
           <img
             src="portadores.png"
             alt="Portadores llevando a Nuestra Señora de la Esperanza"
-            className="w-full h-[340px] sm:h-[420px] md:h-[520px] lg:h-[575px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -37,18 +37,30 @@ export default function SerPortador() {
             ?
           </h1>
 
-          <p className="text-base sm:text-lg leading-relaxed text-gray-900">
-            Cargar con Ella es un privilegio que nace del compromiso y la
-            devoción. Ser portador no es solo una tarea física: es una vocación
-            de entrega, un testimonio público de fe y un signo de amor hacia la
-            Virgen. Cada paso se convierte en oración y cada relevo en un gesto
-            de gratitud. Si sientes este llamado en tu corazón, ¡esta
-            oportunidad es para ti!
+          <p className="text-sm sm:text-base leading-relaxed text-gray-900">
+            Ser portador es un privilegio que nace del compromiso y la devoción.
+            No es solo una tarea física: es una vocación de fe y amor hacia la
+            Virgen. Si sientes este llamado, descarga la solicitud, complétala y
+            envíala por correo electrónico al capataz de los portadores.
           </p>
 
-          <p className="text-base sm:text-lg leading-relaxed text-gray-900">
-            Envía un correo a nuestro capataz:
-          </p>
+          {/* Botón descarga solicitud */}
+          <Card
+            as="a"
+            href="/descargas/solicitud_portadores.pdf"
+            className="bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 font-medium"
+            download
+            aria-label="Descargar solicitud para ser portador (PDF)"
+          >
+            <span className="text-emerald-900">
+              Descargar solicitud de portador
+            </span>
+            <img
+              src="/descargar.svg"
+              alt="Descargar"
+              className="w-5 h-5 invert"
+            />
+          </Card>
 
           {/* Email copiable */}
           <Card className="bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2">
@@ -89,13 +101,21 @@ export default function SerPortador() {
                 to="/estatutos"
                 className="font-medium underline underline-offset-4 hover:text-emerald-600"
               >
-                estatutos
+                reglamentos de los Portadores
               </Link>{" "}
-              y normas de los Portadores de la Virgen de la Esperanza de Toledo.
+              de la Virgen de la Esperanza de Toledo.
             </li>
             <li>
-              Comprometerse con la puntualidad y la asistencia en cultos,
-              ensayos y salidas.
+              Colaborar en el cuidado del trono y la preparación de la Imagen
+              tras las procesiones.
+            </li>
+            <li>
+              Participar en las juntas y ensayos convocados, mostrando
+              compromiso con la Hermandad.
+            </li>
+            <li>
+              Comprometerse con la puntualidad y la asistencia en cultos y
+              salidas procesionales.
             </li>
             <li>
               Respetar la indumentaria oficial (traje, zapatos, cinturón y
@@ -116,9 +136,10 @@ export default function SerPortador() {
             Proceso de incorporación
           </h2>
           <ol className="list-decimal pl-5 space-y-2 text-base">
+            <li>Descarga y completa la solicitud de portador.</li>
             <li>
-              Envía un correo electrónico presentándote e indicando tu interés
-              por ser portador/a.
+              Envía la solicitud por correo electrónico al capataz de los
+              portadores.
             </li>
             <li>
               Un miembro de la plantilla de Portadores deberá{" "}
@@ -126,8 +147,8 @@ export default function SerPortador() {
               solicitud.
             </li>
             <li>
-              La Secretaría confirmará que eres hermano/a de la Cofradía y
-              firmará la solicitud.
+              La Secretaría confirmará que eres hermano o hermana de la Cofradía
+              y firmará la solicitud.
             </li>
             <li>
               Antes de las fiestas, el capataz se pondrá en contacto para
