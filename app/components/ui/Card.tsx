@@ -26,8 +26,7 @@ export type CardProps = CardDivProps | CardAnchorProps;
 
 export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>(
   (props, ref) => {
-    const base =
-      "rounded-xl bg-[#053C2F] text-white shadow-sm hover:shadow-md transition p-6";
+    const base = "rounded-xl bg-[#053C2F] text-white shadow-sm transition p-6";
 
     if (props.as === "a") {
       // Variante enlace

@@ -1,4 +1,3 @@
-// src/pages/estatutos.tsx
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
@@ -6,11 +5,11 @@ import { Card } from "../components/ui/Card";
 export default function Estatutos() {
   return (
     <SectionContainer>
-      {/* Título (sin imagen en esta página) */}
+      {/* Título */}
       <SectionHeader>Estatutos</SectionHeader>
 
-      {/* Introducción breve, devocional y directa */}
-      <div className="font-body text-base sm:text-lg text-gray-800 space-y-4">
+      {/* Texto adicional */}
+      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4">
         <p className="leading-relaxed">
           Los Estatutos orientan nuestra vida como Cofradía: nos recuerdan que
           todo nace de la fe, se alimenta en la oración y se expresa en el
@@ -18,9 +17,17 @@ export default function Estatutos() {
           con sencillez, unidad y caridad.
         </p>
         <p className="leading-relaxed">
+          Estos Estatutos fueron aprobados por el arzobispo de Toledo el 21 de
+          marzo de 2017.
+        </p>
+        <p className="leading-relaxed">
           Los Reglamentos de los Portadores aseguran que el porte de Nuestra
           Señora se realice con devoción, disciplina y continuidad, manteniendo
           viva la tradición transmitida de generación en generación.
+        </p>
+        <p className="leading-relaxed">
+          Estos Reglamentos fueron aprobados por el Presidente de la Cofradía y
+          el cura Párroco de San Cipriano de Toledo el 25 de febrero de 2018.
         </p>
         <p className="leading-relaxed">
           Te invitamos a conocer y custodiar estos textos, para caminar juntos

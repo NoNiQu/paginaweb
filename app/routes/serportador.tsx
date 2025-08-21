@@ -63,17 +63,14 @@ export default function SerPortador() {
           </Card>
 
           {/* Email copiable */}
-          <Card className="bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2">
-            <CopiableText
-              text={config.portersEmail}
-              label="correo"
-              iconSrc="/copy.svg"
-              iconAlt="Copiar correo"
-              iconClassName="w-5 h-5"
-              className="text-emerald-900"
-              textClassName="font-medium break-all text-xs sm:text-sm md:text-base"
-              truncate
-            />
+          <Card
+            onClick={() => navigator.clipboard.writeText(config.portersEmail)}
+            className="cursor-pointer select-none bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 hover:bg-emerald-100 transition"
+          >
+            <span className="font-medium break-all text-xs sm:text-sm md:text-base">
+              {config.portersEmail}
+            </span>
+            <img src="/copy.svg" alt="Copiar correo" className="w-5 h-5" />
           </Card>
 
           <div className="space-y-3">
