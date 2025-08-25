@@ -1,10 +1,21 @@
 // src/pages/secretaria.tsx
+import { useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { Card } from "../components/ui/Card";
 import { CopiableText } from "../components/ui/CopiableText";
 import { config } from "../config";
 
 export default function Secretaria() {
+  const [copiado, setCopiado] = useState(false);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  const handleCopy = (e: React.MouseEvent<HTMLDivElement>) => {
+    navigator.clipboard.writeText(config.contactEmail);
+    setPos({ x: e.clientX, y: e.clientY });
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 1800);
+  };
+
   return (
     <SectionContainer className="relative overflow-hidden">
       {/* Título móvil encima de la imagen */}
@@ -54,16 +65,40 @@ export default function Secretaria() {
               className="w-5 h-5 invert"
             />
           </Card>
-          {/* Email copiable */}
-          <Card
-            onClick={() => navigator.clipboard.writeText(config.contactEmail)}
-            className="cursor-pointer select-none bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 hover:bg-emerald-100 transition"
-          >
-            <span className="font-medium break-all text-xs sm:text-sm md:text-base">
-              {config.contactEmail}
-            </span>
-            <img src="/copy.svg" alt="Copiar correo" className="w-5 h-5" />
-          </Card>
+          {/* Email copiable con feedback */}
+          <div className="relative">
+            <Card
+              onClick={handleCopy}
+              className="cursor-pointer select-none bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 transition"
+            >
+              <span className="font-medium break-all text-xs sm:text-sm md:text-base">
+                {config.contactEmail}
+              </span>
+              <img src="/copy.svg" alt="Copiar correo" className="w-5 h-5" />
+            </Card>
+
+            {copiado && pos && (
+              <div
+                style={{
+                  position: "fixed",
+                  left: pos.x + 20,
+                  top: pos.y - 30,
+                  background: "#fff",
+                  color: "#053C2F",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+                  padding: "6px 16px",
+                  fontSize: "14px",
+                  pointerEvents: "none",
+                  zIndex: 9999,
+                  fontWeight: 500,
+                }}
+                aria-live="polite"
+              >
+                Correo copiado
+              </div>
+            )}
+          </div>
 
           <div className="space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold">

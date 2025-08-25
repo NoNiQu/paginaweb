@@ -38,7 +38,7 @@ export default function Footer() {
         {/* Redes sociales */}
         <div className="flex items-center gap-4 relative">
           <button
-            className="social-link"
+            className="social-link hover:cursor-pointer"
             type="button"
             aria-label="Copiar correo electrónico"
             onClick={handleCopy}
