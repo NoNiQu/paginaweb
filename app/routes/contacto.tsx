@@ -1,109 +1,139 @@
 // src/pages/contacto.tsx
+import { useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
-import { CopiableText } from "../components/ui/CopiableText";
 import { config } from "../config";
 
 export default function Contacto() {
+  const [copiado, setCopiado] = useState(false);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  const handleCopy = (e: React.MouseEvent<HTMLDivElement>) => {
+    navigator.clipboard.writeText(config.contactEmail);
+    setPos({ x: e.clientX, y: e.clientY });
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 1800);
+  };
+
   return (
     <SectionContainer className="relative">
       {/* 1) Título */}
       <SectionHeader>Contacto</SectionHeader>
 
-      {/* Contenedor responsive:
-         - Móvil: pila en el orden natural (texto, correo, ubi, redes)
-         - Desktop: grid 2 cols x 2 filas, filas de igual altura (auto-rows-fr) */}
-      <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:auto-rows-fr lg:gap-8">
-        {/* 2) Texto (móvil: primero; desktop: col 1, fila 1) */}
-        <section className="font-body text-base sm:text-lg text-gray-800 order-1 lg:order-none lg:col-start-1 lg:row-start-1">
-          <p className="leading-relaxed">
-            Si deseas ponerte en contacto con la Cofradía, ponemos a tu
-            disposición nuestras vías oficiales de comunicación. Estaremos
-            encantados de atenderte.
+      {/* 2) Layout: todas las cards iguales */}
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6">
+        {/* 2.1) Intro: ocupa todo el ancho arriba */}
+        <section className="lg:col-span-2 text-center font-body text-base sm:text-lg text-gray-800 mb-2">
+          <p className="leading-relaxed mx-auto">
+            Para cualquier consulta, petición o información sobre la Cofradía,
+            ponemos a tu disposición diferentes vías de contacto. Escríbenos y
+            estaremos encantados de atenderte lo antes posible.
           </p>
         </section>
 
-        {/* 3) Correo (móvil: 2º; desktop: col 2, fila 1) */}
-        <Card className="grid place-items-center text-center gap-3 py-5 min-h-[140px] order-2 lg:order-none lg:col-start-2 lg:row-start-1">
-          <img
-            src="/correo.svg"
-            alt="Correo"
-            className="w-10 h-10"
-            loading="lazy"
-          />
-          <CopiableText
-            text={config.contactEmail}
-            label="correo"
-            iconSrc="/copy.svg"
-            iconAlt="Copiar correo"
-            iconClassName="w-6 h-6 invert hover:cursor-pointer"
-            // Limita el ancho solo en móvil para que se trunque
-            className="font-semibold text-xs sm:text-sm md:text-base text-white/90 cursor-pointer max-w-[240px] md:max-w-none"
-            // Trunca en móvil, muestra completo en desktop
-            textClassName="whitespace-nowrap overflow-hidden truncate md:whitespace-normal md:overflow-visible"
-            truncate
-          />
-        </Card>
+        {/* 2.2) Correo: toda la card es clicable/copiar con feedback */}
+        <div className="relative">
+          <Card
+            onClick={handleCopy}
+            className="cursor-pointer select-none flex flex-col items-center justify-center gap-3 p-6 min-h-[150px]"
+          >
+            <img
+              src="/correo.svg"
+              alt="Icono de correo"
+              className="w-9 h-9 sm:w-10 sm:h-10"
+              loading="lazy"
+            />
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-xs sm:text-sm md:text-base text-white/90 max-w-[200px] md:max-w-none whitespace-nowrap overflow-hidden truncate md:whitespace-normal md:overflow-visible">
+                {config.contactEmail}
+              </span>
+              <img
+                src="/copy.svg"
+                alt="Copiar correo"
+                className="w-5 h-5 invert"
+              />
+            </div>
+          </Card>
 
-        {/* 4) Ubicación (móvil: 3º; desktop: col 2, fila 2) */}
-        <Card className="grid gap-4 text-center place-items-center py-6 min-h-[140px] order-3 lg:order-none lg:col-start-2 lg:row-start-2">
+          {copiado && pos && (
+            <div
+              style={{
+                position: "fixed",
+                left: pos.x + 20,
+                top: pos.y - 30,
+                background: "#fff",
+                color: "#053C2F",
+                borderRadius: "8px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+                padding: "6px 16px",
+                fontSize: "14px",
+                pointerEvents: "none",
+                zIndex: 9999,
+                fontWeight: 500,
+              }}
+              aria-live="polite"
+            >
+              Correo copiado
+            </div>
+          )}
+        </div>
+
+        {/* 2.3) Ubicación */}
+        <Card className="flex flex-col items-center justify-center gap-3 p-6 min-h-[150px] text-center">
           <img
             src="/ubicacion.svg"
-            alt="Ubicación"
-            className="w-10 h-10"
+            alt="Icono de ubicación"
+            className="w-9 h-9 sm:w-10 sm:h-10"
             loading="lazy"
           />
           <p className="font-semibold leading-relaxed text-xs sm:text-sm md:text-base">
-            {config.addressTitle}
-            <br />
-            {config.addressCityLine}
+            {config.addressTitle}, {config.addressCityLine}
           </p>
         </Card>
 
-        {/* 5–7) Bloque de redes (móvil: después de correo/ubi; desktop: col 1, fila 2, abajo) */}
-        <div className="order-4 lg:order-none lg:col-start-1 lg:row-start-2 lg:self-end">
-          <p className="font-body font-medium mb-4">
-            También puedes escribirnos por nuestras redes sociales:
+        <section className="lg:col-span-2 text-center font-body text-base sm:text-lg text-gray-800 mb-2">
+          <p className="leading-relaxed mx-auto">
+            También puedes contactar con nosotros a través de nuestras redes
+            sociales:
           </p>
+        </section>
 
-          {/* IG + FB */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Card
-              as="a"
-              href={config.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid place-items-center gap-2 text-center min-h-[140px]"
-              aria-label="Instagram de la Cofradía"
-            >
-              <img
-                src="/instagram.svg"
-                alt="Instagram"
-                className="w-10 h-10 sm:w-11 sm:h-11"
-                loading="lazy"
-              />
-              <strong className="text-white">Instagram</strong>
-            </Card>
+        {/* 2.4) Instagram */}
+        <Card
+          as="a"
+          href={config.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center gap-2 p-6 min-h-[150px] text-center"
+          aria-label="Instagram de la Cofradía"
+        >
+          <img
+            src="/instagram.svg"
+            alt="Instagram"
+            className="w-10 h-10 sm:w-11 sm:h-11"
+            loading="lazy"
+          />
+          <strong className="text-white">Instagram</strong>
+        </Card>
 
-            <Card
-              as="a"
-              href={config.facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid place-items-center gap-2 text-center min-h-[140px]"
-              aria-label="Facebook de la Cofradía"
-            >
-              <img
-                src="/facebook.svg"
-                alt="Facebook"
-                className="w-10 h-10 sm:w-11 sm:h-11"
-                loading="lazy"
-              />
-              <strong className="text-white">Facebook</strong>
-            </Card>
-          </div>
-        </div>
+        {/* 2.5) Facebook */}
+        <Card
+          as="a"
+          href={config.facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center gap-2 p-6 min-h-[150px] text-center"
+          aria-label="Facebook de la Cofradía"
+        >
+          <img
+            src="/facebook.svg"
+            alt="Facebook"
+            className="w-10 h-10 sm:w-11 sm:h-11"
+            loading="lazy"
+          />
+          <strong className="text-white">Facebook</strong>
+        </Card>
       </div>
     </SectionContainer>
   );
