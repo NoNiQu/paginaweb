@@ -10,9 +10,8 @@ export default function Sedecanonica() {
     <SectionContainer className="relative overflow-hidden">
       {/* Título principal */}
       <SectionHeader>Sede Canónica</SectionHeader>
-
       {/* Bloque 1: Iglesia de San Cipriano */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-16 mt-6">
         {/* Texto */}
         <div className="space-y-6 font-body text-gray-900">
           <h2 className="text-xl sm:text-2xl font-semibold">
