@@ -1,7 +1,186 @@
-import { Link } from "react-router-dom";
+// src/pages/sedecanonica.tsx
+import { SectionContainer } from "../components/shared/SectionContainer";
+import { SectionHeader } from "../components/shared/SectionHeader";
+import { useState } from "react";
 
 export default function Sedecanonica() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
-    <div className="text-center mt-10 text-2xl font-display">sede pixa</div>
+    <SectionContainer className="relative overflow-hidden">
+      {/* Título principal */}
+      <SectionHeader>Sede Canónica</SectionHeader>
+
+      {/* Bloque 1: Iglesia de San Cipriano */}
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
+        {/* Texto */}
+        <div className="space-y-6 font-body text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-semibold">
+            Iglesia de San Cipriano
+          </h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La Cofradía de la Esperanza tiene su sede canónica en la histórica
+            Iglesia de San Cipriano, ubicada en la Plaza de San Cipriano, 7, en
+            el corazón del casco antiguo de Toledo. Este templo es un testimonio
+            vivo de la fe, la historia y el arte religioso de la ciudad, y
+            representa un vínculo profundo entre los cofrades y la devoción a la
+            Virgen de la Esperanza.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La Iglesia de San Cipriano se remonta al siglo XII, siendo uno de
+            los templos más antiguos de Toledo. En el año 1125 ya se cita como
+            parroquia latina y a comienzos del siglo XVII, Don Carlos Venero y
+            Leyva, canónigo de la ciudad, promovió la reconstrucción del templo,
+            siendo la torre lo único que se conserva de la primera época, tras
+            atribuir su recuperación de una grave enfermedad a la Virgen de la
+            Esperanza. La obra se llevó a cabo entre 1612 y 1613, combinando la
+            tradición arquitectónica local con el arte barroco emergente de la
+            época, incorporando retablos, ornamentos y espacios destinados a la
+            veneración de la Virgen.
+          </p>
+        </div>
+        {/* Imagen */}
+        <div className="relative">
+          <img
+            src="portada.jpg"
+            alt="Iglesia de San Cipriano"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+      </div>
+
+      {/* Bloque 2: Capilla Mayor */}
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
+        {/* Imagen */}
+        <div className="relative order-2 md:order-none">
+          <img
+            src="portada.jpg"
+            alt="Capilla Mayor"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+        {/* Texto */}
+        <div className="space-y-6 font-body text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-semibold">Capilla Mayor</h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La capilla mayor de la Iglesia de San Cipriano es el espacio central
+            de veneración dentro del templo y está dedicada a la Virgen de la
+            Esperanza, titular de la Cofradía. Originalmente concebida en el
+            siglo XVII, fue ampliada en 1662 para permitir la construcción de un
+            camarín que facilita a los fieles una veneración más cercana de la
+            imagen de la Virgen.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            El retablo de la capilla mayor es un ejemplo destacado del barroco
+            toledano, con columnas salomónicas, molduras doradas y una
+            ornamentación que combina escultura, pintura y dorado, reflejando la
+            devoción y la riqueza artística de la época. Se representan escenas
+            religiosas vinculadas a la Virgen y a la historia de la salvación,
+            convirtiendo la capilla en un lugar de meditación y contemplación.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Además, la capilla mayor alberga otros elementos litúrgicos y
+            decorativos de gran valor, como pequeños retablos laterales,
+            imágenes de santos y ornamentos que han sido preservados a lo largo
+            de los siglos, mostrando el cuidado y la dedicación de la cofradía y
+            de la comunidad religiosa por mantener viva la tradición.
+          </p>
+        </div>
+      </div>
+
+      {/* Bloque 3: Torre Mudéjar */}
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
+        {/* Texto */}
+        <div className="space-y-6 font-body text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-semibold">Torre Mudéjar</h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La torre mudéjar de San Cipriano es uno de los elementos más
+            visibles y emblemáticos del templo. Conserva parte de la estructura
+            original del siglo XII, aunque fue reconstruida en 1708 para
+            reforzar su estabilidad y adaptar su diseño a las necesidades del
+            templo barroco.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Esta torre combina rasgos arquitectónicos mudéjares, como el uso de
+            ladrillo visto, arcos de medio punto y decoración geométrica, con
+            elementos posteriores del barroco, creando un diálogo entre épocas y
+            estilos que refleja la evolución arquitectónica de Toledo.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Además de su función estética, la torre ha servido históricamente
+            como campanario, llamando a los fieles a la oración y marcando los
+            ritmos de la vida religiosa de la ciudad. Su silueta se reconoce
+            fácilmente en el perfil urbano de Toledo, siendo un símbolo de la
+            historia y la tradición que conecta a los cofrades con generaciones
+            anteriores de devotos.
+          </p>
+        </div>
+        {/* Imagen */}
+        <div className="relative">
+          <img
+            src="portada.jpg"
+            alt="Torre Mudéjar de San Cipriano"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+      </div>
+
+      {/* Cierre */}
+      <div className="font-body text-gray-900 space-y-4 mb-16">
+        <p className="text-sm sm:text-base leading-relaxed">
+          Para la Cofradía de la Esperanza, San Cipriano no es solo un templo:
+          es un espacio de encuentro, oración y comunidad. Cada rincón refleja
+          la fe de los cofrades, y la iglesia se convierte en el centro de la
+          vida espiritual de la cofradía, especialmente durante la festividad de
+          la Virgen de la Esperanza, celebrada el 18 de diciembre.
+        </p>
+        <p className="text-sm sm:text-base leading-relaxed">
+          Este espacio permite a los fieles reunirse, reforzar la fe y mantener
+          viva la tradición, conectando generaciones y preservando el legado de
+          devoción a la Virgen de la Esperanza en Toledo.
+        </p>
+      </div>
+
+      {/* Galería de imágenes simples */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div
+            key={i}
+            className="flex flex-col items-center cursor-pointer"
+            onClick={() => setSelectedImage("portada.jpg")}
+          >
+            <img
+              src="portada.jpg"
+              alt={`Imagen ${i}`}
+              className="w-full h-100 object-cover rounded-2xl shadow-md"
+              loading="lazy"
+            />
+            <p className="mt-3 text-sm text-gray-900 text-center">
+              Imagen {i} - descripción breve
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Modal para ver imagen en grande */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="Imagen ampliada"
+            className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
+          />
+        </div>
+      )}
+    </SectionContainer>
   );
 }
