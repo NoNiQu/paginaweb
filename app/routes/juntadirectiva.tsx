@@ -57,7 +57,7 @@ export default function JuntaDirectiva() {
 
       {/* Texto antes de las cards */}
       <div className="mt-12 text-center">
-        <p className="font-body text-lg sm:text-xl text-gray-700 font-medium">
+        <p className="font-body text-lg sm:text-xl text-gray-800 font-medium">
           Estos son los actuales cargos a{" "}
           <span className="font-semibold">{currentYear}</span>
         </p>

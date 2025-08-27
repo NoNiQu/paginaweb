@@ -80,7 +80,7 @@ export default function Cultos() {
           className="lg:col-span-2 flex flex-col gap-4 text-white"
         >
           <div>
-            <h3 className="text-2xl font-display">
+            <h3 className="text-3xl mb-1">
               Novena en honor a la Virgen de la Esperanza
             </h3>
             <p className="text-sm opacity-90 font-body">
@@ -101,7 +101,7 @@ export default function Cultos() {
 
           <div className="font-body space-y-2">
             <p className="opacity-95">
-              Nueve días de oración y celebración en honor a Nuestra Señora de
+              Nueve días de oración y celebración en honor a Nuestra señora de
               la Esperanza. La Novena comienza el
               <strong> lunes de la semana anterior al Corpus</strong> y concluye
               el <strong>martes de la semana del Corpus</strong>.
@@ -120,7 +120,7 @@ export default function Cultos() {
         {/* PROCESIÓN DEL VOTO */}
         <Card id="voto" className="flex flex-col gap-3 text-white">
           <div>
-            <h3 className="text-2xl font-display">Procesión del Voto</h3>
+            <h3 className="text-3xl mb-1">Procesión del Voto</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(voto)}</p>
           </div>
           <div className="font-body space-y-2">
@@ -128,7 +128,7 @@ export default function Cultos() {
               La fecha es siempre el <strong>martes de Pentecostés</strong>.
             </p>
             <p className="opacity-95">
-              Renovamos el voto de fidelidad y gratitud a Nuestra Señora de la
+              Renovamos el voto de fidelidad y gratitud a Nuestra señora de la
               Esperanza, recordando el compromiso que en el año 1200 se hizo
               para agradecer a la Virgen la desaparición de la peste tras la
               procesión de rogativas. Siglos después, seguimos recorriendo las
@@ -154,7 +154,7 @@ export default function Cultos() {
                 Catedral (entrada por Puerta Llana), Arco de Palacio, Hombre de
                 Palo, Cuatro Calles, Comercio, Toledo Ohio, Plata, Plaza de San
                 Vicente, Alfonso X el Sabio, San Ildefonso (Misa), regreso por
-                Alfonso XII, Roja, Plaza del Salvador, Santa Úrsula,
+                Alfonso XII, Rojas, Plaza del Salvador, Santa Úrsula,
                 Corredorcillo de San Bartolomé, calle de la Mano y llegada a la
                 Parroquia de San Cipriano.
               </p>
@@ -165,7 +165,7 @@ export default function Cultos() {
         {/* PROCESIÓN DE LA OCTAVA */}
         <Card id="octava" className="flex flex-col gap-3 text-white">
           <div>
-            <h3 className="text-2xl font-display">Procesión de la Octava</h3>
+            <h3 className="text-3xl mb-1">Procesión de la Octava</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(octava)}</p>
           </div>
           <div className="font-body space-y-2">
@@ -206,7 +206,7 @@ export default function Cultos() {
           className="lg:col-span-2 flex flex-col gap-4 text-white"
         >
           <div>
-            <h3 className="text-2xl font-display">Corpus Christi</h3>
+            <h3 className="text-3xl mb-1">Corpus Christi</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(corpus)}</p>
           </div>
           <div className="font-body space-y-2">
@@ -228,7 +228,7 @@ export default function Cultos() {
           className="lg:col-span-2 flex flex-col gap-3 text-white"
         >
           <div>
-            <h3 className="text-2xl font-display">Día de Patrocinio</h3>
+            <h3 className="text-3xl mb-1">Día de Patrocinio</h3>
             <p className="text-sm opacity-90 font-body">
               {formatLong(patrocinio)}
             </p>
@@ -263,7 +263,7 @@ export default function Cultos() {
           className="lg:col-span-2 flex flex-col gap-3 text-white"
         >
           <div>
-            <h3 className="text-2xl font-display">Día de la Esperanza</h3>
+            <h3 className="text-3xl mb-1">Día de la Esperanza</h3>
             <p className="text-sm opacity-90 font-body">
               {formatLong(diaEsperanza)}
             </p>

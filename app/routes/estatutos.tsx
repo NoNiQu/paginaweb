@@ -17,7 +17,7 @@ export default function Estatutos() {
           con sencillez, unidad y caridad.
         </p>
         <p className="leading-relaxed">
-          Estos Estatutos fueron aprobados por el rzobispo de Toledo el 21 de
+          Estos Estatutos fueron aprobados por el Arzobispo de Toledo el 21 de
           marzo de 2017.
         </p>
         <p className="leading-relaxed">
