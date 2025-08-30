@@ -30,9 +30,9 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
         {/* Contenido (anclado abajo) */}
-        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] px-4">
+        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] px-4 pb-8 sm:pb-16 lg:pb-20">
           <div className="flex flex-col items-center">
-            {/* Header como imagen (más pequeño) */}
+            {/* Título como imagen (ajustado) */}
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
@@ -48,11 +48,9 @@ export default function Home() {
               decoding="sync"
             />
 
-            {/* Subtítulo con “pill” para máxima legibilidad */}
-            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white/95 drop-shadow-md max-w-3xl mx-auto">
-              <span className="inline-block bg-black/45 backdrop-blur-[2px] px-4 py-2 rounded-md sm:rounded-lg">
-                Tradición, fe y esperanza en el corazón de Toledo
-              </span>
+            {/* Subtítulo en desktop y móvil, sin fondo negro */}
+            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,1) max-w-3xl mx-auto">
+              Tradición, fe y esperanza en el corazón de Toledo
             </p>
           </div>
         </div>
