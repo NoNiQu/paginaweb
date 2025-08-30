@@ -16,15 +16,15 @@
   --max: 1120px;
 }
 
-/* deja tu .container como está */
+html, body { background-color: #ffffff; }
+
+/* Layout */
 .container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
 /* modificadores de anchura */
-.container--wide { --max: 1280px; }   /* ancho medio */
-.container--xl   { --max: 1440px; }   /* más ancho */
-.container--2xl  { --max: 1600px; }   /* súper ancho */
-
-html, body { background-color: #ffffff; }
+.container--wide { --max: 1280px; }
+.container--xl   { --max: 1440px; }
+.container--2xl  { --max: 1600px; }
 
 /* Tipografías utilitarias */
 @layer utilities {
@@ -32,9 +32,6 @@ html, body { background-color: #ffffff; }
   .font-body { font-family: Roboto, ui-sans-serif, system-ui, sans-serif; }
   .sc { font-variant: small-caps; letter-spacing: .03em; }
 }
-
-/* Layout */
-.container { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
 
 /* =========================
    BARRA SUPERIOR
@@ -48,7 +45,7 @@ html, body { background-color: #ffffff; }
 .hazte-btn:hover { background: var(--cofra-verde-hover); }
 
 /* =========================
-   NAVBAR
+   NAVBAR (global por defecto)
 ========================= */
 .navbar {
   background: linear-gradient(
@@ -64,19 +61,19 @@ html, body { background-color: #ffffff; }
   z-index: 10;
 }
 
-/* Links top-nav: subrayado animado en hover */
+/* Links top-nav */
 .nav-link {
-  color: var(--cofra-text); /* negro */
+  color: var(--cofra-text);
   text-shadow: none;
   letter-spacing: .02em;
   font-weight: 500;
   font-size: 20px;
   cursor: pointer;
-  position: relative; /* para el ::after */
+  position: relative;
   transition: color .2s ease;
 }
 
-/* Línea verde animada solo en hover (navbar) */
+/* Subrayado animado en hover */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -90,17 +87,17 @@ html, body { background-color: #ffffff; }
 }
 .nav-link:hover::after { width: 100%; }
 
-/* Quitar subrayado específicamente en los botones de dropdown */
+/* Quitar subrayado en botones de dropdown */
 .no-underline::after { content: none !important; }
 
-/* Botón de dropdown con icono a la derecha */
+/* Botón de dropdown con icono */
 .dropdown-trigger {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
 }
 
-/* Flecha: 180º por defecto; gira con hover (desktop) o al abrir (móvil/desktop) */
+/* Flecha (giro) */
 .dropdown-trigger .chevron {
   width: 14px;
   height: 14px;
@@ -108,11 +105,8 @@ html, body { background-color: #ffffff; }
   transform-origin: 50% 50%;
   transition: transform .2s ease;
 }
-
-/* Cuando el contenedor está "abierto" (estado JS), rota a 0º */
 .dropdown-open .chevron { transform: rotate(0deg); }
 
-/* En dispositivos con hover, también rota al pasar el ratón por el botón */
 @media (hover: hover) and (pointer: fine) {
   .dropdown-trigger:hover .chevron { transform: rotate(0deg); }
 }
@@ -137,7 +131,7 @@ html, body { background-color: #ffffff; }
   z-index: 50;
 }
 
-/* Items del submenu (Playfair + versalitas, without import extra) */
+/* Items del submenu */
 .submenu-link {
   display: block;
   padding: .55rem .75rem;
@@ -173,8 +167,36 @@ html, body { background-color: #ffffff; }
 .social-link:hover { background: rgba(0,0,0,.08); }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE EXTRA
 ========================= */
 @media (max-width: 640px) {
   /* ajustes móviles si hace falta */
+}
+
+/* =========================================================
+   HOME-ONLY OVERRIDES (cuando <header> lleva "is-home")
+========================================================= */
+
+/* Navbar TRANSPARENTE solo en Home */
+header.is-home .navbar {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+header.is-home .navbar::after { display: none !important; }
+
+/* Links y subrayado en blanco solo en Home */
+header.is-home .nav-link { color: #ffffff !important; }
+header.is-home .nav-link::after { background: #ffffff !important; }
+
+/* Flecha de dropdown en blanco solo en Home */
+header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
+
+/* Utilidades para alternar bloques distintos en la Home */
+.only-mobile { display: none; }
+.only-desktop { display: block; }
+@media (max-width: 1023px) {
+  .only-mobile { display: block; }
+  .only-desktop { display: none; }
 }

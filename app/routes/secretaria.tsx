@@ -52,29 +52,27 @@ export default function Secretaria() {
           <Card
             as="a"
             href="/descargas/solicitud_hermano.pdf"
-            className="bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 font-medium"
+            className="bg-emerald-900 p-4 flex items-center justify-center gap-2 font-medium"
             download
             aria-label="Descargar solicitud para hacerse hermano (PDF)"
           >
-            <span className="text-emerald-900">
-              Descargar solicitud de hermano
-            </span>
-            <img
-              src="/descargar.svg"
-              alt="Descargar"
-              className="w-5 h-5 invert"
-            />
+            <span className="text-white">Descargar solicitud de hermano</span>
+            <img src="/descargar.svg" alt="Descargar" className="w-5 h-5" />
           </Card>
           {/* Email copiable con feedback */}
           <div className="relative">
             <Card
               onClick={handleCopy}
-              className="cursor-pointer select-none bg-emerald-50 !text-emerald-900 ring-1 ring-emerald-200 p-4 flex items-center justify-center gap-2 transition"
+              className="cursor-pointer select-none bg-emerald-900 !text-white p-4 flex items-center justify-center gap-2 transition"
             >
               <span className="font-medium break-all text-xs sm:text-sm md:text-base">
                 {config.contactEmail}
               </span>
-              <img src="/copy.svg" alt="Copiar correo" className="w-5 h-5" />
+              <img
+                src="/copy.svg"
+                alt="Copiar correo"
+                className="w-5 h-5 invert"
+              />
             </Card>
 
             {copiado && pos && (

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Disclosure, Transition } from "@headlessui/react";
 import { useEffect, useState } from "react";
 
@@ -22,11 +22,15 @@ function useHoverCapable() {
 
 export default function Header() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   return (
     <Disclosure>
       {({ open, close }) => (
-        <header className="w-full font-body">
+        <header
+          className={`w-full font-body ${isHome ? "is-home" : ""} relative z-50`}
+        >
           {/* Barra superior */}
           <div
             className={`hazte-btn text-center text-[18px] tracking-wide py-2 font-display sc lg:block ${
@@ -108,14 +112,17 @@ export default function Header() {
                       <img
                         src="/LOGO.svg"
                         alt="Escudo Cofradía"
-                        className="h-30 w-auto select-none" // más grande
+                        className="h-30 w-auto select-none"
                         draggable={false}
                       />
                     </Link>
                   </div>
                   <div className="flex justify-end items-center">
                     <Disclosure.Button className="p-2" aria-label="Abrir menú">
-                      <IconBurger className="h-8 w-8 text-black" />
+                      {/* Burger blanco solo en Home */}
+                      <IconBurger
+                        className={`h-8 w-8 ${isHome ? "text-white" : "text-black"}`}
+                      />
                     </Disclosure.Button>
                   </div>
                 </div>
@@ -155,16 +162,15 @@ export default function Header() {
                         <img
                           src="/LOGO.svg"
                           alt="Escudo Cofradía"
-                          className="h-28 w-auto select-none" // más grande
+                          className="h-28 w-auto select-none"
                           draggable={false}
                         />
                       </Link>
                     </div>
 
-                    {/* Home separado */}
                     <NavItemMobile
                       to="/"
-                      label="HOME"
+                      label="INICIO"
                       onClick={() => close()}
                       inverted
                     />
@@ -255,9 +261,7 @@ function HoverDropdown({
 
   return (
     <div
-      className={`relative inline-block text-left ${
-        isOpen ? "dropdown-open" : ""
-      }`}
+      className={`relative inline-block text-left ${isOpen ? "dropdown-open" : ""}`}
       onMouseEnter={() => hoverCapable && setOpenId(id)}
       onMouseLeave={() => hoverCapable && setOpenId(null)}
     >

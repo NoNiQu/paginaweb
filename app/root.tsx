@@ -6,11 +6,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import "./app.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
 
 /** Título global (y meta básicos) */
 export const meta = () => [
@@ -35,7 +37,6 @@ export const links = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  // Usa el que tengas en /public (SVG recomendado). Si usas .ico, cambia type y href.
   { rel: "icon", type: "image/svg+xml", href: "/LOGO.svg" },
 ];
 
@@ -57,15 +58,108 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+/** Botón flotante: aparece tarde, no pisa el footer y es más pequeño en móvil */
+function BackToTopButton() {
+  const [visible, setVisible] = useState(false);
+  const [bottomOffset, setBottomOffset] = useState(24); // px
+
+  useEffect(() => {
+    const computeOffsets = () => {
+      const SHOW_AFTER_PX = Math.max(window.innerHeight * 0.85, 900);
+      const shouldShow = window.scrollY > SHOW_AFTER_PX;
+      setVisible(shouldShow);
+
+      if (!shouldShow) {
+        setBottomOffset(24);
+        return;
+      }
+
+      const footer = document.querySelector("footer");
+      const baseBottom = 24;
+      const extraGap = 16;
+      if (footer) {
+        const rect = (footer as HTMLElement).getBoundingClientRect();
+        const overlap = window.innerHeight - rect.top;
+        if (overlap > 0) {
+          setBottomOffset(overlap + extraGap);
+          return;
+        }
+      }
+      setBottomOffset(baseBottom);
+    };
+
+    computeOffsets();
+    window.addEventListener("scroll", computeOffsets, { passive: true });
+    window.addEventListener("resize", computeOffsets);
+    return () => {
+      window.removeEventListener("scroll", computeOffsets);
+      window.removeEventListener("resize", computeOffsets);
+    };
+  }, []);
+
+  if (!visible) return null;
+
   return (
-    <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
-      <Header />
-      {/* aplica el modificador que quieras */}
-      <main className="container mx-auto px-4">
-        <Outlet />
-      </main>
+    <button
+      type="button"
+      aria-label="Volver arriba"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="
+        fixed z-50
+        rounded-full shadow-lg
+        bg-[#053C2F]
+        hover:bg-[#075646] focus:bg-[#075646]
+        transition
+        right-6 md:right-8
+        w-12 h-12 md:w-16 md:h-16
+        flex items-center justify-center
+      "
+      style={{ bottom: bottomOffset }}
+    >
+      <img
+        src="/flecha.svg"
+        alt="Ir arriba"
+        className="w-5 h-5 md:w-7 md:h-7 invert"
+        draggable={false}
+      />
+    </button>
+  );
+}
+
+export default function App() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  return (
+    <div
+      className={
+        isHome
+          ? "relative min-h-screen grid grid-rows-[1fr_auto]"
+          : "min-h-screen grid grid-rows-[auto_1fr_auto]"
+      }
+    >
+      {/* En Home el header flota sobre el Hero */}
+      {isHome ? (
+        <div className="absolute inset-x-0 top-0 z-50">
+          <Header />
+        </div>
+      ) : (
+        <Header />
+      )}
+
+      {/* En Home no aplicamos container/padding globales */}
+      {isHome ? (
+        <main>
+          <Outlet />
+        </main>
+      ) : (
+        <main className="container mx-auto px-4">
+          <Outlet />
+        </main>
+      )}
+
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }

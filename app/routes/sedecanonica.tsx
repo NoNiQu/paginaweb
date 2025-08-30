@@ -92,7 +92,7 @@ export default function Sedecanonica() {
       </div>
 
       {/* Bloque 3: Torre Mudéjar */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-6">
         {/* Texto */}
         <div className="space-y-6 font-body text-gray-900">
           <h2 className="text-xl sm:text-2xl font-semibold">Torre Mudéjar</h2>
@@ -123,7 +123,7 @@ export default function Sedecanonica() {
           <img
             src="portada.jpg"
             alt="Torre Mudéjar de San Cipriano"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />

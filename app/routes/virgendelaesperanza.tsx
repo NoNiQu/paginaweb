@@ -15,7 +15,6 @@ export default function VirgenDeLaEsperanza() {
       <div className="grid md:grid-cols-2 gap-10 items-start mb-6 mt-6">
         {/* Texto */}
         <div className="space-y-6 font-body text-gray-900">
-          <h2 className="text-xl sm:text-2xl font-semibold">Talla</h2>
           <p className="text-sm sm:text-base leading-relaxed">
             La imagen de la Virgen de la Esperanza es una pequeña talla románica
             (siglo XI) de una Virgen entronizada con el Niño en el regazo, de
@@ -25,17 +24,26 @@ export default function VirgenDeLaEsperanza() {
             ha sido restaurada en 2007 en el Centro de Restauración de
             Castilla-La Mancha, recuperando su apariencia original. Actualmente
             se la puede venerar medio año sin mantos (Noviembre a Abril) y medio
-            año con sus mantos (Mayo a Octubre).
+            año con sus mantos (Mayo a Octubre). Su policromía medieval, de
+            tonos oscuros y serenos, refuerza su apodo popular de “la Morenita
+            de San Cipriano”. Cada detalle de la talla recuerda el vínculo
+            ininterrumpido de Toledo con esta antiquísima devoción.
           </p>
+
           <p className="text-sm sm:text-base leading-relaxed">
             Hasta el siglo XVII esa talla románica que se venera en la Iglesia
-            por aquel entonces de S. Cebrián, se la denomina “Ntra. Sra. del
-            Destierro”. Ya en 1676 aparece en su libro de cofradías con el
+            por aquel entonces de San Cebrián, se la denomina “Nuestra señora
+            del Destierro”. Ya en 1676 aparece en su libro de cofradías con el
             título de “Virgen de la Esperanza”, compitiendo en su devoción con
             otras tres que había entonces en la ciudad: la de San Justo y
             Pastor, la de San Vicente y, la más prestigiosa de todas, la de San
             Lucas, famosa por el “Milagro de la Salve”, donde eran cófrades la
-            mayoría de los artistas toledanos y muchos personajes ilustres.
+            mayoría de los artistas toledanos y muchos personajes ilustres. La
+            tradición recuerda que como Virgen del Destierro fue invocada en
+            tiempos de peste, siendo considerada protectora de Toledo al
+            “desterrar” los males de la ciudad. Con su nueva advocación de
+            Esperanza, se consolidó como uno de los grandes referentes marianos
+            de la urbe.
           </p>
         </div>
         {/* Imagen */}
@@ -43,7 +51,7 @@ export default function VirgenDeLaEsperanza() {
           <img
             src="portada.jpg"
             alt="Virgen de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -137,7 +145,7 @@ export default function VirgenDeLaEsperanza() {
 
       {/* Sección del Trono */}
       <div className="font-body text-gray-900 space-y-4 mb-16 mt-6">
-        <h2 className="text-xl sm:text-2xl font-semibold">Trono</h2>
+        <SectionHeader>Trono</SectionHeader>
         <p className="text-sm sm:text-base leading-relaxed">
           La Virgen de la Esperanza, titular de nuestra Cofradía, no solo es un
           símbolo de fe y devoción, sino también un testimonio vivo del
