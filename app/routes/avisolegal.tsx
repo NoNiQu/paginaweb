@@ -7,8 +7,8 @@ export default function AvisoLegal() {
       <>
         <p>
           Esta página web es propiedad de la Cofradía de la Virgen de la
-          Esperanza de Toledo, con CIF 0001XXX y domicilio en{" "}
-          {config.addressTitle}, {config.addressCityLine}.
+          Esperanza de Toledo y domicilio en {config.addressTitle},{" "}
+          {config.addressCityLine}.
         </p>
 
         <p>
