@@ -113,6 +113,7 @@ function BackToTopButton() {
         right-6 md:right-8
         w-12 h-12 md:w-16 md:h-16
         flex items-center justify-center
+        hover:cursor-pointer
       "
       style={{ bottom: bottomOffset }}
     >
