@@ -13,6 +13,7 @@ const DIRECTIVA: Cargo[] = [
   { cargo: "Vicepresidente", nombre: "Nombre y Apellidos" },
   { cargo: "Secretario", nombre: "Nombre y Apellidos" },
   { cargo: "Tesorero", nombre: "Nombre y Apellidos" },
+  { cargo: "Consiliario", nombre: "Nombre y Apellidos" },
   { cargo: "Mayordomo de Ceremonias", nombre: "Nombre y Apellidos" },
   { cargo: "Mayordomo de Alhajas", nombre: "Nombre y Apellidos" },
   { cargo: "Mayordomo de Fiestas", nombre: "Marcos Alarcón Alguacil" },
@@ -97,9 +98,25 @@ export default function JuntaDirectiva() {
           ))}
         </div>
 
-        {/* Fila 3: Mayordomías */}
+        {/* Fila 3: Consiliario */}
+        <div className="grid grid-cols-1 sm:max-w-sm mx-auto">
+          {DIRECTIVA.slice(4, 5).map((item) => (
+            <Card
+              key={item.cargo}
+              className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
+              aria-label={`${item.cargo}: ${item.nombre}`}
+            >
+              <div className="text-sm uppercase tracking-wide opacity-80">
+                {item.cargo}
+              </div>
+              <div className="mt-1 text-lg font-semibold">{item.nombre}</div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Fila 4: Mayordomías */}
         <div className="grid gap-6 sm:grid-cols-3">
-          {DIRECTIVA.slice(4, 7).map((item) => (
+          {DIRECTIVA.slice(5, 8).map((item) => (
             <Card
               key={item.cargo}
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
