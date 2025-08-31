@@ -269,7 +269,7 @@ export default function Home() {
               decoding="sync"
             />
             <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto">
-              Tradición, fe y esperanza en el corazón de Toledo
+              Tradición, Fe y Esperanza en el corazón de Toledo
             </p>
           </div>
         </div>
