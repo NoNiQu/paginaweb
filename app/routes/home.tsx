@@ -31,7 +31,7 @@ type Culto =
       type: "range";
     };
 
-const MANY_COUNT = 3; // si hay >= 3 cultos en el mismo mes del próximo, se listan todos
+const MANY_COUNT = 5;
 
 function formatRangeShort(start: Date, end: Date) {
   const sameMonth =
@@ -54,7 +54,7 @@ function formatRangeShort(start: Date, end: Date) {
 }
 
 function buildCultos(year: number): Culto[] {
-  const diaEsperanza = new Date(year, 11, 18); // 18 diciembre
+  const diaEsperanza = new Date(year, 11, 18);
   const patrocinio = secondSundayOfNovember(year);
   const corpus = corpusThursday(year);
   const voto = pentecostTuesday(year);
@@ -200,39 +200,6 @@ export default function Home() {
   }
 
   const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
-
-  /* ===== Noticias (auto con fallback) ===== */
-  const [news, setNews] = useState<NewsItem[] | null>(null); // null = aún no cargado
-
-  useEffect(() => {
-    let cancelled = false;
-    async function fetchNews() {
-      // 1) API (si existe)
-      try {
-        const res = await fetch("/api/noticias?limit=3", { cache: "no-store" });
-        if (res.ok) {
-          const data = await res.json();
-          if (!cancelled) setNews(normalizeNews(data));
-          return;
-        }
-      } catch {}
-      // 2) Fichero estático
-      try {
-        const res = await fetch("/noticias.json", { cache: "no-store" });
-        if (res.ok) {
-          const data = await res.json();
-          if (!cancelled) setNews(normalizeNews(data));
-          return;
-        }
-      } catch {}
-      // 3) Vacío
-      if (!cancelled) setNews([]);
-    }
-    fetchNews();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   return (
     <div className="w-full font-body">
@@ -401,57 +368,9 @@ export default function Home() {
       <section className="pt-8 pb-24 sm:pb-16">
         <SectionContainer>
           <SectionHeader>Noticias</SectionHeader>
-
-          {news && news.length > 0 ? (
-            <>
-              <div className="mt-8 flex flex-wrap gap-6 justify-center">
-                {news.slice(0, NEWS_MAX).map((n) => (
-                  <Card
-                    key={n.id}
-                    as="a"
-                    href={n.href}
-                    className="w-full sm:w-[340px] p-6"
-                  >
-                    {n.image ? (
-                      <img
-                        src={n.image}
-                        alt=""
-                        className="w-full h-44 object-cover rounded-md mb-4"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : null}
-                    <h3 className="font-display text-xl">{n.title}</h3>
-                    {n.date ? (
-                      <p className="mt-1 text-xs uppercase tracking-wide text-gray-500">
-                        {new Date(n.date).toLocaleDateString("es-ES", {
-                          day: "2-digit",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </p>
-                    ) : null}
-                    {n.excerpt ? (
-                      <p className="mt-2 text-gray-700 text-sm">{n.excerpt}</p>
-                    ) : null}
-                  </Card>
-                ))}
-              </div>
-
-              <div className="mt-8 flex justify-center">
-                <a
-                  href="/noticias"
-                  className="inline-flex items-center justify-center rounded-full bg-[#053C2F] text-white hover:opacity-95 font-display sc px-6 py-3 text-base shadow-md transition"
-                >
-                  Ver más noticias
-                </a>
-              </div>
-            </>
-          ) : (
-            <p className="mt-8 text-center text-gray-600">
-              No hay noticias disponibles por el momento.
-            </p>
-          )}
+          <p className="mt-8 text-center text-gray-900">
+            No hay noticias disponibles por el momento.
+          </p>
         </SectionContainer>
       </section>
     </div>
