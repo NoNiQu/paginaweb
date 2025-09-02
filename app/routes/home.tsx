@@ -187,7 +187,7 @@ export default function Home() {
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[160svh]">
+      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[300svh]">
         <picture className="absolute inset-0 z-0 block">
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
           <source

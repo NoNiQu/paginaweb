@@ -212,10 +212,10 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
   }
 }
 
-/* En móviles en apaisado (max 640px ancho + landscape) → aún más alto */
+/* En móviles en apaisado (max 640px ancho + landscape) → hero mucho más alto */
 @media (max-width: 640px) and (orientation: landscape) {
-  .ml\:min-h-\[160svh\] {
-    min-height: 160svh;
+  .ml\:min-h-\[300svh\] {
+    min-height: 300svh;
   }
 }
 
