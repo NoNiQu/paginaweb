@@ -204,9 +204,17 @@ export default function Home() {
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      <section className="relative w-full min-h-[100svh] overflow-hidden">
+      {/* Nota: más altura SOLO en tablets usando la clase utilitaria tablet:min-h-[120svh] */}
+      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh]">
         <picture className="absolute inset-0 z-0 block">
+          {/* Móvil */}
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
+          {/* Tablet: usa la misma que escritorio pero la forzamos aquí */}
+          <source
+            media="(min-width: 641px) and (max-width: 1024px)"
+            srcSet="/hero/heroA.jpg"
+          />
+          {/* Escritorio */}
           <img
             src="/hero/heroA.jpg"
             alt="Cofradía de la Esperanza"
@@ -219,7 +227,7 @@ export default function Home() {
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
-        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] px-4 pb-8 sm:pb-16 lg:pb-20">
+        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] px-4 pb-8 sm:pb-16 lg:pb-20">
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
@@ -247,22 +255,25 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Historia */}
           <div className="bg-[#5B4636] text-white">
-            <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12">
-              <div className="max-w-2xl mx-auto text-center">
-                <h2 className="font-display sc text-3xl sm:text-4xl">
-                  NUESTRA HISTORIA
-                </h2>
-                <p className="mt-4 text-base sm:text-lg leading-relaxed text-white/95">
+            <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12 text-center">
+              {/* Arriba */}
+              <h2 className="font-display sc text-3xl sm:text-4xl">
+                NUESTRA HISTORIA
+              </h2>
+              {/* Centro */}
+              <div className="flex-grow flex items-center">
+                <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
                   La Cofradía hunde sus raíces en la devoción a la Virgen de la
                   Esperanza. A lo largo de los años, hermanos y devotos han
                   mantenido viva la tradición, el servicio y la caridad,
                   participando en cultos, procesiones y vida parroquial.
                 </p>
               </div>
-              <div className="mt-8 sm:mt-10 flex justify-center pb-2">
+              {/* Abajo */}
+              <div className="mt-8 sm:mt-10">
                 <a
                   href="/historia"
-                  className="inline-flex items-center justify-center rounded-full bg-white text-[#5B4636] hover:bg-neutral-100 font-display sc px-6 py-3 text-base shadow-md transition"
+                  className="inline-flex items-center justify-center rounded-full bg-white text-[#5B4636] hover:bg-neutral-100 font-body font-medium sc px-6 py-3 text-base shadow-md transition"
                 >
                   VER HISTORIA
                 </a>
@@ -272,22 +283,23 @@ export default function Home() {
 
           {/* Titular */}
           <div className="bg-[#053C2F] text-white">
-            <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12">
-              <div className="max-w-2xl mx-auto text-center">
-                <h2 className="font-display sc text-3xl sm:text-4xl">
-                  TITULAR
-                </h2>
-                <p className="mt-4 text-base sm:text-lg leading-relaxed text-white/95">
+            <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12 text-center">
+              {/* Arriba */}
+              <h2 className="font-display sc text-3xl sm:text-4xl">TITULAR</h2>
+              {/* Centro */}
+              <div className="flex-grow flex items-center">
+                <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
                   La sagrada imagen de la Virgen de la Esperanza es una talla de
                   gran unción y delicadeza. Su iconografía invita a la oración y
                   a la confianza, siendo centro de la devoción de la cofradía y
                   protagonista de nuestros cultos y procesiones.
                 </p>
               </div>
-              <div className="mt-8 sm:mt-10 flex justify-center pb-2">
+              {/* Abajo */}
+              <div className="mt-8 sm:mt-10">
                 <a
                   href="/virgendelaesperanza"
-                  className="inline-flex items-center justify-center rounded-full bg-white text-[#053C2F] hover:bg-emerald-50 font-display sc px-6 py-3 text-base shadow-md transition"
+                  className="inline-flex items-center justify-center rounded-full bg-white text-[#053C2F] hover:bg-emerald-50 font-body font-medium sc px-6 py-3 text-base shadow-md transition"
                 >
                   VER TITULAR
                 </a>
@@ -310,7 +322,7 @@ export default function Home() {
                   <p className="uppercase tracking-wide text-white/80 text-sm">
                     Próximo culto
                   </p>
-                  <h3 className="text-2xl font-display">{nextCulto.title}</h3>
+                  <h3 className="text-2xl font-body">{nextCulto.title}</h3>
                   <p className="mt-1 opacity-90">
                     {nextCulto.type === "single"
                       ? formatLong(nextCulto.start)
@@ -322,7 +334,7 @@ export default function Home() {
                 <div>
                   <a
                     href={nextCulto.href}
-                    className="inline-flex items-center justify-center rounded-full bg-white text-[#053C2F] hover:bg-emerald-50 font-display sc px-5 py-2 text-base shadow-md transition"
+                    className="inline-flex items-center justify-center rounded-full bg-white text-[#053C2F] hover:bg-emerald-50 font-body font-medium sc px-5 py-2 text-base shadow-md transition"
                   >
                     VER DETALLES
                   </a>
@@ -356,7 +368,7 @@ export default function Home() {
           <div className="mt-6 flex justify-center">
             <a
               href="/cultos"
-              className="inline-flex items-center justify-center rounded-full bg-[#053C2F] text-white hover:opacity-95 font-display sc px-6 py-3 text-base shadow-md transition"
+              className="inline-flex items-center justify-center rounded-full bg-[#053C2F] text-white hover:opacity-95 font-body font-medium sc px-6 py-3 text-base shadow-md transition"
             >
               VER TODOS LOS CULTOS
             </a>
@@ -365,7 +377,7 @@ export default function Home() {
       </section>
 
       {/* ===== NOTICIAS (máx 3, centradas; vacío → mensaje) ===== */}
-      <section className="pt-8 pb-24 sm:pb-16">
+      <section className="pb-24 sm:pb-16">
         <SectionContainer>
           <SectionHeader>Noticias</SectionHeader>
           <p className="mt-8 text-center text-gray-900">

@@ -93,7 +93,7 @@ export default function Header() {
                     setOpenId={setOpenId}
                     items={[
                       { label: "Hazte Hermano", to: "/secretaria" },
-                      { label: "Actualizar datos", to: "/secretaria" },
+                      { label: "Actualizar datos", to: "/actualizardatos" },
                       { label: "Ser Portador", to: "/serportador" },
                       { label: "Contacto", to: "/contacto" },
                       { label: "Donativo", to: "/donativo" },
@@ -203,7 +203,7 @@ export default function Header() {
                       label="SECRETARÍA"
                       items={[
                         { label: "Hazte Hermano", to: "/secretaria" },
-                        { label: "Actualizar datos", to: "/secretaria" },
+                        { label: "Actualizar datos", to: "/actualizardatos" },
                         { label: "Ser Portador", to: "/serportador" },
                         { label: "Contacto", to: "/contacto" },
                         { label: "Donativo", to: "/donativo" },

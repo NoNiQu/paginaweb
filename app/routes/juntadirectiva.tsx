@@ -130,9 +130,9 @@ export default function JuntaDirectiva() {
           ))}
         </div>
 
-        {/* Fila 4: Capataz – Camarera titular */}
+        {/* Fila 5: Capataz – Camarera titular */}
         <div className="grid gap-6 sm:grid-cols-2 sm:max-w-2xl mx-auto">
-          {DIRECTIVA.slice(7, 9).map((item) => (
+          {DIRECTIVA.slice(8, 10).map((item) => (
             <Card
               key={item.cargo}
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"

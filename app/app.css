@@ -200,3 +200,9 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
   .only-mobile { display: block; }
   .only-desktop { display: none; }
 }
+/* Utilidades solo para tablets (641px–1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet\:min-h-\[120svh\] {
+    min-height: 120svh;
+  }
+}

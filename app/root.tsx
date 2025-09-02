@@ -105,7 +105,7 @@ function BackToTopButton() {
       aria-label="Volver arriba"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className="
-        fixed z-50
+        fixed z-40
         rounded-full shadow-lg
         bg-[#053C2F]
         hover:bg-[#075646] focus:bg-[#075646]

@@ -1,10 +1,21 @@
 // src/pages/virgendelaesperanza.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 
 export default function VirgenDeLaEsperanza() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Bloquea el scroll del body cuando el modal está abierto
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    // Limpieza por si el componente se desmonta con el modal abierto
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [selectedImage]);
 
   return (
     <SectionContainer className="relative overflow-hidden">
@@ -132,7 +143,7 @@ export default function VirgenDeLaEsperanza() {
       {/* Modal para ver imagen en grande */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
           onClick={() => setSelectedImage(null)}
         >
           <img
@@ -222,7 +233,7 @@ export default function VirgenDeLaEsperanza() {
       {/* Modal para ver imagen en grande */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
           onClick={() => setSelectedImage(null)}
         >
           <img
