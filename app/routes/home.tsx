@@ -208,7 +208,7 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
-        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] ml:min-h-[160svh] px-4 pb-8 sm:pb-16 lg:pb-20">
+        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] ml:min-h-[300svh] px-4 pb-8 sm:pb-16 lg:pb-20">
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
