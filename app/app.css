@@ -194,19 +194,32 @@ header.is-home .nav-link::after { background: #ffffff !important; }
 header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
 
 /* Utilidades para alternar bloques distintos en la Home */
+/* ===== Utilidades básicas para mostrar/ocultar según breakpoint ===== */
 .only-mobile { display: none; }
 .only-desktop { display: block; }
+
 @media (max-width: 1023px) {
   .only-mobile { display: block; }
   .only-desktop { display: none; }
 }
 
-/* Alto extra en tablets solo si hay altura suficiente */
+/* ===== HERO: alturas adaptativas ===== */
+
+/* En tablets (641px–1024px) con suficiente altura */
 @media (min-width: 641px) and (max-width: 1024px) and (min-height: 700px) {
-  .tablet\:min-h-\[120svh\] { min-height: 120svh; }
+  .tablet\:min-h-\[120svh\] {
+    min-height: 120svh;
+  }
 }
 
-/* Móviles apaisados con poca altura */
+/* En móviles en apaisado (max 640px ancho + landscape) → aún más alto */
+@media (max-width: 640px) and (orientation: landscape) {
+  .ml\:min-h-\[160svh\] {
+    min-height: 160svh;
+  }
+}
+
+/* ===== Ajustes adicionales para móviles con poca altura ===== */
 @media (max-height: 520px) {
   .hero-header--desktop { width: min(50vw, 420px) !important; }
   .hero-header--mobile  { width: min(60vw, 240px) !important; }
@@ -214,9 +227,10 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
   .hero-stack { padding-top: 8px !important; padding-bottom: 8px !important; }
 }
 
-/* Apaisado más específico */
 @media (orientation: landscape) and (max-height: 520px) {
   .hero-header--desktop { width: min(48vw, 380px) !important; }
   .hero-header--mobile  { width: min(55vw, 220px) !important; }
 }
+
+
 

@@ -187,7 +187,7 @@ export default function Home() {
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh]">
+      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[160svh]">
         <picture className="absolute inset-0 z-0 block">
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
           <source
@@ -208,12 +208,12 @@ export default function Home() {
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
-        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] px-4 pb-8 sm:pb-16 lg:pb-20 hero-stack">
+        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] ml:min-h-[160svh] px-4 pb-8 sm:pb-16 lg:pb-20">
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--desktop"
+              className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(65vw, 550px)" }}
               loading="eager"
               decoding="sync"
@@ -221,12 +221,12 @@ export default function Home() {
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--mobile"
+              className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(78vw, 300px)" }}
               loading="eager"
               decoding="sync"
             />
-            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto hero-subtitle">
+            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto">
               Tradición, Fe y Esperanza en el corazón de Toledo
             </p>
           </div>
