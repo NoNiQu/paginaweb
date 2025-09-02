@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
@@ -41,15 +42,7 @@ function formatRangeShort(start: Date, end: Date) {
     d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
   return sameMonth
     ? `del ${day(start)} al ${day(end)} de ${monthYear(end)}`
-    : `del ${start.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })} al ${end.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })}`;
+    : `del ${start.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })} al ${end.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })}`;
 }
 
 function buildCultos(year: number): Culto[] {
@@ -112,6 +105,41 @@ function isInRange(date: Date, start: Date, end: Date) {
   return t >= start.getTime() && t <= end.getTime();
 }
 
+function monthOverlap(
+  start: Date,
+  end: Date,
+  monthStart: Date,
+  monthEnd: Date
+) {
+  return start <= monthEnd && end >= monthStart;
+}
+
+/* ====== Tipos y fetch de Noticias ====== */
+type NewsItem = {
+  id: string;
+  title: string;
+  href: string;
+  excerpt?: string;
+  date?: string;
+  image?: string;
+};
+
+const NEWS_MAX = 3;
+
+function normalizeNews(data: any): NewsItem[] {
+  if (!Array.isArray(data)) return [];
+  return data.map(
+    (n: any, i: number): NewsItem => ({
+      id: n.id ?? n.slug ?? String(n.title ?? i),
+      title: n.title ?? "Sin título",
+      href: n.href ?? n.url ?? (n.slug ? `/noticias/${n.slug}` : "/noticias"),
+      excerpt: n.excerpt ?? n.summary ?? "",
+      date: n.date ?? n.publishedAt ?? undefined,
+      image: n.image ?? n.cover ?? undefined,
+    })
+  );
+}
+
 /* ====== Página Home ====== */
 export default function Home() {
   const today = new Date();
@@ -132,7 +160,6 @@ export default function Home() {
       (e.type === "single" && e.start.getTime() >= midnight) ||
       (e.type === "range" && e.end.getTime() >= midnight)
   );
-
   futureCandidates.sort((a, b) => a.start.getTime() - b.start.getTime());
 
   const runningNow = futureCandidates.find(
@@ -140,36 +167,33 @@ export default function Home() {
   );
   const nextCulto = runningNow ?? futureCandidates[0];
 
-  const sameMonthList: Culto[] = (() => {
-    if (!nextCulto) return [];
+  let sameMonthList: Culto[] = [];
+  if (nextCulto) {
     const y = nextCulto.start.getFullYear();
     const m = nextCulto.start.getMonth();
     const monthStart = new Date(y, m, 1);
     const monthEnd = new Date(y, m + 1, 0);
     const pool = y === CURRENT_YEAR ? eventsThisYear : buildCultos(y);
-    return pool.filter((e) =>
+
+    sameMonthList = pool.filter((e) =>
       e.type === "single"
         ? e.start.getFullYear() === y && e.start.getMonth() === m
-        : e.start <= monthEnd && e.end >= monthStart
+        : monthOverlap(e.start, e.end, monthStart, monthEnd)
     );
-  })();
+  }
 
   const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
 
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      {/* Altura con dvh + offset por barra superior para evitar solapes */}
-      <section className="relative w-full overflow-hidden min-h-hero">
+      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[300svh]">
         <picture className="absolute inset-0 z-0 block">
-          {/* Móvil */}
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
-          {/* Tablet (misma que desktop) */}
           <source
             media="(min-width: 641px) and (max-width: 1024px)"
             srcSet="/hero/heroA.jpg"
           />
-          {/* Escritorio */}
           <img
             src="/hero/heroA.jpg"
             alt="Cofradía de la Esperanza"
@@ -180,33 +204,29 @@ export default function Home() {
           />
         </picture>
 
-        {/* Overlays */}
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
-        {/* Contenido del hero con offset superior seguro */}
-        <div className="relative z-30 flex justify-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
+        <div className="relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
           <div className="flex flex-col items-center">
-            {/* Logo grande (desktop) */}
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--desktop"
+              className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(65vw, 550px)" }}
               loading="eager"
               decoding="sync"
             />
-            {/* Logo móvil */}
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--mobile"
+              className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(78vw, 300px)" }}
               loading="eager"
               decoding="sync"
             />
-            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto hero-subtitle">
+            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto">
               Tradición, Fe y Esperanza en el corazón de Toledo
             </p>
           </div>
