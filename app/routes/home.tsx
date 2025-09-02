@@ -42,15 +42,7 @@ function formatRangeShort(start: Date, end: Date) {
     d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
   return sameMonth
     ? `del ${day(start)} al ${day(end)} de ${monthYear(end)}`
-    : `del ${start.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })} al ${end.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })}`;
+    : `del ${start.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })} al ${end.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })}`;
 }
 
 function buildCultos(year: number): Culto[] {
@@ -150,7 +142,6 @@ function normalizeNews(data: any): NewsItem[] {
 
 /* ====== Página Home ====== */
 export default function Home() {
-  /* ==== HERO ==== */
   const today = new Date();
   const midnight = new Date(
     today.getFullYear(),
@@ -158,11 +149,9 @@ export default function Home() {
     today.getDate()
   ).getTime();
 
-  // Construimos cultos de este y siguiente año
   const eventsThisYear = buildCultos(CURRENT_YEAR);
   const eventsNextYear = buildCultos(CURRENT_YEAR + 1);
 
-  // Candidatos futuros (incluye rangos en curso)
   const futureCandidates: Culto[] = [
     ...eventsThisYear,
     ...eventsNextYear,
@@ -171,7 +160,6 @@ export default function Home() {
       (e.type === "single" && e.start.getTime() >= midnight) ||
       (e.type === "range" && e.end.getTime() >= midnight)
   );
-
   futureCandidates.sort((a, b) => a.start.getTime() - b.start.getTime());
 
   const runningNow = futureCandidates.find(
@@ -179,24 +167,19 @@ export default function Home() {
   );
   const nextCulto = runningNow ?? futureCandidates[0];
 
-  // Si hay siguiente culto, miramos cuántos hay en el mismo mes/año que él
   let sameMonthList: Culto[] = [];
   if (nextCulto) {
     const y = nextCulto.start.getFullYear();
     const m = nextCulto.start.getMonth();
     const monthStart = new Date(y, m, 1);
     const monthEnd = new Date(y, m + 1, 0);
-
-    // Tomamos el pool del año correcto
     const pool = y === CURRENT_YEAR ? eventsThisYear : buildCultos(y);
 
-    sameMonthList = pool.filter((e) => {
-      if (e.type === "single") {
-        return e.start.getFullYear() === y && e.start.getMonth() === m;
-      } else {
-        return monthOverlap(e.start, e.end, monthStart, monthEnd);
-      }
-    });
+    sameMonthList = pool.filter((e) =>
+      e.type === "single"
+        ? e.start.getFullYear() === y && e.start.getMonth() === m
+        : monthOverlap(e.start, e.end, monthStart, monthEnd)
+    );
   }
 
   const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
@@ -204,17 +187,13 @@ export default function Home() {
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      {/* Nota: más altura SOLO en tablets usando la clase utilitaria tablet:min-h-[120svh] */}
       <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh]">
         <picture className="absolute inset-0 z-0 block">
-          {/* Móvil */}
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
-          {/* Tablet: usa la misma que escritorio pero la forzamos aquí */}
           <source
             media="(min-width: 641px) and (max-width: 1024px)"
             srcSet="/hero/heroA.jpg"
           />
-          {/* Escritorio */}
           <img
             src="/hero/heroA.jpg"
             alt="Cofradía de la Esperanza"
@@ -224,26 +203,30 @@ export default function Home() {
             decoding="sync"
           />
         </picture>
+
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
-        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] px-4 pb-8 sm:pb-16 lg:pb-20">
+
+        <div className="relative z-30 flex items-end justify-center text-center min-h-[100svh] tablet:min-h-[120svh] px-4 pb-8 sm:pb-16 lg:pb-20 hero-stack">
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-desktop block w-[min(65vw,550px)] h-auto drop-shadow-[0_6px_24px_rgba(0,0,0,0.9)]"
+              className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--desktop"
+              style={{ width: "min(65vw, 550px)" }}
               loading="eager"
               decoding="sync"
             />
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
-              className="only-mobile block w-[min(78vw,300px)] h-auto drop-shadow-[0_6px_24px_rgba(0,0,0,0.9)]"
+              className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)] hero-header hero-header--mobile"
+              style={{ width: "min(78vw, 300px)" }}
               loading="eager"
               decoding="sync"
             />
-            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto">
+            <p className="mt-5 sm:mt-7 text-base sm:text-xl text-white drop-shadow-lg max-w-3xl mx-auto hero-subtitle">
               Tradición, Fe y Esperanza en el corazón de Toledo
             </p>
           </div>
@@ -256,11 +239,9 @@ export default function Home() {
           {/* Historia */}
           <div className="bg-[#5B4636] text-white">
             <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12 text-center">
-              {/* Arriba */}
               <h2 className="font-display sc text-3xl sm:text-4xl">
                 NUESTRA HISTORIA
               </h2>
-              {/* Centro */}
               <div className="flex-grow flex items-center">
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
                   La Cofradía hunde sus raíces en la devoción a la Virgen de la
@@ -269,7 +250,6 @@ export default function Home() {
                   participando en cultos, procesiones y vida parroquial.
                 </p>
               </div>
-              {/* Abajo */}
               <div className="mt-8 sm:mt-10">
                 <a
                   href="/historia"
@@ -284,9 +264,7 @@ export default function Home() {
           {/* Titular */}
           <div className="bg-[#053C2F] text-white">
             <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12 text-center">
-              {/* Arriba */}
               <h2 className="font-display sc text-3xl sm:text-4xl">TITULAR</h2>
-              {/* Centro */}
               <div className="flex-grow flex items-center">
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
                   La sagrada imagen de la Virgen de la Esperanza es una talla de
@@ -295,7 +273,6 @@ export default function Home() {
                   protagonista de nuestros cultos y procesiones.
                 </p>
               </div>
-              {/* Abajo */}
               <div className="mt-8 sm:mt-10">
                 <a
                   href="/virgendelaesperanza"
@@ -309,12 +286,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== CULTOS (Próximo + “muchos en el mismo mes”) ===== */}
+      {/* ===== CULTOS ===== */}
       <section className="pt-12 pb-8">
         <SectionContainer>
           <SectionHeader>Cultos</SectionHeader>
 
-          {/* Próximo culto */}
           {nextCulto && (
             <Card className="mt-6 p-6 bg-[#053C2F] text-white">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -343,7 +319,6 @@ export default function Home() {
             </Card>
           )}
 
-          {/* Si hay MUCHOS en el MISMO mes del próximo, muéstralos todos */}
           {showManyOfSameMonth && (
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {sameMonthList.map((e) => (
@@ -364,7 +339,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Botón centrado */}
           <div className="mt-6 flex justify-center">
             <a
               href="/cultos"
@@ -376,7 +350,7 @@ export default function Home() {
         </SectionContainer>
       </section>
 
-      {/* ===== NOTICIAS (máx 3, centradas; vacío → mensaje) ===== */}
+      {/* ===== NOTICIAS ===== */}
       <section className="pb-24 sm:pb-16">
         <SectionContainer>
           <SectionHeader>Noticias</SectionHeader>
