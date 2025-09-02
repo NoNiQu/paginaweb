@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   const instagram = import.meta.env.VITE_INSTAGRAM_URL as string;
   const facebook = import.meta.env.VITE_FACEBOOK_URL as string;
+  const currentYear = new Date().getFullYear();
 
   const [copiado, setCopiado] = useState(false);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
@@ -100,7 +101,8 @@ export default function Footer() {
 
         {/* Texto inferior */}
         <p className="text-center text-xs sm:text-sm tracking-wide">
-          COFRADÍA DE NUESTRA SEÑORA DE LA ESPERANZA DE TOLEDO ® 2025
+          COFRADÍA DE NUESTRA SEÑORA DE LA ESPERANZA DE TOLEDO ®{" "}
+          <span>{currentYear}</span>
         </p>
       </div>
     </footer>

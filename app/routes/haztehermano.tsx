@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { Card } from "../components/ui/Card";
-import { CopiableText } from "../components/ui/CopiableText";
 import { config } from "../config";
 
 export default function Secretaria() {

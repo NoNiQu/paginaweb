@@ -13,7 +13,7 @@ export default [
   //noticias
   route("/noticias", "routes/noticias.tsx"),
   //secretaría
-  route("/secretaria", "routes/secretaria.tsx"),
+  route("/haztehermano", "routes/haztehermano.tsx"),
   route("/actualizardatos", "routes/actualizardatos.tsx"),
   route("/serportador", "routes/serportador.tsx"),
   route("/contacto", "routes/contacto.tsx"),

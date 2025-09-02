@@ -37,7 +37,7 @@ export default function Header() {
               open ? "hidden" : "block"
             }`}
           >
-            <Link to="/secretaria" className="inline-block w-full">
+            <Link to="/haztehermano" className="inline-block w-full">
               HAZTE HERMANO
             </Link>
           </div>
@@ -92,7 +92,7 @@ export default function Header() {
                     openId={openId}
                     setOpenId={setOpenId}
                     items={[
-                      { label: "Hazte Hermano", to: "/secretaria" },
+                      { label: "Hazte Hermano", to: "/haztehermano" },
                       { label: "Actualizar datos", to: "/actualizardatos" },
                       { label: "Ser Portador", to: "/serportador" },
                       { label: "Contacto", to: "/contacto" },
@@ -202,7 +202,7 @@ export default function Header() {
                     <Accordion
                       label="SECRETARÍA"
                       items={[
-                        { label: "Hazte Hermano", to: "/secretaria" },
+                        { label: "Hazte Hermano", to: "/haztehermano" },
                         { label: "Actualizar datos", to: "/actualizardatos" },
                         { label: "Ser Portador", to: "/serportador" },
                         { label: "Contacto", to: "/contacto" },
