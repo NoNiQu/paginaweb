@@ -201,22 +201,18 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
   .only-desktop { display: none; }
 }
 
-/* ===== Altura del HERO ===== */
-/* Base: en móvil usamos svh (estable), en tablet/desktop dvh (dinámico real) */
-.min-h-hero { min-height: 100svh; }
-
-@media (min-width: 641px) {
-  .min-h-hero { min-height: 100dvh; }
-}
+/* ===== Altura del HERO con dvh (viewport real) ===== */
+/* Clase utilitaria usada en el <section> y en el contenedor interno */
+.min-h-hero { min-height: 100dvh; }
 
 /* Tablets (641–1024px) con altura suficiente: alarga a 120dvh */
 @media (min-width: 641px) and (max-width: 1024px) and (min-height: 700px) {
   .min-h-hero { min-height: 120dvh; }
 }
 
-/* Móviles en apaisado con poca altura: mantenemos 100svh para evitar “zoom” */
+/* Móviles en apaisado con poca altura: alarga más (140dvh) */
 @media (max-width: 820px) and (orientation: landscape) and (max-height: 520px) {
-  .min-h-hero { min-height: 100svh; }
+  .min-h-hero { min-height: 140dvh; }
 }
 
 /* ===== Offset seguro por barra superior (nav / status bar) ===== */
