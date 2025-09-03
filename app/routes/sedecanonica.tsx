@@ -24,13 +24,13 @@ export default function Sedecanonica() {
 
       {/* Bloque 1: img derecha en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16 mt-6">
-        {/* Título (solo móvil) */}
-        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+        {/* Título (solo móvil, centrado) */}
+        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
           Iglesia de San Cipriano
         </h2>
 
-        {/* Imagen -> derecha en desktop */}
-        <div className="relative order-2 md:order-2">
+        {/* Imagen -> derecha en desktop (centrada en móvil) */}
+        <div className="relative order-2 md:order-2 flex justify-center md:block">
           <img
             src="portada.jpg"
             alt="Iglesia de San Cipriano"
@@ -70,13 +70,13 @@ export default function Sedecanonica() {
 
       {/* Bloque 2: img izquierda en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
-        {/* Título (solo móvil) */}
-        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+        {/* Título (solo móvil, centrado) */}
+        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
           Capilla Mayor
         </h2>
 
-        {/* Imagen -> izquierda en desktop */}
-        <div className="relative order-2 md:order-1">
+        {/* Imagen -> izquierda en desktop (centrada en móvil) */}
+        <div className="relative order-2 md:order-1 flex justify-center md:block">
           <img
             src="portada.jpg"
             alt="Capilla Mayor"
@@ -119,13 +119,13 @@ export default function Sedecanonica() {
 
       {/* Bloque 3: img derecha en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
-        {/* Título (solo móvil) */}
-        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+        {/* Título (solo móvil, centrado) */}
+        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
           Torre Mudéjar
         </h2>
 
-        {/* Imagen -> derecha en desktop */}
-        <div className="relative order-2 md:order-2">
+        {/* Imagen -> derecha en desktop (centrada en móvil) */}
+        <div className="relative order-2 md:order-2 flex justify-center md:block">
           <img
             src="portada.jpg"
             alt="Torre Mudéjar de San Cipriano"
@@ -166,13 +166,13 @@ export default function Sedecanonica() {
 
       {/* Bloque 4: img izquierda en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-6">
-        {/* Título (solo móvil) */}
-        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+        {/* Título (solo móvil, centrado) */}
+        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
           Santísimo Cristo de la Esperanza
         </h2>
 
-        {/* Imagen -> izquierda en desktop */}
-        <div className="relative order-2 md:order-1">
+        {/* Imagen -> izquierda en desktop (centrada en móvil) */}
+        <div className="relative order-2 md:order-1 flex justify-center md:block">
           <img
             src="/images/cristodelaesperanza.jpg"
             alt="Santísimo Cristo de la Esperanza"
