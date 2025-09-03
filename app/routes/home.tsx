@@ -124,22 +124,6 @@ type NewsItem = {
   image?: string;
 };
 
-const NEWS_MAX = 3;
-
-function normalizeNews(data: any): NewsItem[] {
-  if (!Array.isArray(data)) return [];
-  return data.map(
-    (n: any, i: number): NewsItem => ({
-      id: n.id ?? n.slug ?? String(n.title ?? i),
-      title: n.title ?? "Sin título",
-      href: n.href ?? n.url ?? (n.slug ? `/noticias/${n.slug}` : "/noticias"),
-      excerpt: n.excerpt ?? n.summary ?? "",
-      date: n.date ?? n.publishedAt ?? undefined,
-      image: n.image ?? n.cover ?? undefined,
-    })
-  );
-}
-
 /* ====== Página Home ====== */
 export default function Home() {
   const today = new Date();
@@ -187,7 +171,7 @@ export default function Home() {
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[300svh]">
+      <section className="relative w-full overflow-hidden min-h-hero">
         <picture className="absolute inset-0 z-0 block">
           {/* Móvil */}
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
@@ -195,7 +179,7 @@ export default function Home() {
           {/* Tablet vertical */}
           <source
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
-            srcSet="/hero/heroT.jpg"
+            srcSet="/hero/heroM.png"
           />
 
           {/* Tablet apaisado */}
@@ -207,9 +191,9 @@ export default function Home() {
           {/* Desktop */}
           <source media="(min-width: 1025px)" srcSet="/hero/heroO.png" />
 
-          {/* Fallback */}
+          {/* Fallback correcto */}
           <img
-            src="/hero/headerO.jpg"
+            src="/hero/heroO.png"
             alt="Cofradía de la Esperanza"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center 66%" }}
@@ -218,10 +202,12 @@ export default function Home() {
           />
         </picture>
 
+        {/* Overlays */}
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
+        {/* Contenido: todo al fondo */}
         <div className="relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
           <div className="flex flex-col items-center">
             <img
