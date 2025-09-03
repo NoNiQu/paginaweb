@@ -39,7 +39,7 @@ export default function Estatutos() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2 mx-auto">
         <Card
           as="a"
-          href="/descargas/estatutos-cofradia.pdf"
+          href="/descargas/Estatutos_Cofradia_Virgen_Esperanza.pdf"
           className="flex items-center gap-3 justify-center text-lg font-body font-medium min-h-[120px]"
           download
           aria-label="Descargar Estatutos de la Cofradía (PDF)"
