@@ -2,117 +2,14 @@ import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
 import { config } from "../config";
+import { CURRENT_YEAR, formatLong } from "../utils/dates";
 import {
-  CURRENT_YEAR,
-  formatLong,
-  secondSundayOfNovember,
-  corpusThursday,
-  pentecostTuesday,
-  octavaTuesday,
-  novenaRange,
-} from "../utils/dates";
-
-/* ====== Tipos y utilidades de Cultos ====== */
-type Culto =
-  | {
-      id: string;
-      title: string;
-      start: Date;
-      end?: undefined;
-      href: string;
-      type: "single";
-    }
-  | {
-      id: string;
-      title: string;
-      start: Date;
-      end: Date;
-      href: string;
-      type: "range";
-    };
-
-const MANY_COUNT = 5;
-
-function formatRangeShort(start: Date, end: Date) {
-  const sameMonth =
-    start.getFullYear() === end.getFullYear() &&
-    start.getMonth() === end.getMonth();
-  const day = (d: Date) => d.toLocaleDateString("es-ES", { day: "2-digit" });
-  const monthYear = (d: Date) =>
-    d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
-  return sameMonth
-    ? `del ${day(start)} al ${day(end)} de ${monthYear(end)}`
-    : `del ${start.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })} al ${end.toLocaleDateString("es-ES", { day: "2-digit", month: "long", year: "numeric" })}`;
-}
-
-function buildCultos(year: number): Culto[] {
-  const diaEsperanza = new Date(year, 11, 18);
-  const patrocinio = secondSundayOfNovember(year);
-  const corpus = corpusThursday(year);
-  const voto = pentecostTuesday(year);
-  const octava = octavaTuesday(year);
-  const { start: novenaInicio, end: novenaFin } = novenaRange(year);
-
-  return [
-    {
-      id: "novena",
-      title: "Novena en honor a la Virgen de la Esperanza",
-      start: novenaInicio,
-      end: novenaFin,
-      href: "/cultos#novena",
-      type: "range",
-    },
-    {
-      id: "voto",
-      title: "Procesión del Voto",
-      start: voto,
-      href: "/cultos#voto",
-      type: "single",
-    },
-    {
-      id: "octava",
-      title: "Procesión de la Octava",
-      start: octava,
-      href: "/cultos#octava",
-      type: "single",
-    },
-    {
-      id: "corpus",
-      title: "Corpus Christi",
-      start: corpus,
-      href: "/cultos#corpus",
-      type: "single",
-    },
-    {
-      id: "patrocinio",
-      title: "Día de Patrocinio",
-      start: patrocinio,
-      href: "/cultos#patrocinio",
-      type: "single",
-    },
-    {
-      id: "esperanza",
-      title: "Día de la Esperanza",
-      start: diaEsperanza,
-      href: "/cultos#esperanza",
-      type: "single",
-    },
-  ];
-}
-
-function isInRange(date: Date, start: Date, end: Date) {
-  const t = date.getTime();
-  return t >= start.getTime() && t <= end.getTime();
-}
-
-function monthOverlap(
-  start: Date,
-  end: Date,
-  monthStart: Date,
-  monthEnd: Date
-) {
-  return start <= monthEnd && end >= monthStart;
-}
+  buildCultos,
+  formatRangeShort,
+  isInRange,
+  monthOverlap,
+  type Culto,
+} from "../utils/cultos";
 
 /* ====== Página Home ====== */
 export default function Home() {
@@ -132,7 +29,7 @@ export default function Home() {
   ].filter(
     (e) =>
       (e.type === "single" && e.start.getTime() >= midnight) ||
-      (e.type === "range" && e.end.getTime() >= midnight)
+      (e.type === "range" && e.end!.getTime() >= midnight)
   );
   futureCandidates.sort((a, b) => a.start.getTime() - b.start.getTime());
 
@@ -152,11 +49,11 @@ export default function Home() {
     sameMonthList = pool.filter((e) =>
       e.type === "single"
         ? e.start.getFullYear() === y && e.start.getMonth() === m
-        : monthOverlap(e.start, e.end, monthStart, monthEnd)
+        : monthOverlap(e.start, e.end!, monthStart, monthEnd)
     );
   }
 
-  const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
+  const showManyOfSameMonth = sameMonthList.length >= 5;
 
   return (
     <div className="w-full font-body">
@@ -354,7 +251,7 @@ export default function Home() {
               loading="lazy"
             />
 
-            {/* Redes sociales (botones alargados, en la misma fila en pantallas ≥ sm) */}
+            {/* Redes sociales */}
             <div className="w-full flex flex-col gap-4">
               <p className="text-gray-800 mt-2 mb-4">
                 Síguenos en nuestras redes sociales para estar al día de

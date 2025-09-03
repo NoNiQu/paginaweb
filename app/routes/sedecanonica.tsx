@@ -1,6 +1,7 @@
 // src/pages/sedecanonica.tsx
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
+import { Card } from "~/components/ui/Card";
 import { useState, useEffect } from "react";
 
 export default function Sedecanonica() {
@@ -103,7 +104,7 @@ export default function Sedecanonica() {
       </div>
 
       {/* Bloque 3: Torre Mudéjar */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-6">
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
         {/* Texto */}
         <div className="space-y-6 font-body text-gray-900">
           <h2 className="text-xl sm:text-2xl font-semibold">Torre Mudéjar</h2>
@@ -138,6 +139,61 @@ export default function Sedecanonica() {
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+      </div>
+
+      {/* Cristo de la Esperanza */}
+      <div className="grid md:grid-cols-2 gap-10 items-start mb-6">
+        {/* Imagen */}
+        <div className="relative order-2 md:order-none">
+          <img
+            src="/images/cristodelaesperanza.jpg"
+            alt="Capilla Mayor"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+        {/* Texto */}
+        <div className="space-y-6 font-body text-gray-900">
+          <h2 className="text-xl sm:text-2xl font-semibold">
+            Santísimo Cristo de la Esperanza
+          </h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La Hermandad del Santísimo Cristo de la Esperanza tiene su sede
+            canónica en la Parroquia de San Andrés y San Cipriano, en Toledo.
+            Fue fundada en 1665 con la aprobación del Cardenal Pascual de Aragón
+            y, tras desaparecer durante la Guerra de la Independencia, fue
+            refundada en 1983 por un grupo de feligreses de la misma parroquia.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La imagen del Cristo de la Esperanza, de autor anónimo del siglo
+            XVIII, muestra a Jesús expirado en la Cruz y es objeto de profunda
+            devoción. Cada Lunes Santo la hermandad celebra su solemne Vía
+            Crucis procesional, marcado por el silencio, la oración y la
+            austeridad, partiendo desde la iglesia de San Andrés y recorriendo
+            las calles del casco histórico de Toledo.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            El Cristo de la Esperanza recibe culto durante todo el año en la
+            Iglesia de San Cipriano, donde cuenta con un altar propio para la
+            veneración de los fieles.
+          </p>
+          {/* Botones*/}
+          <div className="flex justify-center mt-6">
+            <Card
+              as="a"
+              href="https://semanasantatoledo.com/hermandad-del-santisimo-cristo-de-la-esperanza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-row items-center justify-center gap-3 px-3 py-3 h-14 w-full max-w-md"
+              aria-label="Página de la Junta de Cofradías de Toledo - Cristo de la Esperanza"
+            >
+              <strong className="text-white text-center text-lg">
+                Página de la Junta de Semana Santa
+              </strong>
+            </Card>
+          </div>
         </div>
       </div>
 

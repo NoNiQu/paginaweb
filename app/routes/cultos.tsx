@@ -1,5 +1,5 @@
 // src/pages/cultos.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
@@ -12,6 +12,7 @@ import {
   octavaTuesday,
   novenaRange,
 } from "../utils/dates";
+import { formatRangeShort } from "../utils/cultos";
 
 // Acordeón simple (sin cambiar textos del contenido)
 function Accordion({
@@ -37,29 +38,21 @@ function Accordion({
   );
 }
 
-// Helper para mostrar rangos tipo "del 09 al 17 de junio de 2025"
-function formatRangeShort(start: Date, end: Date) {
-  const sameMonth =
-    start.getFullYear() === end.getFullYear() &&
-    start.getMonth() === end.getMonth();
-  const day = (d: Date) => d.toLocaleDateString("es-ES", { day: "2-digit" });
-  const monthYear = (d: Date) =>
-    d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
-  return sameMonth
-    ? `del ${day(start)} al ${day(end)} de ${monthYear(end)}`
-    : `del ${start.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })} al ${end.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      })}`;
-}
-
 export default function Cultos() {
   const year = CURRENT_YEAR;
+
+  // Scroll suave al ancla (ej. /cultos#voto)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 0);
+  }, []);
 
   // Fechas automáticas (año actual)
   const diaEsperanza = new Date(year, 11, 18); // 18 de diciembre
@@ -67,35 +60,34 @@ export default function Cultos() {
   const corpus = corpusThursday(year); // Jueves de Corpus
   const voto = pentecostTuesday(year); // Martes de Pentecostés
   const octava = octavaTuesday(year); // Martes de la semana del Corpus
-  const { start: novenaInicio, end: novenaFin } = novenaRange(year); // Novena (L anterior al Corpus → M de esa semana)
+  const { start: novenaInicio, end: novenaFin } = novenaRange(year); // Novena
 
   return (
     <SectionContainer>
       <SectionHeader>Cultos</SectionHeader>
+
+      {/* Introductorio */}
+      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4">
+        <p className="leading-relaxed mb-6">
+          Aquí te presentamos los cultos más importantes de la Cofradía de la
+          Virgen de la Esperanza, con las fechas aproximadas y una breve
+          explicación para que puedas vivirlos y participar con nosotros.
+        </p>
+      </div>
+
       {/* Solo las cards de la sección "Todos nuestros cultos" */}
       <div className="grid gap-6 lg:grid-cols-2 items-start">
         {/* NOVENA (largo) */}
         <Card
           id="novena"
-          className="lg:col-span-2 flex flex-col gap-4 text-white"
+          className="lg:col-span-2 flex flex-col gap-4 text-white scroll-mt-24"
         >
           <div>
             <h3 className="text-3xl mb-1">
               Novena en honor a la Virgen de la Esperanza
             </h3>
             <p className="text-sm opacity-90 font-body">
-              Del{" "}
-              {novenaInicio.toLocaleDateString("es-ES", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}{" "}
-              al{" "}
-              {novenaFin.toLocaleDateString("es-ES", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
+              {formatRangeShort(novenaInicio, novenaFin)}
             </p>
           </div>
 
@@ -118,7 +110,7 @@ export default function Cultos() {
         </Card>
 
         {/* PROCESIÓN DEL VOTO */}
-        <Card id="voto" className="flex flex-col gap-3 text-white">
+        <Card id="voto" className="flex flex-col gap-3 text-white scroll-mt-24">
           <div>
             <h3 className="text-3xl mb-1">Procesión del Voto</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(voto)}</p>
@@ -163,7 +155,10 @@ export default function Cultos() {
         </Card>
 
         {/* PROCESIÓN DE LA OCTAVA */}
-        <Card id="octava" className="flex flex-col gap-3 text-white">
+        <Card
+          id="octava"
+          className="flex flex-col gap-3 text-white scroll-mt-24"
+        >
           <div>
             <h3 className="text-3xl mb-1">Procesión de la Octava</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(octava)}</p>
@@ -203,7 +198,7 @@ export default function Cultos() {
         {/* Corpus (largo) */}
         <Card
           id="corpus"
-          className="lg:col-span-2 flex flex-col gap-4 text-white"
+          className="lg:col-span-2 flex flex-col gap-4 text-white scroll-mt-24"
         >
           <div>
             <h3 className="text-3xl mb-1">Corpus Christi</h3>
@@ -225,7 +220,7 @@ export default function Cultos() {
         {/* Día de Patrocinio (largo) */}
         <Card
           id="patrocinio"
-          className="lg:col-span-2 flex flex-col gap-3 text-white"
+          className="lg:col-span-2 flex flex-col gap-3 text-white scroll-mt-24"
         >
           <div>
             <h3 className="text-3xl mb-1">Día de Patrocinio</h3>
@@ -260,7 +255,7 @@ export default function Cultos() {
         {/* Día de la Esperanza (largo) */}
         <Card
           id="esperanza"
-          className="lg:col-span-2 flex flex-col gap-3 text-white"
+          className="lg:col-span-2 flex flex-col gap-3 text-white scroll-mt-24"
         >
           <div>
             <h3 className="text-3xl mb-1">Día de la Esperanza</h3>
