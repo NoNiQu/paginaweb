@@ -195,7 +195,7 @@ export default function Home() {
           {/* Tablet vertical */}
           <source
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
-            srcSet="/hero/heroM.jpg"
+            srcSet="/hero/heroT.jpg"
           />
 
           {/* Tablet apaisado */}
