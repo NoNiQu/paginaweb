@@ -193,64 +193,50 @@ header.is-home .nav-link::after { background: #ffffff !important; }
 /* Flecha de dropdown en blanco solo en Home */
 header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
 
-/* =========================================================
-   Visibilidad por breakpoint
-   ========================================================= */
+/* ===== Mostrar/ocultar por breakpoint ===== */
 .only-mobile { display: none; }
 .only-desktop { display: block; }
-
 @media (max-width: 1023px) {
   .only-mobile { display: block; }
   .only-desktop { display: none; }
 }
 
-/* =========================================================
-   HERO: alturas estables y sin solapes
-   - En móvil: 100svh (estable, no cambia al mostrar/ocultar barras)
-   - En ≥tablet: 100dvh (aprovecha el alto real del viewport)
-   - En tablet alta: 120dvh
-   Usa esta clase en el <section> del hero y en su wrapper interno.
-   ========================================================= */
-.min-h-hero { min-height: 100svh; }         /* base: móvil */
+/* ===== Altura del HERO con dvh (viewport real) ===== */
+/* Clase utilitaria usada en el <section> y en el contenedor interno */
+.min-h-hero { min-height: 100dvh; }
 
-@media (min-width: 641px) {
-  .min-h-hero { min-height: 100dvh; }       /* tablet/desktop */
-}
-
+/* Tablets (641–1024px) con altura suficiente: alarga a 120dvh */
 @media (min-width: 641px) and (max-width: 1024px) and (min-height: 700px) {
-  .min-h-hero { min-height: 120dvh; }       /* tablet vertical alta */
+  .min-h-hero { min-height: 120dvh; }
 }
 
-/* =========================================================
-   Offset seguro bajo el navbar / status bar
-   Ajustamos --nav-h por contexto y aplicamos con .pt-safe-nav
-   ========================================================= */
-:root { --nav-h: 56px; }                    /* valor base */
-
-@media (max-width: 640px) {                 /* móvil vertical */
-  :root { --nav-h: 80px; }
+/* Móviles en apaisado con poca altura: alarga más (140dvh) */
+@media (max-width: 820px) and (orientation: landscape) and (max-height: 520px) {
+  .min-h-hero { min-height: 140dvh; }
 }
 
-@media (max-width: 640px) and (orientation: landscape) {  /* móvil apaisado */
-  :root { --nav-h: 112px; }
-}
+/* ===== Offset seguro por barra superior (nav / status bar) ===== */
+:root { --nav-h: 56px; }
 
-@media (min-width: 641px) and (max-width: 1024px) {       /* tablet */
+/* Ajusta si tu barra superior de tablet es algo más alta */
+@media (min-width: 641px) and (max-width: 1024px) {
   :root { --nav-h: 64px; }
 }
 
-/* Aplica este padding al contenedor del contenido del hero */
+/* En móviles apaisados con poca altura, reserva más hueco */
+@media (max-width: 820px) and (orientation: landscape) and (max-height: 520px) {
+  :root { --nav-h: 80px; }
+}
+
+/* Padding top “seguro” que también respeta notch/OS bars */
 .pt-safe-nav {
   padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
 }
 
-/* =========================================================
-   Ajustes visuales opcionales en vistas con poca altura
-   (evita que el logo/subtítulo ocupen demasiado)
-   ========================================================= */
+/* ===== Ajustes visuales extra cuando hay muy poca altura ===== */
 @media (max-height: 520px) and (orientation: landscape) {
   .hero-header--desktop { width: min(48vw, 380px) !important; }
   .hero-header--mobile  { width: min(55vw, 220px) !important; }
-  .hero-subtitle        { font-size: 0.95rem !important; }
-  .hero-stack           { padding-bottom: 8px !important; }
+  .hero-subtitle { font-size: 0.95rem !important; }
+  .hero-stack { padding-bottom: 8px !important; }
 }
