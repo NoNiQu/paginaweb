@@ -14,7 +14,6 @@ export default function Sedecanonica() {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-    // Limpieza por si el componente se desmonta con el modal abierto
     return () => document.body.classList.remove("overflow-hidden");
   }, [selectedImage]);
 
@@ -22,11 +21,28 @@ export default function Sedecanonica() {
     <SectionContainer className="relative overflow-hidden">
       {/* Título principal */}
       <SectionHeader>Sede Canónica</SectionHeader>
-      {/* Bloque 1: Iglesia de San Cipriano */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-16 mt-6">
-        {/* Texto */}
-        <div className="space-y-6 font-body text-gray-900">
-          <h2 className="text-xl sm:text-2xl font-semibold">
+
+      {/* Bloque 1: img derecha en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16 mt-6">
+        {/* Título (solo móvil) */}
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+          Iglesia de San Cipriano
+        </h2>
+
+        {/* Imagen -> derecha en desktop */}
+        <div className="relative order-2 md:order-2">
+          <img
+            src="portada.jpg"
+            alt="Iglesia de San Cipriano"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+
+        {/* Texto -> izquierda en desktop */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1">
+          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Iglesia de San Cipriano
           </h2>
           <p className="text-sm sm:text-base leading-relaxed">
@@ -50,22 +66,17 @@ export default function Sedecanonica() {
             veneración de la Virgen.
           </p>
         </div>
-        {/* Imagen */}
-        <div className="relative">
-          <img
-            src="portada.jpg"
-            alt="Iglesia de San Cipriano"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
-            loading="eager"
-          />
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
-        </div>
       </div>
 
-      {/* Bloque 2: Capilla Mayor */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
-        {/* Imagen */}
-        <div className="relative order-2 md:order-none">
+      {/* Bloque 2: img izquierda en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
+        {/* Título (solo móvil) */}
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+          Capilla Mayor
+        </h2>
+
+        {/* Imagen -> izquierda en desktop */}
+        <div className="relative order-2 md:order-1">
           <img
             src="portada.jpg"
             alt="Capilla Mayor"
@@ -74,9 +85,12 @@ export default function Sedecanonica() {
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
-        {/* Texto */}
-        <div className="space-y-6 font-body text-gray-900">
-          <h2 className="text-xl sm:text-2xl font-semibold">Capilla Mayor</h2>
+
+        {/* Texto -> derecha en desktop */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2">
+          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
+            Capilla Mayor
+          </h2>
           <p className="text-sm sm:text-base leading-relaxed">
             La capilla mayor de la Iglesia de San Cipriano es el espacio central
             de veneración dentro del templo y está dedicada a la Virgen de la
@@ -103,11 +117,29 @@ export default function Sedecanonica() {
         </div>
       </div>
 
-      {/* Bloque 3: Torre Mudéjar */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
-        {/* Texto */}
-        <div className="space-y-6 font-body text-gray-900">
-          <h2 className="text-xl sm:text-2xl font-semibold">Torre Mudéjar</h2>
+      {/* Bloque 3: img derecha en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
+        {/* Título (solo móvil) */}
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+          Torre Mudéjar
+        </h2>
+
+        {/* Imagen -> derecha en desktop */}
+        <div className="relative order-2 md:order-2">
+          <img
+            src="portada.jpg"
+            alt="Torre Mudéjar de San Cipriano"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+
+        {/* Texto -> izquierda en desktop */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1">
+          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
+            Torre Mudéjar
+          </h2>
           <p className="text-sm sm:text-base leading-relaxed">
             La torre mudéjar de San Cipriano es uno de los elementos más
             visibles y emblemáticos del templo. Conserva parte de la estructura
@@ -130,33 +162,29 @@ export default function Sedecanonica() {
             anteriores de devotos.
           </p>
         </div>
-        {/* Imagen */}
-        <div className="relative">
-          <img
-            src="portada.jpg"
-            alt="Torre Mudéjar de San Cipriano"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl"
-            loading="eager"
-          />
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
-        </div>
       </div>
 
-      {/* Cristo de la Esperanza */}
-      <div className="grid md:grid-cols-2 gap-10 items-start mb-6">
-        {/* Imagen */}
-        <div className="relative order-2 md:order-none">
+      {/* Bloque 4: img izquierda en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-6">
+        {/* Título (solo móvil) */}
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden">
+          Santísimo Cristo de la Esperanza
+        </h2>
+
+        {/* Imagen -> izquierda en desktop */}
+        <div className="relative order-2 md:order-1">
           <img
             src="/images/cristodelaesperanza.jpg"
-            alt="Capilla Mayor"
+            alt="Santísimo Cristo de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
-        {/* Texto */}
-        <div className="space-y-6 font-body text-gray-900">
-          <h2 className="text-xl sm:text-2xl font-semibold">
+
+        {/* Texto -> derecha en desktop */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2">
+          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Santísimo Cristo de la Esperanza
           </h2>
           <p className="text-sm sm:text-base leading-relaxed">
@@ -179,6 +207,7 @@ export default function Sedecanonica() {
             Iglesia de San Cipriano, donde cuenta con un altar propio para la
             veneración de los fieles.
           </p>
+
           {/* Botones*/}
           <div className="flex justify-center mt-6">
             <Card
