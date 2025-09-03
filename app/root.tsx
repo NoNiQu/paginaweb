@@ -141,7 +141,7 @@ export default function App() {
     >
       {/* En Home el header flota sobre el Hero */}
       {isHome ? (
-        <div className="absolute inset-x-0 top-0 z-50">
+        <div className="absolute inset-x-0 top-0 z-50 drop-shadow-[0_6px_24px_rgba(0,0,0,0.9)]">
           <Header />
         </div>
       ) : (

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
+import { config } from "../config";
 import {
   CURRENT_YEAR,
   formatLong,
@@ -113,16 +113,6 @@ function monthOverlap(
 ) {
   return start <= monthEnd && end >= monthStart;
 }
-
-/* ====== Tipos y fetch de Noticias ====== */
-type NewsItem = {
-  id: string;
-  title: string;
-  href: string;
-  excerpt?: string;
-  date?: string;
-  image?: string;
-};
 
 /* ====== Página Home ====== */
 export default function Home() {
@@ -354,9 +344,60 @@ export default function Home() {
       <section className="pb-24 sm:pb-16">
         <SectionContainer>
           <SectionHeader>Noticias</SectionHeader>
-          <p className="mt-8 text-center text-gray-900">
-            No hay noticias disponibles por el momento.
-          </p>
+
+          <div className="mt-6 flex flex-col items-center text-center gap-8 w-full">
+            {/* Misma imagen que en /noticias */}
+            <img
+              src="/images/noticias.png"
+              alt="No hay noticias disponibles"
+              className="max-w-lg w-full h-auto"
+              loading="lazy"
+            />
+
+            {/* Redes sociales (botones alargados, en la misma fila en pantallas ≥ sm) */}
+            <div className="w-full flex flex-col gap-4">
+              <p className="text-gray-800 mt-2 mb-4">
+                Síguenos en nuestras redes sociales para estar al día de
+                cualquier novedad sobre la Cofradía.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <Card
+                  as="a"
+                  href={config.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-row items-center justify-center gap-4 p-4 h-14 w-full"
+                  aria-label="Instagram de la Cofradía"
+                >
+                  <img
+                    src="/instagram.svg"
+                    alt="Instagram"
+                    className="w-7 h-7"
+                    loading="lazy"
+                  />
+                  <strong className="text-white text-lg">Instagram</strong>
+                </Card>
+
+                <Card
+                  as="a"
+                  href={config.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-row items-center justify-center gap-4 p-4 h-14 w-full"
+                  aria-label="Facebook de la Cofradía"
+                >
+                  <img
+                    src="/facebook.svg"
+                    alt="Facebook"
+                    className="w-7 h-7"
+                    loading="lazy"
+                  />
+                  <strong className="text-white text-lg">Facebook</strong>
+                </Card>
+              </div>
+            </div>
+          </div>
         </SectionContainer>
       </section>
     </div>
