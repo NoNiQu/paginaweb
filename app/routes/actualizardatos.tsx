@@ -51,7 +51,7 @@ export default function actualizardatos() {
           {/* Botón descarga solicitud */}
           <Card
             as="a"
-            href="/descargas/solicitud_hermano.pdf"
+            href="/descargas/SOLICITUD_DOMICILIACION_COFRADE_VIRGEN_DE_LA_ESPERANZA_SAN_CIPRIANO.pdf"
             className="bg-emerald-900 p-4 flex items-center justify-center gap-2 font-medium"
             download
             aria-label="Descargar solicitud para hacerse hermano (PDF)"
