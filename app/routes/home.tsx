@@ -189,13 +189,27 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section className="relative w-full min-h-[100svh] overflow-hidden tablet:min-h-[120svh] ml:min-h-[300svh]">
         <picture className="absolute inset-0 z-0 block">
+          {/* Móvil */}
           <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
+
+          {/* Tablet vertical */}
           <source
-            media="(min-width: 641px) and (max-width: 1024px)"
-            srcSet="/hero/heroA.jpg"
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
+            srcSet="/hero/heroM.jpg"
           />
+
+          {/* Tablet apaisado */}
+          <source
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
+            srcSet="/hero/heroT.png"
+          />
+
+          {/* Desktop */}
+          <source media="(min-width: 1025px)" srcSet="/hero/heroO.png" />
+
+          {/* Fallback */}
           <img
-            src="/hero/heroA.jpg"
+            src="/hero/headerO.jpg"
             alt="Cofradía de la Esperanza"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center 66%" }}
