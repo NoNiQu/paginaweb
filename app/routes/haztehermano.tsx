@@ -46,6 +46,11 @@ export default function Secretaria() {
             Para hacerte hermano/a, solo tienes que descargar la solicitud,
             cumplimentarla y enviarla por correo electrónico a la Secretaría.
           </p>
+          <p className="text-sm sm:text-base leading-relaxed text-gray-900">
+            Ser hermano/a significa formar parte activa de una comunidad de fe y
+            tradición de Toledo en nuestros cultos y mantener vivas nuestras
+            costumbres.
+          </p>
 
           {/* Botón descarga solicitud */}
           <Card

@@ -28,7 +28,7 @@ export default function actualizardatos() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="portada.jpg"
+            src="/hero/heroB.jpg"
             alt="Nuestra Señora de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
@@ -44,8 +44,13 @@ export default function actualizardatos() {
           </h1>
 
           <p className="text-sm sm:text-base leading-relaxed text-gray-900">
-            Para hacerte hermano/a, solo tienes que descargar la solicitud,
-            cumplimentarla y enviarla por correo electrónico a la Secretaría.
+            Si ya eres hermano/a y deseas modificar algún dato personal, ponte
+            en contacto con la Secretaría a través del correo electrónico.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed text-gray-900">
+            En caso de que quieras actualizar tu domiciliación bancaria,
+            descarga la solicitud correspondiente, complétala y envíala por
+            correo electrónico a la Secretaría
           </p>
 
           {/* Botón descarga solicitud */}
