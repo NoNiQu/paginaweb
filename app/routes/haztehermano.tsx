@@ -99,16 +99,6 @@ export default function Secretaria() {
 
           <div className="space-y-2">
             <h2 className="text-xl sm:text-2xl font-semibold">
-              Actualizar datos
-            </h2>
-            <p className="text-base leading-relaxed">
-              Si quieres actualizar cualquier dato, escribe al correo de
-              Secretaría.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-2xl font-semibold">
               Hacerlo de manera presencial
             </h2>
             <p className="text-base leading-relaxed">

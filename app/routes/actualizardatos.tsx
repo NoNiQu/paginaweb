@@ -20,7 +20,7 @@ export default function actualizardatos() {
     <SectionContainer className="relative overflow-hidden">
       {/* Título móvil encima de la imagen */}
       <h1 className="block md:hidden mb-4 text-3xl font-display font-semibold tracking-tight text-center">
-        Actualizar datos
+        Actualización de datos
       </h1>
 
       {/* Layout: imagen + texto. En móvil se apilan */}
@@ -40,7 +40,7 @@ export default function actualizardatos() {
         <div className="space-y-6 font-body">
           {/* Título desktop en la columna de texto */}
           <h1 className="hidden md:block text-4xl font-display font-semibold tracking-tight">
-            Actualizar datos
+            Actualización de datos
           </h1>
 
           <p className="text-sm sm:text-base leading-relaxed text-gray-900">
@@ -54,9 +54,11 @@ export default function actualizardatos() {
             href="/descargas/SOLICITUD_DOMICILIACION_COFRADE_VIRGEN_DE_LA_ESPERANZA_SAN_CIPRIANO.pdf"
             className="bg-emerald-900 p-4 flex items-center justify-center gap-2 font-medium"
             download
-            aria-label="Descargar solicitud para hacerse hermano (PDF)"
+            aria-label="Descargar solicitud para domiciliar (PDF)"
           >
-            <span className="text-white">Descargar solicitud de hermano</span>
+            <span className="text-white">
+              Descargar solicitud de domicilición
+            </span>
             <img src="/descargar.svg" alt="Descargar" className="w-5 h-5" />
           </Card>
           {/* Email copiable con feedback */}
@@ -96,16 +98,6 @@ export default function actualizardatos() {
                 Correo copiado
               </div>
             )}
-          </div>
-
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-2xl font-semibold">
-              Actualizar datos
-            </h2>
-            <p className="text-base leading-relaxed">
-              Si quieres actualizar cualquier dato, escribe al correo de
-              Secretaría.
-            </p>
           </div>
 
           <div className="space-y-2">
