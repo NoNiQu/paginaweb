@@ -154,9 +154,9 @@ export default function Home() {
               <h2 className="font-display sc text-3xl sm:text-4xl">TITULAR</h2>
               <div className="flex-grow flex items-center">
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
-                  La sagrada imagen de la Virgen de la Esperanza es una talla de
-                  gran unción y delicadeza. Su iconografía invita a la oración y
-                  a la confianza, siendo centro de la devoción de la cofradía y
+                  La sagrada Virgen de la Esperanza es una talla de gran unción
+                  y delicadeza. Su iconografía invita a la oración y a la
+                  confianza, siendo centro de la devoción de la cofradía y
                   protagonista de nuestros cultos y procesiones.
                 </p>
               </div>

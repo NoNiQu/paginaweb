@@ -23,25 +23,25 @@ export default function Sedecanonica() {
       <SectionHeader>Sede Canónica</SectionHeader>
 
       {/* Bloque 1: img derecha en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16 mt-6">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16 mt-6">
         {/* Título (solo móvil, centrado) */}
-        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
           Iglesia de San Cipriano
         </h2>
 
         {/* Imagen -> derecha en desktop (centrada en móvil) */}
-        <div className="relative order-2 md:order-2 flex justify-center md:block">
+        <div className="relative order-2 md:order-2 w-full">
           <img
             src="portada.jpg"
             alt="Iglesia de San Cipriano"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
 
-        {/* Texto -> izquierda en desktop */}
-        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1">
+        {/* Texto -> izquierda en desktop (móvil ancho completo) */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1 w-full">
           <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Iglesia de San Cipriano
           </h2>
@@ -69,25 +69,25 @@ export default function Sedecanonica() {
       </div>
 
       {/* Bloque 2: img izquierda en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16">
         {/* Título (solo móvil, centrado) */}
-        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
           Capilla Mayor
         </h2>
 
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
-        <div className="relative order-2 md:order-1 flex justify-center md:block">
+        <div className="relative order-2 md:order-1 w-full">
           <img
             src="portada.jpg"
             alt="Capilla Mayor"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
 
         {/* Texto -> derecha en desktop */}
-        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2">
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2 w-full">
           <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Capilla Mayor
           </h2>
@@ -118,25 +118,25 @@ export default function Sedecanonica() {
       </div>
 
       {/* Bloque 3: img derecha en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-16">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16">
         {/* Título (solo móvil, centrado) */}
-        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
           Torre Mudéjar
         </h2>
 
         {/* Imagen -> derecha en desktop (centrada en móvil) */}
-        <div className="relative order-2 md:order-2 flex justify-center md:block">
+        <div className="relative order-2 md:order-2 w-full">
           <img
             src="portada.jpg"
             alt="Torre Mudéjar de San Cipriano"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
 
         {/* Texto -> izquierda en desktop */}
-        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1">
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1 w-full">
           <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Torre Mudéjar
           </h2>
@@ -165,25 +165,25 @@ export default function Sedecanonica() {
       </div>
 
       {/* Bloque 4: img izquierda en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-start mb-6">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-6">
         {/* Título (solo móvil, centrado) */}
-        <h2 className="text-xl font-body sm:text-2xl font-semibold md:hidden text-center">
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
           Santísimo Cristo de la Esperanza
         </h2>
 
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
-        <div className="relative order-2 md:order-1 flex justify-center md:block">
+        <div className="relative order-2 md:order-1 w-full">
           <img
             src="/images/cristodelaesperanza.jpg"
             alt="Santísimo Cristo de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
 
         {/* Texto -> derecha en desktop */}
-        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2">
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-2 w-full">
           <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
             Santísimo Cristo de la Esperanza
           </h2>
