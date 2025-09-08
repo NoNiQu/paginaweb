@@ -285,6 +285,13 @@ export default function Cultos() {
         </Card>
       </div>
 
+      <div className="font-body text-gray-900 space-y-4 mt-12">
+        <p className="text-sm sm:text-base leading-relaxed text-center italic">
+          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+          dedicación en la redacción y cuidado de los textos.
+        </p>
+      </div>
+
       <p className="mt-8 text-center text-sm font-body text-white/80">
         Las fechas y horarios pueden variar por causas pastorales. Consulta
         nuestras redes oficiales para avisos de última hora.

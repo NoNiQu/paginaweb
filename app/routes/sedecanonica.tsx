@@ -164,13 +164,12 @@ export default function Sedecanonica() {
         </div>
       </div>
 
+      <SectionHeader>
+        Hermandad del Santísimo Cristo de la Esperanza
+      </SectionHeader>
+
       {/* Bloque 4: img izquierda en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-6">
-        {/* Título (solo móvil, centrado) */}
-        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
-          Santísimo Cristo de la Esperanza
-        </h2>
-
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-1 w-full">
           <img
@@ -184,9 +183,10 @@ export default function Sedecanonica() {
 
         {/* Texto -> derecha en desktop */}
         <div className="space-y-6 font-body text-gray-900 order-3 md:order-2 w-full">
-          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
-            Santísimo Cristo de la Esperanza
-          </h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Esta cofradía también comparte sede canónica con la Hermandad del
+            Santísimo Cristo de la Esperanza.
+          </p>
           <p className="text-sm sm:text-base leading-relaxed">
             La Hermandad del Santísimo Cristo de la Esperanza tiene su sede
             canónica en la Parroquia de San Andrés y San Cipriano, en Toledo.
@@ -227,7 +227,7 @@ export default function Sedecanonica() {
       </div>
 
       {/* Cierre */}
-      <div className="font-body text-gray-900 space-y-4 mb-16">
+      <div className="font-body text-gray-900 space-y-4 my-12">
         <p className="text-sm sm:text-base leading-relaxed">
           Para la Cofradía de la Esperanza, San Cipriano no es solo un templo:
           es un espacio de encuentro, oración y comunidad. Cada rincón refleja
@@ -239,6 +239,13 @@ export default function Sedecanonica() {
           Este espacio permite a los fieles reunirse, reforzar la fe y mantener
           viva la tradición, conectando generaciones y preservando el legado de
           devoción a la Virgen de la Esperanza en Toledo.
+        </p>
+      </div>
+
+      <div className="font-body text-gray-900 space-y-4 mb-12">
+        <p className="text-sm sm:text-base leading-relaxed text-center italic">
+          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+          dedicación en la redacción y cuidado de los textos.
         </p>
       </div>
 

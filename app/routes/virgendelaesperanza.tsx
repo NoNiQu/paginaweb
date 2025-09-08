@@ -155,7 +155,7 @@ export default function VirgenDeLaEsperanza() {
       )}
 
       {/* Sección del Trono */}
-      <div className="font-body text-gray-900 space-y-4 mb-16 mt-6">
+      <div className="font-body text-gray-900 space-y-4 mb-16 mt-12">
         <SectionHeader>Trono</SectionHeader>
         <p className="text-sm sm:text-base leading-relaxed">
           La Virgen de la Esperanza, titular de nuestra Cofradía, no solo es un
@@ -206,6 +206,13 @@ export default function VirgenDeLaEsperanza() {
           fieles con generaciones pasadas y nos invita a continuar transmitiendo
           la fe y la devoción que han hecho de la Virgen de la Esperanza un
           referente espiritual y cultural en Toledo.
+        </p>
+      </div>
+
+      <div className="font-body text-gray-900 space-y-4 mb-12">
+        <p className="text-sm sm:text-base leading-relaxed text-center italic">
+          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+          dedicación en la redacción y cuidado de los textos.
         </p>
       </div>
 
