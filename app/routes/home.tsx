@@ -1,18 +1,138 @@
+import { useEffect, useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
 import { config } from "../config";
-import { CURRENT_YEAR, formatLong } from "../utils/dates";
 import {
-  buildCultos,
-  formatRangeShort,
-  isInRange,
-  monthOverlap,
-  type Culto,
-} from "../utils/cultos";
+  CURRENT_YEAR,
+  formatLong,
+  secondSundayOfNovember,
+  corpusThursday,
+  pentecostTuesday,
+  octavaTuesday,
+  novenaRange,
+} from "../utils/dates";
+
+/* ====== Tipos y utilidades de Cultos ====== */
+type Culto =
+  | {
+      id: string;
+      title: string;
+      start: Date;
+      end?: undefined;
+      href: string;
+      type: "single";
+    }
+  | {
+      id: string;
+      title: string;
+      start: Date;
+      end: Date;
+      href: string;
+      type: "range";
+    };
+
+const MANY_COUNT = 5;
+
+function formatRangeShort(start: Date, end: Date) {
+  const sameMonth =
+    start.getFullYear() === end.getFullYear() &&
+    start.getMonth() === end.getMonth();
+  const day = (d: Date) => d.toLocaleDateString("es-ES", { day: "2-digit" });
+  const monthYear = (d: Date) =>
+    d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+  return sameMonth
+    ? `del ${day(start)} al ${day(end)} de ${monthYear(end)}`
+    : `del ${start.toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      })} al ${end.toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      })}`;
+}
+
+function buildCultos(year: number): Culto[] {
+  const diaEsperanza = new Date(year, 11, 18);
+  const patrocinio = secondSundayOfNovember(year);
+  const corpus = corpusThursday(year);
+  const voto = pentecostTuesday(year);
+  const octava = octavaTuesday(year);
+  const { start: novenaInicio, end: novenaFin } = novenaRange(year);
+
+  return [
+    {
+      id: "novena",
+      title: "Novena en honor a la Virgen de la Esperanza",
+      start: novenaInicio,
+      end: novenaFin,
+      href: "/cultos#novena",
+      type: "range",
+    },
+    {
+      id: "voto",
+      title: "Procesión del Voto",
+      start: voto,
+      href: "/cultos#voto",
+      type: "single",
+    },
+    {
+      id: "octava",
+      title: "Procesión de la Octava",
+      start: octava,
+      href: "/cultos#octava",
+      type: "single",
+    },
+    {
+      id: "corpus",
+      title: "Corpus Christi",
+      start: corpus,
+      href: "/cultos#corpus",
+      type: "single",
+    },
+    {
+      id: "patrocinio",
+      title: "Día de Patrocinio",
+      start: patrocinio,
+      href: "/cultos#patrocinio",
+      type: "single",
+    },
+    {
+      id: "esperanza",
+      title: "Día de la Esperanza",
+      start: diaEsperanza,
+      href: "/cultos#esperanza",
+      type: "single",
+    },
+  ];
+}
+
+function isInRange(date: Date, start: Date, end: Date) {
+  const t = date.getTime();
+  return t >= start.getTime() && t <= end.getTime();
+}
+
+function monthOverlap(
+  start: Date,
+  end: Date,
+  monthStart: Date,
+  monthEnd: Date
+) {
+  return start <= monthEnd && end >= monthStart;
+}
 
 /* ====== Página Home ====== */
 export default function Home() {
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  // Seguridad: si por alguna razón onLoad no dispara (p.ej. cache SSR), hacemos fallback al montar.
+  useEffect(() => {
+    const t = setTimeout(() => setHeroLoaded(true), 800);
+    return () => clearTimeout(t);
+  }, []);
+
   const today = new Date();
   const midnight = new Date(
     today.getFullYear(),
@@ -29,7 +149,7 @@ export default function Home() {
   ].filter(
     (e) =>
       (e.type === "single" && e.start.getTime() >= midnight) ||
-      (e.type === "range" && e.end!.getTime() >= midnight)
+      (e.type === "range" && e.end.getTime() >= midnight)
   );
   futureCandidates.sort((a, b) => a.start.getTime() - b.start.getTime());
 
@@ -49,21 +169,44 @@ export default function Home() {
     sameMonthList = pool.filter((e) =>
       e.type === "single"
         ? e.start.getFullYear() === y && e.start.getMonth() === m
-        : monthOverlap(e.start, e.end!, monthStart, monthEnd)
+        : monthOverlap(e.start, e.end, monthStart, monthEnd)
     );
   }
 
-  const showManyOfSameMonth = sameMonthList.length >= 5;
+  const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
 
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
-      <section className="relative w-full overflow-hidden min-h-hero">
+      <section
+        className="relative w-full overflow-hidden min-h-hero bg-[#053C2F]" // fondo visible mientras carga
+        aria-label="Portada Cofradía de la Esperanza"
+      >
         <picture className="absolute inset-0 z-0 block">
           {/* Móvil */}
-          <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
+          <source
+            type="image/avif"
+            media="(max-width: 640px)"
+            srcSet="/hero/heroB.avif"
+          />
+          <source
+            type="image/webp"
+            media="(max-width: 640px)"
+            srcSet="/hero/heroB.webp"
+          />
+          <source media="(max-width: 640px)" srcSet="/hero/heroB.png" />
 
           {/* Tablet vertical */}
+          <source
+            type="image/avif"
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
+            srcSet="/hero/heroM.avif"
+          />
+          <source
+            type="image/webp"
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
+            srcSet="/hero/heroM.webp"
+          />
           <source
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
             srcSet="/hero/heroM.png"
@@ -71,31 +214,69 @@ export default function Home() {
 
           {/* Tablet apaisado */}
           <source
+            type="image/avif"
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
+            srcSet="/hero/heroT.avif"
+          />
+          <source
+            type="image/webp"
+            media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
+            srcSet="/hero/heroT.webp"
+          />
+          <source
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
             srcSet="/hero/heroT.png"
           />
 
           {/* Desktop */}
+          <source
+            type="image/avif"
+            media="(min-width: 1025px)"
+            srcSet="/hero/heroO.avif"
+          />
+          <source
+            type="image/webp"
+            media="(min-width: 1025px)"
+            srcSet="/hero/heroO.webp"
+          />
           <source media="(min-width: 1025px)" srcSet="/hero/heroO.png" />
 
-          {/* Fallback correcto */}
+          {/* Fallback */}
           <img
             src="/hero/heroO.png"
             alt="Cofradía de la Esperanza"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center 66%" }}
             loading="eager"
-            decoding="sync"
+            decoding="async"
+            fetchPriority="high"
+            onLoad={() => setHeroLoaded(true)}
           />
         </picture>
 
-        {/* Overlays */}
-        <div className="absolute inset-0 z-10 bg-black/25" />
-        <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
+        {/* Overlays (aparecen cuando carga la imagen) */}
+        <div
+          className={`absolute inset-0 z-10 bg-black/25 transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
-        {/* Contenido: todo al fondo */}
-        <div className="relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
+        {/* Contenido: fade-in con la imagen */}
+        <div
+          className={`relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
@@ -154,9 +335,9 @@ export default function Home() {
               <h2 className="font-display sc text-3xl sm:text-4xl">TITULAR</h2>
               <div className="flex-grow flex items-center">
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
-                  La sagrada Virgen de la Esperanza es una talla de gran unción
-                  y delicadeza. Su iconografía invita a la oración y a la
-                  confianza, siendo centro de la devoción de la cofradía y
+                  La sagrada imagen de la Virgen de la Esperanza es una talla de
+                  gran unción y delicadeza. Su iconografía invita a la oración y
+                  a la confianza, siendo centro de la devoción de la cofradía y
                   protagonista de nuestros cultos y procesiones.
                 </p>
               </div>
@@ -190,7 +371,10 @@ export default function Home() {
                     {nextCulto.type === "single"
                       ? formatLong(nextCulto.start)
                       : isInRange(today, nextCulto.start, nextCulto.end!)
-                        ? `En curso · ${formatRangeShort(nextCulto.start, nextCulto.end!)}`
+                        ? `En curso · ${formatRangeShort(
+                            nextCulto.start,
+                            nextCulto.end!
+                          )}`
                         : formatRangeShort(nextCulto.start, nextCulto.end!)}
                   </p>
                 </div>
@@ -268,7 +452,7 @@ export default function Home() {
                   aria-label="Instagram de la Cofradía"
                 >
                   <img
-                    src="/iconos/instagram.svg"
+                    src="/instagram.svg"
                     alt="Instagram"
                     className="w-7 h-7"
                     loading="lazy"
@@ -285,7 +469,7 @@ export default function Home() {
                   aria-label="Facebook de la Cofradía"
                 >
                   <img
-                    src="/iconos/facebook.svg"
+                    src="/facebook.svg"
                     alt="Facebook"
                     className="w-7 h-7"
                     loading="lazy"
