@@ -45,9 +45,9 @@ export default function AvisoLegal() {
 
         <p>
           El presente Aviso Legal se rige por la legislación española. Para
-          cualquier controversia, las partes se someterán a los juzgados y
-          tribunales de Toledo, salvo que la normativa de consumo establezca
-          otro fuero.
+          cualquier controversia, las partes se someterán a los Juzgados y
+          Tribunales de Toledo, salvo que la normativa aplicable en materia de
+          consumo disponga otro fuero.
         </p>
       </>
     </LegalPage>
