@@ -64,7 +64,11 @@ export default function actualizardatos() {
             <span className="text-white">
               Descargar solicitud de domicilición
             </span>
-            <img src="/descargar.svg" alt="Descargar" className="w-5 h-5" />
+            <img
+              src="/iconos/descargar.svg"
+              alt="Descargar"
+              className="w-5 h-5"
+            />
           </Card>
           {/* Email copiable con feedback */}
           <div className="relative">
@@ -76,7 +80,7 @@ export default function actualizardatos() {
                 {config.contactEmail}
               </span>
               <img
-                src="/copy.svg"
+                src="/iconos/copy.svg"
                 alt="Copiar correo"
                 className="w-5 h-5 invert"
               />

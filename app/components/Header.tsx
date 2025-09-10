@@ -73,7 +73,7 @@ export default function Header() {
                 <div className="hidden lg:flex justify-center">
                   <Link to="/" aria-label="Inicio" className="inline-flex">
                     <img
-                      src="/LOGO.svg"
+                      src="/iconos/LOGO.svg"
                       alt="Escudo de la Cofradía"
                       className="h-[150px] w-auto select-none"
                       draggable={false}
@@ -110,7 +110,7 @@ export default function Header() {
                   <div className="flex justify-center">
                     <Link to="/" aria-label="Inicio" className="inline-flex">
                       <img
-                        src="/LOGO.svg"
+                        src="/iconos/LOGO.svg"
                         alt="Escudo Cofradía"
                         className="h-30 w-auto select-none"
                         draggable={false}
@@ -160,9 +160,9 @@ export default function Header() {
                         onClick={() => close()}
                       >
                         <img
-                          src="/LOGO.svg"
+                          src="/iconos/LOGO.svg"
                           alt="Escudo Cofradía"
-                          className="h-28 w-auto select-none"
+                          className="h-30 w-auto select-none"
                           draggable={false}
                         />
                       </Link>
@@ -278,7 +278,7 @@ function HoverDropdown({
       >
         <span>{label}</span>
         <img
-          src="/flecha.svg"
+          src="/iconos/flecha.svg"
           alt=""
           aria-hidden="true"
           className="chevron select-none"
@@ -363,7 +363,7 @@ export function Accordion({
           >
             <span className="text-lg sm:text-xl">{label}</span>
             <img
-              src="/flecha.svg"
+              src="/iconos/flecha.svg"
               alt=""
               aria-hidden="true"
               className={`ml-2 w-4 h-4 transition-transform ${

@@ -39,7 +39,7 @@ export default function Contacto() {
             className="cursor-pointer select-none flex flex-col items-center justify-center gap-3 p-6 min-h-[150px]"
           >
             <img
-              src="/correo.svg"
+              src="/iconos/correo.svg"
               alt="Icono de correo"
               className="w-9 h-9 sm:w-10 sm:h-10"
               loading="lazy"
@@ -49,7 +49,7 @@ export default function Contacto() {
                 {config.contactEmail}
               </span>
               <img
-                src="/copy.svg"
+                src="/iconos/copy.svg"
                 alt="Copiar correo"
                 className="w-5 h-5 invert"
               />
@@ -82,7 +82,7 @@ export default function Contacto() {
         {/* 2.3) Ubicación */}
         <Card className="flex flex-col items-center justify-center gap-3 p-6 min-h-[150px] text-center">
           <img
-            src="/ubicacion.svg"
+            src="/iconos/ubicacion.svg"
             alt="Icono de ubicación"
             className="w-9 h-9 sm:w-10 sm:h-10"
             loading="lazy"
@@ -109,7 +109,7 @@ export default function Contacto() {
           aria-label="Instagram de la Cofradía"
         >
           <img
-            src="/instagram.svg"
+            src="/iconos/instagram.svg"
             alt="Instagram"
             className="w-10 h-10 sm:w-11 sm:h-11"
             loading="lazy"
@@ -127,7 +127,7 @@ export default function Contacto() {
           aria-label="Facebook de la Cofradía"
         >
           <img
-            src="/facebook.svg"
+            src="/iconos/facebook.svg"
             alt="Facebook"
             className="w-10 h-10 sm:w-11 sm:h-11"
             loading="lazy"

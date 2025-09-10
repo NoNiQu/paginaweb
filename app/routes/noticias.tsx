@@ -41,7 +41,7 @@ export default function Noticias() {
                 aria-label="Instagram de la Cofradía"
               >
                 <img
-                  src="/instagram.svg"
+                  src="/iconos/instagram.svg"
                   alt="Instagram"
                   className="w-7 h-7"
                   loading="lazy"
@@ -58,7 +58,7 @@ export default function Noticias() {
                 aria-label="Facebook de la Cofradía"
               >
                 <img
-                  src="/facebook.svg"
+                  src="/iconos/facebook.svg"
                   alt="Facebook"
                   className="w-7 h-7"
                   loading="lazy"

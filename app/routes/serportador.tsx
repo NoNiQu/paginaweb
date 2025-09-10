@@ -28,7 +28,7 @@ export default function SerPortador() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="portadores.png"
+            src="/images/portadores.png"
             alt="Portadores llevando a Nuestra Señora de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
@@ -63,7 +63,11 @@ export default function SerPortador() {
             aria-label="Descargar solicitud para ser portador (PDF)"
           >
             <span className="text-white">Descargar solicitud de portador</span>
-            <img src="/descargar.svg" alt="Descargar" className="w-5 h-5" />
+            <img
+              src="/iconos/descargar.svg"
+              alt="Descargar"
+              className="w-5 h-5"
+            />
           </Card>
 
           {/* Email copiable con feedback */}
@@ -76,7 +80,7 @@ export default function SerPortador() {
                 {config.portersEmail}
               </span>
               <img
-                src="/copy.svg"
+                src="/iconos/copy.svg"
                 alt="Copiar correo"
                 className="w-5 h-5 invert"
               />

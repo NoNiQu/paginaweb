@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="container px-4 py-10 flex flex-col items-center gap-8">
         {/* Logo móvil (b.png) */}
         <img
-          src="/b.png"
+          src="/footer/footerB.png"
           alt="Logo de la Cofradía"
           className="block sm:hidden h-60 w-auto select-none"
           draggable={false}
@@ -30,7 +30,7 @@ export default function Footer() {
 
         {/* Logo tablet/desktop (a.png) */}
         <img
-          src="/a.png"
+          src="/footer/footerA.png"
           alt="Logo de la Cofradía"
           className="hidden sm:block h-40 lg:h-60 w-auto select-none"
           draggable={false}
@@ -44,7 +44,7 @@ export default function Footer() {
             aria-label="Copiar correo electrónico"
             onClick={handleCopy}
           >
-            <img src="/correo.svg" width={25} height={25} alt="correo" />
+            <img src="/iconos/correo.svg" width={25} height={25} alt="correo" />
           </button>
 
           <a
@@ -54,7 +54,12 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <img src="/instagram.svg" width={30} height={30} alt="Instagram" />
+            <img
+              src="/iconos/instagram.svg"
+              width={30}
+              height={30}
+              alt="Instagram"
+            />
           </a>
 
           <a
@@ -64,7 +69,12 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <img src="/facebook.svg" width={22} height={22} alt="Facebook" />
+            <img
+              src="/iconos/facebook.svg"
+              width={22}
+              height={22}
+              alt="Facebook"
+            />
           </a>
 
           {copiado && pos && (

@@ -27,7 +27,7 @@ export default function Secretaria() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="portada.jpg"
+            src="/images/haztehermano.jpg"
             alt="Nuestra Señora de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
@@ -61,7 +61,11 @@ export default function Secretaria() {
             aria-label="Descargar solicitud para hacerse hermano (PDF)"
           >
             <span className="text-white">Descargar solicitud de hermano</span>
-            <img src="/descargar.svg" alt="Descargar" className="w-5 h-5" />
+            <img
+              src="/iconos/descargar.svg"
+              alt="Descargar"
+              className="w-5 h-5"
+            />
           </Card>
           {/* Email copiable con feedback */}
           <div className="relative">
@@ -73,7 +77,7 @@ export default function Secretaria() {
                 {config.contactEmail}
               </span>
               <img
-                src="/copy.svg"
+                src="/iconos/copy.svg"
                 alt="Copiar correo"
                 className="w-5 h-5 invert"
               />

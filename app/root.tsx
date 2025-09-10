@@ -37,7 +37,7 @@ export const links = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  { rel: "icon", type: "image/svg+xml", href: "/LOGO.svg" },
+  { rel: "icon", type: "image/svg+xml", href: "/iconos/LOGO.svg" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -118,7 +118,7 @@ function BackToTopButton() {
       style={{ bottom: bottomOffset }}
     >
       <img
-        src="/flecha.svg"
+        src="/iconos/flecha.svg"
         alt="Ir arriba"
         className="w-5 h-5 md:w-7 md:h-7 invert"
         draggable={false}

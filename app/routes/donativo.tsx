@@ -44,7 +44,7 @@ export default function Donativos() {
         <Card className="min-h-[220px]">
           <div className="w-full grid place-items-center mb-5">
             <img
-              src="/bizumlogo.png"
+              src="/iconos/bizumlogo.png"
               alt="Bizum"
               className="h-14 w-auto"
               loading="lazy"
@@ -61,7 +61,7 @@ export default function Donativos() {
                 variant="icon-only"
                 text={config.bizumCode}
                 label="código Bizum"
-                iconSrc="/copy.svg"
+                iconSrc="/iconos/copy.svg"
                 iconAlt="Copiar código Bizum"
                 iconClassName="w-6 h-6 invert hover:cursor-pointer"
                 className="ml-4"

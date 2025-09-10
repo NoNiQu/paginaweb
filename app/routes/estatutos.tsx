@@ -44,7 +44,11 @@ export default function Estatutos() {
           download
           aria-label="Descargar Estatutos de la Cofradía (PDF)"
         >
-          <img src="/descargar.svg" alt="Descargar" className="w-6 h-6" />
+          <img
+            src="/iconos/descargar.svg"
+            alt="Descargar"
+            className="w-6 h-6"
+          />
           Estatutos de la Cofradía
         </Card>
 
@@ -55,7 +59,11 @@ export default function Estatutos() {
           download
           aria-label="Descargar Reglamentos de los Portadores (PDF)"
         >
-          <img src="/descargar.svg" alt="Descargar" className="w-6 h-6" />
+          <img
+            src="/iconos/descargar.svg"
+            alt="Descargar"
+            className="w-6 h-6"
+          />
           Reglamentos de los Portadores
         </Card>
       </div>
