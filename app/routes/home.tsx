@@ -185,23 +185,13 @@ export default function Home() {
         <picture className="absolute inset-0 z-0 block">
           {/* Móvil */}
           <source
-            type="image/avif"
-            media="(max-width: 640px)"
-            srcSet="/hero/heroB.avif"
-          />
-          <source
             type="image/webp"
             media="(max-width: 640px)"
             srcSet="/hero/heroB.webp"
           />
-          <source media="(max-width: 640px)" srcSet="/hero/heroB.png" />
+          <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
 
           {/* Tablet vertical */}
-          <source
-            type="image/avif"
-            media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
-            srcSet="/hero/heroM.avif"
-          />
           <source
             type="image/webp"
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)"
@@ -214,11 +204,6 @@ export default function Home() {
 
           {/* Tablet apaisado */}
           <source
-            type="image/avif"
-            media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
-            srcSet="/hero/heroT.avif"
-          />
-          <source
             type="image/webp"
             media="(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)"
             srcSet="/hero/heroT.webp"
@@ -229,11 +214,6 @@ export default function Home() {
           />
 
           {/* Desktop */}
-          <source
-            type="image/avif"
-            media="(min-width: 1025px)"
-            srcSet="/hero/heroO.avif"
-          />
           <source
             type="image/webp"
             media="(min-width: 1025px)"
