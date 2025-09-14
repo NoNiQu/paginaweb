@@ -25,7 +25,7 @@ export const meta = () => [
   { name: "theme-color", content: "#053C2F" },
 ];
 
-/** Favicon único + fuentes */
+/** Favicon / fuentes / preloads críticos */
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -39,7 +39,7 @@ export const links = () => [
   },
   { rel: "icon", type: "image/svg+xml", href: "/iconos/LOGO.svg" },
 
-  // === Preload HERO (WEBP)
+  // === Preload HERO (WEBP) con srcset
   {
     rel: "preload",
     as: "image",
@@ -50,7 +50,7 @@ export const links = () => [
     imageSizes: "100vw",
   },
 
-  // === (Opcional) Preload fallback PNG para navegadores sin WebP
+  // === Preload fallback PNG (compatibilidad)
   {
     rel: "preload",
     as: "image",

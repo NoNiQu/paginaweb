@@ -15,22 +15,8 @@ import {
 
 /* ====== Tipos y utilidades de Cultos ====== */
 type Culto =
-  | {
-      id: string;
-      title: string;
-      start: Date;
-      href: string;
-      type: "single";
-      end?: undefined;
-    }
-  | {
-      id: string;
-      title: string;
-      start: Date;
-      end: Date;
-      href: string;
-      type: "range";
-    };
+  | { id: string; title: string; start: Date; href: string; type: "single"; end?: undefined }
+  | { id: string; title: string; start: Date; end: Date; href: string; type: "range" };
 
 const MANY_COUNT = 5;
 
@@ -63,49 +49,12 @@ function buildCultos(year: number): Culto[] {
   const { start: novenaInicio, end: novenaFin } = novenaRange(year);
 
   return [
-    {
-      id: "novena",
-      title: "Novena en honor a la Virgen de la Esperanza",
-      start: novenaInicio,
-      end: novenaFin,
-      href: "/cultos#novena",
-      type: "range",
-    },
-    {
-      id: "voto",
-      title: "Procesión del Voto",
-      start: voto,
-      href: "/cultos#voto",
-      type: "single",
-    },
-    {
-      id: "octava",
-      title: "Procesión de la Octava",
-      start: octava,
-      href: "/cultos#octava",
-      type: "single",
-    },
-    {
-      id: "corpus",
-      title: "Corpus Christi",
-      start: corpus,
-      href: "/cultos#corpus",
-      type: "single",
-    },
-    {
-      id: "patrocinio",
-      title: "Día de Patrocinio",
-      start: patrocinio,
-      href: "/cultos#patrocinio",
-      type: "single",
-    },
-    {
-      id: "esperanza",
-      title: "Día de la Esperanza",
-      start: diaEsperanza,
-      href: "/cultos#esperanza",
-      type: "single",
-    },
+    { id: "novena", title: "Novena en honor a la Virgen de la Esperanza", start: novenaInicio, end: novenaFin, href: "/cultos#novena", type: "range" },
+    { id: "voto", title: "Procesión del Voto", start: voto, href: "/cultos#voto", type: "single" },
+    { id: "octava", title: "Procesión de la Octava", start: octava, href: "/cultos#octava", type: "single" },
+    { id: "corpus", title: "Corpus Christi", start: corpus, href: "/cultos#corpus", type: "single" },
+    { id: "patrocinio", title: "Día de Patrocinio", start: patrocinio, href: "/cultos#patrocinio", type: "single" },
+    { id: "esperanza", title: "Día de la Esperanza", start: diaEsperanza, href: "/cultos#esperanza", type: "single" },
   ];
 }
 
@@ -113,12 +62,7 @@ function isInRange(date: Date, start: Date, end: Date) {
   const t = date.getTime();
   return t >= start.getTime() && t <= end.getTime();
 }
-function monthOverlap(
-  start: Date,
-  end: Date,
-  monthStart: Date,
-  monthEnd: Date
-) {
+function monthOverlap(start: Date, end: Date, monthStart: Date, monthEnd: Date) {
   return start <= monthEnd && end >= monthStart;
 }
 
@@ -133,19 +77,12 @@ export default function Home() {
   }, []);
 
   const today = new Date();
-  const midnight = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-  ).getTime();
+  const midnight = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
 
   const eventsThisYear = buildCultos(CURRENT_YEAR);
   const eventsNextYear = buildCultos(CURRENT_YEAR + 1);
 
-  const futureCandidates: Culto[] = [
-    ...eventsThisYear,
-    ...eventsNextYear,
-  ].filter(
+  const futureCandidates: Culto[] = [...eventsThisYear, ...eventsNextYear].filter(
     (e) =>
       (e.type === "single" && e.start.getTime() >= midnight) ||
       (e.type === "range" && e.end.getTime() >= midnight)
@@ -176,7 +113,7 @@ export default function Home() {
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
       <section
-        className="relative w-full overflow-hidden min-h-hero bg-[#053C2F]"
+        className="relative w-full overflow-hidden min-h-hero bg-[#0b0b0b]"
         aria-label="Portada Cofradía de la Esperanza"
       >
         {/* Placeholder que se desvanece al cargar la imagen */}
@@ -185,15 +122,18 @@ export default function Home() {
             imgLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
           aria-hidden="true"
+          /* estilo inline mínimo para que no se vea verde antes de que cargue el CSS */
+          style={{
+            backgroundColor: "#0b0b0b",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center 66%",
+            backgroundSize: "cover",
+          }}
         />
 
         <picture className="absolute inset-0 z-0 block">
           {/* Móvil */}
-          <source
-            type="image/webp"
-            media="(max-width: 640px)"
-            srcSet="/hero/heroB.webp"
-          />
+          <source type="image/webp" media="(max-width: 640px)" srcSet="/hero/heroB.webp" />
           <source media="(max-width: 640px)" srcSet="/hero/heroB.png" />
 
           {/* Tablet vertical */}
@@ -219,14 +159,10 @@ export default function Home() {
           />
 
           {/* Desktop */}
-          <source
-            type="image/webp"
-            media="(min-width: 1025px)"
-            srcSet="/hero/heroO.webp"
-          />
+          <source type="image/webp" media="(min-width: 1025px)" srcSet="/hero/heroO.webp" />
           <source media="(min-width: 1025px)" srcSet="/hero/heroO.png" />
 
-          {/* Fallback + fade-in sutil */}
+          {/* Imagen final con fade-in */}
           <img
             ref={imgRef}
             src="/hero/heroO.png"
@@ -241,7 +177,7 @@ export default function Home() {
           />
         </picture>
 
-        {/* Overlays siempre visibles */}
+        {/* Overlays */}
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
@@ -282,9 +218,7 @@ export default function Home() {
           {/* Historia */}
           <div className="bg-[#5B4636] text-white">
             <div className="relative flex min-h-[380px] md:min-h-[420px] flex-col justify-between p-8 sm:p-12 text-center">
-              <h2 className="font-display sc text-3xl sm:text-4xl">
-                NUESTRA HISTORIA
-              </h2>
+              <h2 className="font-display sc text-3xl sm:text-4xl">NUESTRA HISTORIA</h2>
               <div className="flex-grow flex items-center">
                 <p className="text-base sm:text-lg leading-relaxed text-white/95 w-full">
                   La Cofradía hunde sus raíces en la devoción a la Virgen de la
@@ -338,9 +272,7 @@ export default function Home() {
             <Card className="mt-6 p-6 bg-[#053C2F] text-white">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <p className="uppercase tracking-wide text-white/80 text-sm">
-                    Próximo culto
-                  </p>
+                  <p className="uppercase tracking-wide text-white/80 text-sm">Próximo culto</p>
                   <h3 className="text-2xl font-body">{nextCulto.title}</h3>
                   <p className="mt-1 opacity-90">
                     {nextCulto.type === "single"
@@ -365,17 +297,10 @@ export default function Home() {
           {sameMonthList.length >= MANY_COUNT && (
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {sameMonthList.map((e) => (
-                <Card
-                  key={`${e.id}-${e.start.toISOString()}`}
-                  as="a"
-                  href={e.href}
-                  className="p-5"
-                >
+                <Card key={`${e.id}-${e.start.toISOString()}`} as="a" href={e.href} className="p-5">
                   <h5 className="text-xl font-display">{e.title}</h5>
                   <p className="mt-1 text-gray-700">
-                    {e.type === "single"
-                      ? formatLong(e.start)
-                      : formatRangeShort(e.start, e.end!)}
+                    {e.type === "single" ? formatLong(e.start) : formatRangeShort(e.start, e.end!)}
                   </p>
                 </Card>
               ))}
@@ -421,12 +346,7 @@ export default function Home() {
                   className="flex flex-row items-center justify-center gap-4 p-4 h-14 w-full"
                   aria-label="Instagram de la Cofradía"
                 >
-                  <img
-                    src="/iconos/instagram.svg"
-                    alt="Instagram"
-                    className="w-7 h-7"
-                    loading="lazy"
-                  />
+                  <img src="/iconos/instagram.svg" alt="Instagram" className="w-7 h-7" loading="lazy" />
                   <strong className="text-white text-lg">Instagram</strong>
                 </Card>
 
@@ -438,12 +358,7 @@ export default function Home() {
                   className="flex flex-row items-center justify-center gap-4 p-4 h-14 w-full"
                   aria-label="Facebook de la Cofradía"
                 >
-                  <img
-                    src="/iconos/facebook.svg"
-                    alt="Facebook"
-                    className="w-7 h-7"
-                    loading="lazy"
-                  />
+                  <img src="/iconos/facebook.svg" alt="Facebook" className="w-7 h-7" loading="lazy" />
                   <strong className="text-white text-lg">Facebook</strong>
                 </Card>
               </div>
