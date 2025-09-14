@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
@@ -19,9 +19,9 @@ type Culto =
       id: string;
       title: string;
       start: Date;
-      end?: undefined;
       href: string;
       type: "single";
+      end?: undefined;
     }
   | {
       id: string;
@@ -113,7 +113,6 @@ function isInRange(date: Date, start: Date, end: Date) {
   const t = date.getTime();
   return t >= start.getTime() && t <= end.getTime();
 }
-
 function monthOverlap(
   start: Date,
   end: Date,
@@ -125,12 +124,13 @@ function monthOverlap(
 
 /* ====== Página Home ====== */
 export default function Home() {
-  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
-  // Seguridad: si por alguna razón onLoad no dispara (p.ej. cache SSR), hacemos fallback al montar.
+  // Si la imagen ya estaba en caché, evitamos cualquier "pop".
   useEffect(() => {
-    const t = setTimeout(() => setHeroLoaded(true), 800);
-    return () => clearTimeout(t);
+    const el = imgRef.current;
+    if (el && el.complete) setImgLoaded(true);
   }, []);
 
   const today = new Date();
@@ -165,21 +165,19 @@ export default function Home() {
     const monthStart = new Date(y, m, 1);
     const monthEnd = new Date(y, m + 1, 0);
     const pool = y === CURRENT_YEAR ? eventsThisYear : buildCultos(y);
-
     sameMonthList = pool.filter((e) =>
       e.type === "single"
         ? e.start.getFullYear() === y && e.start.getMonth() === m
         : monthOverlap(e.start, e.end, monthStart, monthEnd)
     );
   }
-
   const showManyOfSameMonth = sameMonthList.length >= MANY_COUNT;
 
   return (
     <div className="w-full font-body">
       {/* ===== HERO ===== */}
       <section
-        className="relative w-full overflow-hidden min-h-hero bg-[#053C2F]" // fondo visible mientras carga
+        className="relative w-full overflow-hidden min-h-hero bg-[#053C2F]"
         aria-label="Portada Cofradía de la Esperanza"
       >
         <picture className="absolute inset-0 z-0 block">
@@ -189,7 +187,7 @@ export default function Home() {
             media="(max-width: 640px)"
             srcSet="/hero/heroB.webp"
           />
-          <source media="(max-width: 640px)" srcSet="/hero/heroB.jpg" />
+          <source media="(max-width: 640px)" srcSet="/hero/heroB.png" />
 
           {/* Tablet vertical */}
           <source
@@ -221,48 +219,36 @@ export default function Home() {
           />
           <source media="(min-width: 1025px)" srcSet="/hero/heroO.png" />
 
-          {/* Fallback */}
+          {/* Fallback + fade-in sutil */}
           <img
+            ref={imgRef}
             src="/hero/heroO.png"
             alt="Cofradía de la Esperanza"
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-opacity duration-300 ease-out ${imgLoaded ? "opacity-100" : "opacity-0"}`}
             style={{ objectPosition: "center 66%" }}
+            sizes="100vw"
             loading="eager"
             decoding="async"
             fetchPriority="high"
-            onLoad={() => setHeroLoaded(true)}
+            onLoad={() => setImgLoaded(true)}
           />
         </picture>
 
-        {/* Overlays (aparecen cuando carga la imagen) */}
-        <div
-          className={`absolute inset-0 z-10 bg-black/25 transition-opacity duration-500 ${
-            heroLoaded ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <div
-          className={`absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none transition-opacity duration-500 ${
-            heroLoaded ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <div
-          className={`absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none transition-opacity duration-500 ${
-            heroLoaded ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        {/* Overlays SIEMPRE visibles (sin pop) */}
+        <div className="absolute inset-0 z-10 bg-black/25" />
+        <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
-        {/* Contenido: fade-in con la imagen */}
-        <div
-          className={`relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack transition-opacity duration-500 ${
-            heroLoaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
+        {/* Contenido (sin esperar a la imagen) */}
+        <div className="relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
           <div className="flex flex-col items-center">
             <img
               src="/hero/headerB.png"
               alt="Nuestra Señora de la Esperanza"
               className="only-desktop block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(65vw, 550px)" }}
+              width={550}
+              height={180}
               loading="eager"
               decoding="sync"
             />
@@ -271,6 +257,8 @@ export default function Home() {
               alt="Nuestra Señora de la Esperanza"
               className="only-mobile block drop-shadow-[0_6px_24px_rgba(0,0,0,1)]"
               style={{ width: "min(78vw, 300px)" }}
+              width={300}
+              height={98}
               loading="eager"
               decoding="sync"
             />
@@ -351,10 +339,7 @@ export default function Home() {
                     {nextCulto.type === "single"
                       ? formatLong(nextCulto.start)
                       : isInRange(today, nextCulto.start, nextCulto.end!)
-                        ? `En curso · ${formatRangeShort(
-                            nextCulto.start,
-                            nextCulto.end!
-                          )}`
+                        ? `En curso · ${formatRangeShort(nextCulto.start, nextCulto.end!)}`
                         : formatRangeShort(nextCulto.start, nextCulto.end!)}
                   </p>
                 </div>
@@ -370,7 +355,7 @@ export default function Home() {
             </Card>
           )}
 
-          {showManyOfSameMonth && (
+          {sameMonthList.length >= MANY_COUNT && (
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {sameMonthList.map((e) => (
                 <Card
@@ -407,7 +392,6 @@ export default function Home() {
           <SectionHeader>Noticias</SectionHeader>
 
           <div className="mt-6 flex flex-col items-center text-center gap-8 w-full">
-            {/* Misma imagen que en /noticias */}
             <img
               src="/images/noticias.png"
               alt="No hay noticias disponibles"
@@ -415,7 +399,6 @@ export default function Home() {
               loading="lazy"
             />
 
-            {/* Redes sociales */}
             <div className="w-full flex flex-col gap-4">
               <p className="text-gray-800 mt-2 mb-4">
                 Síguenos en nuestras redes sociales para estar al día de

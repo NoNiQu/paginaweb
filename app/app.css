@@ -240,3 +240,14 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
   .hero-subtitle { font-size: 0.95rem !important; }
   .hero-stack { padding-bottom: 8px !important; }
 }
+
+/* ===== Hero image fade (añadido) ===== */
+.hero-img {
+  opacity: 0;
+  transition: opacity .3s ease-out;
+  will-change: opacity;
+}
+
+.hero-img.is-loaded {
+  opacity: 1;
+}

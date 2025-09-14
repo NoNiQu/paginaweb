@@ -38,6 +38,16 @@ export const links = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
   { rel: "icon", type: "image/svg+xml", href: "/iconos/LOGO.svg" },
+
+  // 👇 Preload del hero
+  {
+    rel: "preload",
+    as: "image",
+    href: "/hero/heroO.webp", // fallback principal
+    imagesrcset:
+      "/hero/heroB.webp 640w, /hero/heroM.webp 1200w, /hero/heroT.webp 2048w, /hero/heroO.webp 1920w",
+    imagesizes: "100vw",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
