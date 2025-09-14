@@ -127,7 +127,6 @@ export default function Home() {
   const [imgLoaded, setImgLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
 
-  // Si la imagen ya estaba en caché, evitamos cualquier "pop".
   useEffect(() => {
     const el = imgRef.current;
     if (el && el.complete) setImgLoaded(true);
@@ -180,6 +179,14 @@ export default function Home() {
         className="relative w-full overflow-hidden min-h-hero bg-[#053C2F]"
         aria-label="Portada Cofradía de la Esperanza"
       >
+        {/* Placeholder que se desvanece al cargar la imagen */}
+        <div
+          className={`absolute inset-0 z-[5] hero-placeholder ${
+            imgLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+          aria-hidden="true"
+        />
+
         <picture className="absolute inset-0 z-0 block">
           {/* Móvil */}
           <source
@@ -224,7 +231,7 @@ export default function Home() {
             ref={imgRef}
             src="/hero/heroO.png"
             alt="Cofradía de la Esperanza"
-            className={`w-full h-full object-cover transition-opacity duration-300 ease-out ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`w-full h-full object-cover hero-img ${imgLoaded ? "is-loaded" : ""}`}
             style={{ objectPosition: "center 66%" }}
             sizes="100vw"
             loading="eager"
@@ -234,12 +241,12 @@ export default function Home() {
           />
         </picture>
 
-        {/* Overlays SIEMPRE visibles (sin pop) */}
+        {/* Overlays siempre visibles */}
         <div className="absolute inset-0 z-10 bg-black/25" />
         <div className="absolute inset-x-0 top-0 z-20 h-40 sm:h-56 bg-gradient-to-b from-black/90 via-black/45 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 z-20 h-36 sm:h-48 bg-gradient-to-t from-black/55 via-black/35 to-transparent pointer-events-none" />
 
-        {/* Contenido (sin esperar a la imagen) */}
+        {/* Contenido */}
         <div className="relative z-30 flex flex-col justify-end items-center text-center min-h-hero px-4 pb-8 sm:pb-16 lg:pb-20 pt-safe-nav hero-stack">
           <div className="flex flex-col items-center">
             <img

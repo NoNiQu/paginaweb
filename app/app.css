@@ -242,12 +242,19 @@ header.is-home .dropdown-trigger .chevron { filter: invert(1) brightness(1.1); }
 }
 
 /* ===== Hero image fade (añadido) ===== */
+/* Fade del <img> */
 .hero-img {
   opacity: 0;
   transition: opacity .3s ease-out;
   will-change: opacity;
 }
+.hero-img.is-loaded { opacity: 1; }
 
-.hero-img.is-loaded {
-  opacity: 1;
+/* Placeholder del hero (oscuro + degradado), se desvanece */
+.hero-placeholder {
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.35) 55%, rgba(0,0,0,.0)),
+    #053C2F;
+  transition: opacity .25s ease-out;
 }
+

@@ -39,14 +39,26 @@ export const links = () => [
   },
   { rel: "icon", type: "image/svg+xml", href: "/iconos/LOGO.svg" },
 
-  // 👇 Preload del hero
+  // === Preload HERO (WEBP)
   {
     rel: "preload",
     as: "image",
-    href: "/hero/heroO.webp", // fallback principal
-    imagesrcset:
+    href: "/hero/heroO.webp",
+    type: "image/webp",
+    imageSrcSet:
       "/hero/heroB.webp 640w, /hero/heroM.webp 1200w, /hero/heroT.webp 2048w, /hero/heroO.webp 1920w",
-    imagesizes: "100vw",
+    imageSizes: "100vw",
+  },
+
+  // === (Opcional) Preload fallback PNG para navegadores sin WebP
+  {
+    rel: "preload",
+    as: "image",
+    href: "/hero/heroO.png",
+    type: "image/png",
+    imageSrcSet:
+      "/hero/heroB.png 640w, /hero/heroM.png 1200w, /hero/heroT.png 2048w, /hero/heroO.png 1920w",
+    imageSizes: "100vw",
   },
 ];
 
