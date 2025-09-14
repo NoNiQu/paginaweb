@@ -39,26 +39,44 @@ export const links = () => [
   },
   { rel: "icon", type: "image/svg+xml", href: "/iconos/LOGO.svg" },
 
-  // === Preload HERO (WEBP) con srcset
+  // === Preload HERO por breakpoint (solo WebP) ===
+  // móvil
+  {
+    rel: "preload",
+    as: "image",
+    href: "/hero/heroB.webp",
+    type: "image/webp",
+    media: "(max-width: 640px)",
+    fetchpriority: "high",
+  },
+  // tablet vertical
+  {
+    rel: "preload",
+    as: "image",
+    href: "/hero/heroM.webp",
+    type: "image/webp",
+    media:
+      "(min-width: 641px) and (max-width: 1024px) and (orientation: portrait)",
+    fetchpriority: "high",
+  },
+  // tablet apaisado
+  {
+    rel: "preload",
+    as: "image",
+    href: "/hero/heroT.webp",
+    type: "image/webp",
+    media:
+      "(min-width: 641px) and (max-width: 1024px) and (orientation: landscape)",
+    fetchpriority: "high",
+  },
+  // desktop
   {
     rel: "preload",
     as: "image",
     href: "/hero/heroO.webp",
     type: "image/webp",
-    imageSrcSet:
-      "/hero/heroB.webp 640w, /hero/heroM.webp 1200w, /hero/heroT.webp 2048w, /hero/heroO.webp 1920w",
-    imageSizes: "100vw",
-  },
-
-  // === Preload fallback PNG (compatibilidad)
-  {
-    rel: "preload",
-    as: "image",
-    href: "/hero/heroO.png",
-    type: "image/png",
-    imageSrcSet:
-      "/hero/heroB.png 640w, /hero/heroM.png 1200w, /hero/heroT.png 2048w, /hero/heroO.png 1920w",
-    imageSizes: "100vw",
+    media: "(min-width: 1025px)",
+    fetchpriority: "high",
   },
 ];
 
