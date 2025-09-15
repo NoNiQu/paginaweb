@@ -169,7 +169,7 @@ export default function Sedecanonica() {
       </SectionHeader>
 
       {/* Bloque 4: img izquierda en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-6">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-12">
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-1 w-full">
           <img
@@ -227,7 +227,7 @@ export default function Sedecanonica() {
       </div>
 
       {/* Cierre */}
-      <div className="font-body text-gray-900 space-y-4 my-12">
+      <div className="font-body text-gray-900 space-y-4 mb-8">
         <p className="text-sm sm:text-base leading-relaxed">
           Para la Cofradía de la Esperanza, San Cipriano no es solo un templo:
           es un espacio de encuentro, oración y comunidad. Cada rincón refleja
@@ -242,6 +242,7 @@ export default function Sedecanonica() {
         </p>
       </div>
 
+      {/* Agradecimiento */}
       <div className="font-body text-gray-900 space-y-4 mb-12">
         <p className="text-sm sm:text-base leading-relaxed text-center italic">
           La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
@@ -250,7 +251,7 @@ export default function Sedecanonica() {
       </div>
 
       {/* Galería de imágenes simples */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div
             key={i}
