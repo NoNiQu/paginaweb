@@ -352,7 +352,7 @@ export default function Home() {
 
             {/* Texto + botón derecha */}
             <div className="text-center md:text-left">
-              <h2 className="font-display sc text-3xl sm:text-4xl text-[#5B4636]">
+              <h2 className="hidden md:block font-display sc text-3xl sm:text-4xl text-[#5B4636]">
                 SEDE CANÓNICA
               </h2>
               <p className="mt-3 text-base sm:text-lg leading-relaxed text-[#3C3128]">
