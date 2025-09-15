@@ -28,7 +28,7 @@ export default function SerPortador() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="/images/portadores.png"
+            src="/images/portadores.webp"
             alt="Portadores llevando a Nuestra Señora de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
@@ -109,13 +109,24 @@ export default function SerPortador() {
             )}
           </div>
 
+          {/* Requisitos básicos */}
           <div className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-semibold">
               Requisitos básicos
             </h2>
-            <ul className="list-disc pl-5 space-y-2 text-base">
-              <li>Ser hermano o hermana de la Cofradía.</li>
-              <li>Ser mayor de 18 años.</li>
+            <ul className="pl-0 space-y-1 text-base list-none">
+              <li>
+                <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                  ●
+                </span>
+                Ser hermano o hermana de la Cofradía.
+              </li>
+              <li>
+                <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                  ●
+                </span>
+                Ser mayor de 18 años.
+              </li>
             </ul>
           </div>
         </div>
@@ -123,12 +134,16 @@ export default function SerPortador() {
 
       {/* Sección inferior */}
       <div className="space-y-10 font-body mt-10">
+        {/* Qué implica */}
         <div className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-semibold">
             Qué implica ser Portador/a
           </h2>
-          <ul className="list-disc pl-5 space-y-2 text-base">
+          <ul className="pl-0 space-y-1 text-base list-none">
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Aceptar y cumplir los{" "}
               <Link
                 to="/estatutos"
@@ -139,65 +154,108 @@ export default function SerPortador() {
               de la Virgen de la Esperanza de Toledo.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Colaborar en el cuidado del trono y la preparación de la Imagen
               tras las procesiones.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Participar en las juntas y ensayos convocados, mostrando
               compromiso con la Hermandad.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Comprometerse con la puntualidad y la asistencia en cultos y
               salidas procesionales.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Respetar la indumentaria oficial (traje, zapatos, cinturón y
               pajarita negros).
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Observar las indicaciones del capataz y del equipo responsable.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Mantener en todo momento una actitud de servicio, respeto y
               fraternidad.
             </li>
           </ul>
         </div>
 
+        {/* Proceso de incorporación */}
         <div className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-semibold">
             Proceso de incorporación
           </h2>
-          <ol className="list-decimal pl-5 space-y-2 text-base">
-            <li>Descarga y completa la solicitud de portador.</li>
+          <ul className="pl-0 space-y-1 text-base list-none">
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
+              Descarga y completa la solicitud de portador.
+            </li>
+            <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Envía la solicitud por correo electrónico al capataz de los
               portadores.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Un miembro de la plantilla de Portadores deberá{" "}
               <span className="font-medium">apadrinar o amadrinar</span> tu
               solicitud.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               La Secretaría confirmará que eres hermano o hermana de la Cofradía
               y firmará la solicitud.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               Antes de las fiestas, el capataz se pondrá en contacto para
               confirmar tu deseo de portar.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               En la reunión de portadores se verificará la disponibilidad de
               huecos y se realizará votación.
             </li>
             <li>
+              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
+                ●
+              </span>
               El capataz dará la bienvenida y enhorabuena a los nuevos
               portadores.
             </li>
-          </ol>
+          </ul>
         </div>
 
+        {/* Aviso salud y seguridad */}
         <Card className="bg-slate-50 text-slate-900 ring-1 ring-slate-200 p-5">
           <p className="text-base leading-relaxed text-black">
             ℹ️ <span className="font-semibold">Salud y seguridad:</span> Si

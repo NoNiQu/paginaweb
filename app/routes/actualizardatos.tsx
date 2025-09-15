@@ -28,7 +28,7 @@ export default function actualizardatos() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="/images/actualizardatos.jpg"
+            src="/images/actualizardatos.webp"
             alt="Nuestra Señora de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl"
             loading="eager"
