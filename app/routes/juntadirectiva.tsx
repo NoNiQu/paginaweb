@@ -10,15 +10,15 @@ type Cargo = {
 // 👉 Edita solo los nombres aquí
 const DIRECTIVA: Cargo[] = [
   { cargo: "Presidente", nombre: "Manuel Pulido Velasco" },
-  { cargo: "Vicepresidente", nombre: "Nombre y Apellidos" },
+  { cargo: "Vicepresidente", nombre: "Andrés Torres Rafael de la Cruz" },
   { cargo: "Secretario", nombre: "Irene Alarcón Alguacil" },
-  { cargo: "Tesorero", nombre: "Francisco Javier Moreno De Santiago" },
+  { cargo: "Administrador", nombre: "Francisco Javier Moreno de Santiago" },
   { cargo: "Consiliario", nombre: "José Ángel Jiménez Frutos" },
   { cargo: "Mayordoma de Ceremonias", nombre: "Esperanza Alarza Campo" },
   { cargo: "Mayordomo de Alhajas", nombre: "Nombre y Apellidos" },
   { cargo: "Mayordomo de Fiestas", nombre: "Marcos Alarcón Alguacil" },
   { cargo: "Capataz", nombre: "Ángel Sánchez de la Poza García" },
-  { cargo: "Camarera titular", nombre: "Nombre y Apellidos" },
+  { cargo: "Camarera titular", nombre: "Isabel Gutiérrez Morales" },
 ];
 
 export default function JuntaDirectiva() {
