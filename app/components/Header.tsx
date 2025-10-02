@@ -38,7 +38,7 @@ export default function Header() {
             }`}
           >
             <Link to="/haztehermano" className="inline-block w-full">
-              HAZTE HERMANO
+              Únete a la Esperanza
             </Link>
           </div>
 
