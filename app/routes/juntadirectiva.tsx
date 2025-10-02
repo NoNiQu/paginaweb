@@ -5,20 +5,40 @@ import { Card } from "../components/ui/Card";
 type Cargo = {
   cargo: string;
   nombre: string;
+  apellidos: string;
 };
 
-// 👉 Edita solo los nombres aquí
 const DIRECTIVA: Cargo[] = [
-  { cargo: "Presidente", nombre: "Manuel Pulido Velasco" },
-  { cargo: "Vicepresidente", nombre: "Andrés Torres Rafael de la Cruz" },
-  { cargo: "Secretario", nombre: "Irene Alarcón Alguacil" },
-  { cargo: "Administrador", nombre: "Francisco Javier Moreno de Santiago" },
-  { cargo: "Consiliario", nombre: "José Ángel Jiménez Frutos" },
-  { cargo: "Mayordoma de Ceremonias", nombre: "Esperanza Alarza Campo" },
-  { cargo: "Mayordomo de Alhajas", nombre: "Nombre y Apellidos" },
-  { cargo: "Mayordomo de Fiestas", nombre: "Marcos Alarcón Alguacil" },
-  { cargo: "Capataz", nombre: "Ángel Sánchez de la Poza García" },
-  { cargo: "Camarera titular", nombre: "Isabel Gutiérrez Morales" },
+  { cargo: "Presidente", nombre: "Manuel", apellidos: "Pulido Velasco" },
+  {
+    cargo: "Vicepresidente",
+    nombre: "Andrés",
+    apellidos: "Torres Rafael de la Cruz",
+  },
+  { cargo: "Secretario", nombre: "Irene", apellidos: "Alarcón Alguacil" },
+  {
+    cargo: "Administrador",
+    nombre: "Francisco Javier",
+    apellidos: "Moreno de Santiago",
+  },
+  { cargo: "Consiliario", nombre: "José Ángel", apellidos: "Jiménez Frutos" },
+  {
+    cargo: "Mayordoma de Ceremonias",
+    nombre: "Esperanza",
+    apellidos: "Alarza Campo",
+  },
+  { cargo: "Mayordomo de Alhajas", nombre: "Nombre", apellidos: "y Apellidos" },
+  {
+    cargo: "Mayordomo de Fiestas",
+    nombre: "Marcos",
+    apellidos: "Alarcón Alguacil",
+  },
+  { cargo: "Capataz", nombre: "Ángel", apellidos: "Sánchez de la Poza García" },
+  {
+    cargo: "Camarera titular",
+    nombre: "Isabel",
+    apellidos: "Gutiérrez Morales",
+  },
 ];
 
 export default function JuntaDirectiva() {
@@ -74,10 +94,13 @@ export default function JuntaDirectiva() {
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
               aria-label={`${item.cargo}: ${item.nombre}`}
             >
-              <div className="text-sm uppercase tracking-wide opacity-80">
+              <div className="text-sm uppercase tracking-wide opacity-90">
                 {item.cargo}
               </div>
-              <div className="mt-1 text-xl font-semibold">{item.nombre}</div>
+              <div className="mt-1">
+                <div className="text-lg font-semibold">{item.nombre}</div>
+                <div className="text-lg font-semibold">{item.apellidos}</div>
+              </div>
             </Card>
           ))}
         </div>
@@ -90,10 +113,13 @@ export default function JuntaDirectiva() {
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
               aria-label={`${item.cargo}: ${item.nombre}`}
             >
-              <div className="text-sm uppercase tracking-wide opacity-80">
+              <div className="text-sm uppercase tracking-wide opacity-90">
                 {item.cargo}
               </div>
-              <div className="mt-1 text-lg font-semibold">{item.nombre}</div>
+              <div className="mt-1">
+                <div className="text-lg font-semibold">{item.nombre}</div>
+                <div className="text-lg font-semibold">{item.apellidos}</div>
+              </div>
             </Card>
           ))}
         </div>
@@ -106,10 +132,13 @@ export default function JuntaDirectiva() {
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
               aria-label={`${item.cargo}: ${item.nombre}`}
             >
-              <div className="text-sm uppercase tracking-wide opacity-80">
+              <div className="text-sm uppercase tracking-wide opacity-90">
                 {item.cargo}
               </div>
-              <div className="mt-1 text-lg font-semibold">{item.nombre}</div>
+              <div className="mt-1">
+                <div className="text-lg font-semibold">{item.nombre}</div>
+                <div className="text-lg font-semibold">{item.apellidos}</div>
+              </div>
             </Card>
           ))}
         </div>
@@ -122,10 +151,13 @@ export default function JuntaDirectiva() {
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
               aria-label={`${item.cargo}: ${item.nombre}`}
             >
-              <div className="text-sm uppercase tracking-wide opacity-80">
+              <div className="text-sm uppercase tracking-wide opacity-90">
                 {item.cargo}
               </div>
-              <div className="mt-1 text-lg font-semibold">{item.nombre}</div>
+              <div className="mt-1">
+                <div className="text-lg font-semibold">{item.nombre}</div>
+                <div className="text-lg font-semibold">{item.apellidos}</div>
+              </div>
             </Card>
           ))}
         </div>
@@ -138,10 +170,13 @@ export default function JuntaDirectiva() {
               className="px-6 py-5 text-center font-body bg-[#053C2F] text-white"
               aria-label={`${item.cargo}: ${item.nombre}`}
             >
-              <div className="text-sm uppercase tracking-wide opacity-80">
+              <div className="text-sm uppercase tracking-wide opacity-90">
                 {item.cargo}
               </div>
-              <div className="mt-1 text-lg font-semibold">{item.nombre}</div>
+              <div className="mt-1">
+                <div className="text-lg font-semibold">{item.nombre}</div>
+                <div className="text-lg font-semibold">{item.apellidos}</div>
+              </div>
             </Card>
           ))}
         </div>
