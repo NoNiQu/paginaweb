@@ -9,7 +9,7 @@ type Cargo = {
 
 // 👉 Edita solo los nombres aquí
 const DIRECTIVA: Cargo[] = [
-  { cargo: "Presidente", nombre: "Nombre y Apellidos" },
+  { cargo: "Presidente", nombre: "Manuel Pulido Velasco" },
   { cargo: "Vicepresidente", nombre: "Nombre y Apellidos" },
   { cargo: "Secretario", nombre: "Nombre y Apellidos" },
   { cargo: "Tesorero", nombre: "Nombre y Apellidos" },
