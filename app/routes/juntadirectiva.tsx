@@ -11,13 +11,13 @@ type Cargo = {
 const DIRECTIVA: Cargo[] = [
   { cargo: "Presidente", nombre: "Manuel Pulido Velasco" },
   { cargo: "Vicepresidente", nombre: "Nombre y Apellidos" },
-  { cargo: "Secretario", nombre: "Nombre y Apellidos" },
-  { cargo: "Tesorero", nombre: "Nombre y Apellidos" },
-  { cargo: "Consiliario", nombre: "Nombre y Apellidos" },
+  { cargo: "Secretario", nombre: "Irene Alarcón Alguacil" },
+  { cargo: "Tesorero", nombre: "Francisco Javier Moreno De Santiago" },
+  { cargo: "Consiliario", nombre: "José Ángel Jiménez Frutos" },
   { cargo: "Mayordoma de Ceremonias", nombre: "Esperanza Alarza Campo" },
   { cargo: "Mayordomo de Alhajas", nombre: "Nombre y Apellidos" },
   { cargo: "Mayordomo de Fiestas", nombre: "Marcos Alarcón Alguacil" },
-  { cargo: "Capataz", nombre: "Nombre y Apellidos" },
+  { cargo: "Capataz", nombre: "Ángel Sánchez de la Poza García" },
   { cargo: "Camarera titular", nombre: "Nombre y Apellidos" },
 ];
 
