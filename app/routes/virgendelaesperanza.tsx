@@ -69,55 +69,13 @@ export default function VirgenDeLaEsperanza() {
         </div>
       </div>
 
-      {/* Texto complementario (bajo el bloque) */}
-      <div className="font-body text-gray-900 space-y-4 mb-16">
-        <p className="text-sm sm:text-base leading-relaxed">
-          Esta imagen tiene el privilegio de haber sido coronada canónicamente
-          en solemne ceremonia celebrada en la Plaza de Zocodover el 8 de junio
-          de 1952. Una vez autorizada por el Vaticano la solicitud del cardenal
-          Pla y Deniel, se emitió un decreto por la patriarcal basílica vaticana
-          firmado por el Cardenal Tedeschini. Se llevó a cabo un “Programa de
-          solemnes cultos y novena” entre el 2 y el 11. El día 3 la Virgen fue
-          llevada en procesión a la iglesia de San Ildefonso, donde durante
-          varios días se hicieron solemnes misas y otros actos religiosos. El
-          día 7 fue trasladada a la catedral, donde al día siguiente se celebró
-          Misa de Pontifical, y luego fue llevada en procesión a la plaza de
-          Zocodover para su coronación canónica en una gran tribuna ubicada bajo
-          el Arco de la Sangre; una espléndida ceremonia acompañada de más de
-          diez mil personas que llenaban a rebosar la plaza de Zocodover, parte
-          de la Calle Ancha y toda la Cuesta de Carlos V, la calle de las Armas.
-          El Sr. Alcalde de la ciudad entregó la corona al Sr. Cardenal Pla y
-          Deniel, quien la coronó ante el júbilo de los asistentes y un mar de
-          pañuelos que se agitaban como signo de alegría. Una gran muchedumbre,
-          salvas de artillería, vuelo de palomas mensajeras y lluvia de flores.
-        </p>
-        <p className="text-sm sm:text-base leading-relaxed">
-          Hubo una circunstancia que no podemos callar: en el mismo momento en
-          que su Eminencia colocaba la corona sobre la pequeña cabecita de la
-          Virgen, apareció en el sol un halo luminoso, un círculo grande, de
-          color anaranjado, un disco que envolvía el sol. Aquella coronación
-          fue, como dijo un cronista de entonces, triple: la corona de metales
-          preciosos y pedrería sobre su cabeza, la corona de la devoción, de las
-          oraciones y de la piedad de sus fieles, y la corona que se dibujó en
-          el cielo. Lo vieron miles de fieles, de los cuales hoy todavía viven
-          muchos y pueden dar fe al que esto escribe. No fue una alucinación, ni
-          una visión, ni un invento, pues han transcurrido solamente cincuenta
-          años y está vivo el ¿milagro? o fenómeno que se dio curiosamente en
-          aquella circunstancia.
-        </p>
-        <p className="text-sm sm:text-base leading-relaxed">
-          La Presidencia del Gobierno Español concedió a la Virgen de la
-          Esperanza los máximos honores militares, con las salvas de ordenanza.
-          Asistió el Ayuntamiento en pleno, así como representaciones de muchos
-          pueblos de la comarca toledana vestidos con sus trajes regionales.
-          Solamente de Bargas vinieron sesenta mujeres ataviadas de bargueñas
-          que pusieron una nota de tipismo y alegría. Finalizada la ceremonia,
-          la Virgen fue trasladada de nuevo a San Cipriano donde se le ofició
-          una novena. Los actos concluyeron con una misa cantada el día 11. Hay
-          una placa cerámica que conmemora la ceremonia junto al retablo de San
-          Cipriano.
-        </p>
-      </div>
+      <p className="text-sm sm:text-base font-body leading-relaxed mb-8">
+        En 2007, la talla fue restaurada en el Centro de Restauración de
+        Castilla-La Mancha, recuperando su policromía románica original. Desde
+        entonces, se mantiene la tradición de mostrarla medio año en su
+        sencillez medieval y medio año revestida con mantos y joyas, recordando
+        así la riqueza de una devoción que es a la vez humilde y gloriosa.
+      </p>
 
       {/* Galería de imágenes */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -155,57 +113,50 @@ export default function VirgenDeLaEsperanza() {
       )}
 
       {/* Sección del Trono */}
-      <div className="font-body text-gray-900 space-y-4 mb-16 mt-12">
+      <div className="font-body text-gray-900 space-y-4 mb- mt-12">
         <SectionHeader>Trono</SectionHeader>
         <p className="text-sm sm:text-base leading-relaxed">
-          La Virgen de la Esperanza, titular de nuestra Cofradía, no solo es un
-          símbolo de fe y devoción, sino también un testimonio vivo del
-          patrimonio artístico y religioso de Toledo. Uno de los elementos más
-          importantes de este legado es el trono primitivo de la Virgen, un
-          encargo realizado en las primeras décadas del siglo XVII, en pleno
-          auge del arte sacro tras el Concilio de Trento (1545-1563).
+          El trono de la Virgen de la Esperanza ha sido desde sus orígenes un
+          signo de la unión entre arte, devoción y patrimonio. El primitivo
+          trono, encargado en las primeras décadas del siglo XVII a los maestros
+          plateros Alonso Sánchez e Ignacio de Pereña, fue una magnífica obra de
+          plata con ricas ornamentaciones barrocas. Su misión era clara: realzar
+          la majestad de la pequeña talla románica y presentarla como auténtica
+          Reina del Cielo en la iglesia de San Cipriano. Aunque desaparecido con
+          el paso del tiempo, sabemos de su esplendor gracias a documentos
+          conservados en el Archivo Diocesano y a un lienzo del siglo XVII que
+          lo representa con todo detalle, permitiendo imaginar cómo fue venerada
+          entonces la Virgen.
         </p>
         <p className="text-sm sm:text-base leading-relaxed">
-          Este trono fue encargado a los reconocidos orfebres Alonso Sánchez e
-          Ignacio de Pereña, quienes trabajaron con esmero para crear una pieza
-          de gran valor litúrgico y artístico, destinada a resaltar la
-          solemnidad y la devoción a la Virgen en la Iglesia de San Cipriano,
-          sede canónica de nuestra cofradía. La obra, realizada en plata y
-          enriquecida con detalles ornamentales propios del barroco, tenía como
-          finalidad ofrecer a los fieles un soporte digno para la veneración de
-          la Virgen de la Esperanza, reforzando su papel central en la vida
-          espiritual de Toledo.
+          El estudio de este trono primitivo pone de relieve no solo la riqueza
+          artística de la obra, sino también el profundo vínculo entre arte, fe
+          y comunidad. Cada detalle de su estructura barroca estaba concebido
+          para transmitir solemnidad, esperanza y devoción. Su recuerdo
+          permanece vivo como patrimonio espiritual de Toledo y como parte de la
+          identidad de la Cofradía.
         </p>
         <p className="text-sm sm:text-base leading-relaxed">
-          Aunque el trono original ha desaparecido, se ha preservado el arco del
-          trono, una pieza fundamental que permite conocer el diseño y la
-          ornamentación originales. La investigación reciente ha permitido
-          reconstruir su aspecto y significado a partir de documentos inéditos
-          conservados en el Archivo Diocesano de Toledo, así como de un lienzo
-          fechado hacia 1660 que representa a la Virgen entronizada. Esta
-          pintura, de autoría desconocida, muestra con gran precisión la
-          disposición y el diseño del trono, convirtiéndose en una fuente
-          invaluable para comprender cómo era venerada la Virgen y la
-          importancia que se le otorgaba dentro de la iglesia y de la comunidad
-          cofrade.
+          Hoy, aunque aquel trono ya no existe, la Virgen de la Esperanza sigue
+          recibiendo culto en un <strong>trono actual</strong>, heredero
+          espiritual de aquel primero. Este trono moderno, realizado con
+          materiales más acordes a nuestro tiempo pero con el mismo sentido de
+          dignidad, acompaña a la imagen en sus cultos solemnes y procesiones.
+          Es fruto del esfuerzo constante de la Cofradía y de las aportaciones
+          de muchos hermanos que, generación tras generación, han querido
+          mantener viva la tradición de presentar a la Virgen como Madre y
+          Señora.
         </p>
         <p className="text-sm sm:text-base leading-relaxed">
-          El estudio del trono primitivo de la Virgen de la Esperanza pone de
-          relieve no sólo la riqueza artística de la obra, sino también el
-          profundo vínculo entre arte, devoción y comunidad. Cada detalle del
-          trono, desde sus ornamentos hasta su diseño estructural, refleja la
-          intención de transmitir fe, esperanza y solemnidad, valores que la
-          Cofradía continúa promoviendo en la actualidad.
-        </p>
-        <p className="text-sm sm:text-base leading-relaxed">
-          Para la Cofradía de la Esperanza, esta investigación no es solo un
-          ejercicio académico: es también un recordatorio de la importancia de
-          preservar y poner en valor nuestro patrimonio histórico y religioso.
-          En definitiva, el redescubrimiento del trono primitivo de la Virgen de
-          la Esperanza refuerza la identidad de nuestra cofradía, conecta a los
-          fieles con generaciones pasadas y nos invita a continuar transmitiendo
-          la fe y la devoción que han hecho de la Virgen de la Esperanza un
-          referente espiritual y cultural en Toledo.
+          El trono actual no solo sostiene físicamente la imagen, sino que
+          simboliza el compromiso de Toledo con su Esperanza: cada procesión,
+          cada función solemne, cada culto celebrado ante él recuerda que la
+          devoción no ha decaído con los siglos. Con él, la Cofradía enlaza
+          pasado y presente: la memoria de la plata barroca perdida se refleja
+          hoy en la sobriedad y belleza de un trono que sigue siendo signo
+          visible de la fe del pueblo. Así, en cada salida de la Virgen, el
+          trono se convierte en altar móvil donde Toledo renueva su confianza en
+          la Esperanza que nunca abandona a sus hijos.
         </p>
       </div>
 

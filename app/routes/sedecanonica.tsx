@@ -1,7 +1,7 @@
 // src/pages/sedecanonica.tsx
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
-import { Card } from "~/components/ui/Card";
+import { Card } from "../components/ui/Card";
 import { useState, useEffect } from "react";
 
 export default function Sedecanonica() {

@@ -27,7 +27,7 @@ const DIRECTIVA: Cargo[] = [
     nombre: "Esperanza",
     apellidos: "Alarza Campo",
   },
-  { cargo: "Mayordomo de Alhajas", nombre: "Nombre", apellidos: "y Apellidos" },
+  { cargo: "Mayordomo de Alhajas", nombre: "Luis", apellidos: "Sánchez Mora" },
   {
     cargo: "Mayordomo de Fiestas",
     nombre: "Marcos",
