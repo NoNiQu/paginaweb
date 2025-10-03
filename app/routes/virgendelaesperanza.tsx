@@ -113,7 +113,7 @@ export default function VirgenDeLaEsperanza() {
       )}
 
       {/* Sección del Trono */}
-      <div className="font-body text-gray-900 space-y-4 mb- mt-12">
+      <div className="font-body text-gray-900 space-y-4 mb-12 mt-12">
         <SectionHeader>Trono</SectionHeader>
         <p className="text-sm sm:text-base leading-relaxed">
           El trono de la Virgen de la Esperanza ha sido desde sus orígenes un
@@ -160,13 +160,6 @@ export default function VirgenDeLaEsperanza() {
         </p>
       </div>
 
-      <div className="font-body text-gray-900 space-y-4 mb-12">
-        <p className="text-sm sm:text-base leading-relaxed text-center italic">
-          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
-          dedicación en la redacción y cuidado de los textos.
-        </p>
-      </div>
-
       {/* Galería de imágenes */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {[1, 2, 3, 4].map((i) => (
@@ -186,6 +179,13 @@ export default function VirgenDeLaEsperanza() {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="font-body text-gray-900 space-y-4 my-12">
+        <p className="text-sm sm:text-base leading-relaxed text-center italic">
+          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+          dedicación en la redacción y cuidado de los textos.
+        </p>
       </div>
 
       {/* Modal para ver imagen en grande */}

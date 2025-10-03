@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 
@@ -19,7 +20,6 @@ export default function Historia() {
     <SectionContainer>
       {/* Título */}
       <SectionHeader>Historia</SectionHeader>
-
       {/* Texto adicional */}
       <div className="grid md:grid-cols-2 gap-10 items-start mb-6 mt-6">
         {/* Texto */}
@@ -211,6 +211,23 @@ export default function Historia() {
           />
         </div>
       )}
+
+      <div>
+        {/* Texto invitación a colaborar */}
+        <p className="text-sm sm:text-base font-body leading-relaxed text-center italic mt-12">
+          Estamos reuniendo con esmero la memoria y la historia de nuestra
+          Cofradía y de la venerada Virgen de la Esperanza. Si guardas algún
+          testimonio, documento o recuerdo que pueda enriquecer este legado
+          común, te invitamos a compartirlo en{" "}
+          <Link
+            to="/contacto"
+            className="font-medium underline underline-offset-4 hover:text-emerald-700"
+          >
+            Contacto
+          </Link>
+          .
+        </p>
+      </div>
 
       <div className="font-body text-gray-900 space-y-4 my-12">
         <p className="text-sm sm:text-base leading-relaxed text-center italic">
