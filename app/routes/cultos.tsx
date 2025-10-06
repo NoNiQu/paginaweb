@@ -104,6 +104,10 @@ export default function Cultos() {
                   19:30 — Rezo del Santo Rosario y, posteriormente, Misa y
                   Novena.
                 </li>
+                <li>
+                  Después de la Misa las tradicionales quinolas y limonada en el
+                  patio de la Parroquia.
+                </li>
               </ul>
             </Accordion>
           </div>
@@ -271,11 +275,10 @@ export default function Cultos() {
               nacimiento de Cristo.
             </p>
             <p className="opacity-95">
-              Para la Cofradía de la Esperanza, este día es una de las
-              celebraciones más importantes del año, un momento de reafirmación
-              de la devoción a nuestra Titular, recordando el mensaje de
-              esperanza y confianza que María nos transmite en esta temporada de
-              Adviento.
+              Para la Cofradía de la Esperanza, este día es un momento de
+              reafirmación de la devoción a nuestra Titular, recordando el
+              mensaje de esperanza y confianza que María nos transmite en esta
+              temporada de Adviento.
             </p>
             <p className="opacity-95">
               Tras la Santa Misa se comparte chocolate caliente con bollo como

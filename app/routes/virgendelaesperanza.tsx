@@ -77,41 +77,6 @@ export default function VirgenDeLaEsperanza() {
         así la riqueza de una devoción que es a la vez humilde y gloriosa.
       </p>
 
-      {/* Galería de imágenes */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[1, 2, 3, 4].map((i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => setSelectedImage("portada.jpg")}
-          >
-            <img
-              src="portada.jpg"
-              alt={`Imagen ${i}`}
-              className="w-full h-72 object-cover rounded-2xl shadow-md"
-              loading="lazy"
-            />
-            <p className="mt-3 text-sm text-gray-900 text-center">
-              Imagen {i} - descripción breve
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {/* Modal para ver imagen en grande */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
-          onClick={() => setSelectedImage(null)}
-        >
-          <img
-            src={selectedImage}
-            alt="Imagen ampliada"
-            className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
-          />
-        </div>
-      )}
-
       {/* Sección del Trono */}
       <div className="font-body text-gray-900 space-y-4 mb-12 mt-12">
         <SectionHeader>Trono</SectionHeader>

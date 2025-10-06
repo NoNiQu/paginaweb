@@ -80,6 +80,41 @@ export default function Historia() {
             San Cipriano como faro espiritual del barrio.
           </p>
 
+          {/* Galería de imágenes */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedImage("portada.jpg")}
+              >
+                <img
+                  src="portada.jpg"
+                  alt={`Imagen ${i}`}
+                  className="w-full h-72 object-cover rounded-2xl shadow-md"
+                  loading="lazy"
+                />
+                <p className="mt-3 text-sm text-gray-900 text-center">
+                  Imagen {i} - descripción breve
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Modal para ver imagen en grande */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
+              onClick={() => setSelectedImage(null)}
+            >
+              <img
+                src={selectedImage}
+                alt="Imagen ampliada"
+                className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
+              />
+            </div>
+          )}
+
           <SectionHeader>Coronación Canónica</SectionHeader>
 
           <div className="font-body text-gray-900 space-y-6 mt-6 mb-8">
@@ -177,7 +212,7 @@ export default function Historia() {
         </div>
       </div>
 
-      {/* Galería de imágenes */}
+      {/* Galería de imágenes 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {[1, 2, 3, 4].map((i) => (
           <div
@@ -198,7 +233,7 @@ export default function Historia() {
         ))}
       </div>
 
-      {/* Modal para ver imagen en grande */}
+      {/* Modal para ver imagen en grande 
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
@@ -211,14 +246,15 @@ export default function Historia() {
           />
         </div>
       )}
+        */}
 
       <div>
         {/* Texto invitación a colaborar */}
         <p className="text-sm sm:text-base font-body leading-relaxed text-center italic mt-12">
           Estamos reuniendo con esmero la memoria y la historia de nuestra
           Cofradía y de la venerada Virgen de la Esperanza. Si guardas algún
-          testimonio, documento o recuerdo que pueda enriquecer este legado
-          común, te invitamos a compartirlo en{" "}
+          testimonio, documento, imagen o recuerdo que pueda enriquecer este
+          legado, te invitamos a compartirlo en{" "}
           <Link
             to="/contacto"
             className="font-medium underline underline-offset-4 hover:text-emerald-700"

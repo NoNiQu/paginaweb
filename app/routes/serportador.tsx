@@ -116,15 +116,11 @@ export default function SerPortador() {
             </h2>
             <ul className="pl-0 space-y-1 text-base list-none">
               <li>
-                <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                  ●
-                </span>
+                <span className="text-[14px] mr-2 text-emerald-700">●</span>
                 Ser hermano o hermana de la Cofradía.
               </li>
               <li>
-                <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                  ●
-                </span>
+                <span className="text-[14px] mr-2 text-emerald-700">●</span>
                 Ser mayor de 18 años.
               </li>
             </ul>
@@ -141,9 +137,7 @@ export default function SerPortador() {
           </h2>
           <ul className="pl-0 space-y-1 text-base list-none">
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Aceptar y cumplir los{" "}
               <Link
                 to="/estatutos"
@@ -154,43 +148,31 @@ export default function SerPortador() {
               de la Virgen de la Esperanza de Toledo.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Colaborar en el cuidado del trono y la preparación de la Imagen
               tras las procesiones.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Participar en las juntas y ensayos convocados, mostrando
               compromiso con la Hermandad.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Comprometerse con la puntualidad y la asistencia en cultos y
               salidas procesionales.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Respetar la indumentaria oficial (traje, zapatos, cinturón y
               pajarita negros).
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Observar las indicaciones del capataz y del equipo responsable.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Mantener en todo momento una actitud de servicio, respeto y
               fraternidad.
             </li>
@@ -204,51 +186,37 @@ export default function SerPortador() {
           </h2>
           <ul className="pl-0 space-y-1 text-base list-none">
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Descarga y completa la solicitud de portador.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Envía la solicitud por correo electrónico al capataz de los
               portadores.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Un miembro de la plantilla de Portadores deberá{" "}
               <span className="font-medium">apadrinar o amadrinar</span> tu
               solicitud.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               La Secretaría confirmará que eres hermano o hermana de la Cofradía
               y firmará la solicitud.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               Antes de las fiestas, el capataz se pondrá en contacto para
               confirmar tu deseo de portar.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               En la reunión de portadores se verificará la disponibilidad de
               huecos y se realizará votación.
             </li>
             <li>
-              <span className="text-[14px] mr-2" style={{ color: "#053C2F" }}>
-                ●
-              </span>
+              <span className="text-[14px] mr-2 text-emerald-700">●</span>
               El capataz dará la bienvenida y enhorabuena a los nuevos
               portadores.
             </li>
