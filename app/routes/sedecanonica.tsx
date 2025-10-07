@@ -252,19 +252,19 @@ export default function Sedecanonica() {
 
       {/* Galería de imágenes */}
       {/* Galería 1 (a, b) */}
-      <div className="w-full mt-12 flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl w-full px-4">
+      <div className="w-full mt-12 mb-12 flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full px-4">
           {["a", "b", "c"].map((name, i) => {
             const imgSrc = `/images/sedecanonica/${name}.webp`;
             return (
               <div
-                key={name}
+                key={i}
                 className="cursor-pointer flex justify-center"
                 onClick={() => setSelectedImage(imgSrc)}
               >
                 <img
                   src={imgSrc}
-                  alt={`Imagen ${i + 1}`}
+                  alt={`Imagen ${i}`}
                   className="w-full h-[520px] md:h-[560px] object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
                   loading="lazy"
                 />
