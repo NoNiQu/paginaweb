@@ -56,20 +56,6 @@ export default function Historia() {
             signo de confianza, consuelo y fe para los toledanos, recibiendo
             cariñosamente el nombre de la “Morenita de San Cebrián”.
           </p>
-        </div>
-        {/* Imagen */}
-        <div className="relative">
-          <img
-            src="portada.jpg"
-            alt="Virgen de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[625px] object-cover rounded-2xl shadow-xl"
-            loading="eager"
-          />
-          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
-        </div>
-      </div>
-      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4 mb-8">
-        <div className="mt-6 font-body text-gray-900 space-y-6">
           <p className="text-sm sm:text-base leading-relaxed">
             La Cofradía quedó formalmente constituida en el siglo XVII, formada
             por clérigos, artesanos y vecinos del barrio. Desde sus orígenes
@@ -79,41 +65,42 @@ export default function Historia() {
             hermandad supo mantener viva la devoción y custodiar la iglesia de
             San Cipriano como faro espiritual del barrio.
           </p>
-
-          {/* Galería de imágenes */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedImage("portada.jpg")}
-              >
-                <img
-                  src="portada.jpg"
-                  alt={`Imagen ${i}`}
-                  className="w-full h-72 object-cover rounded-2xl shadow-md"
-                  loading="lazy"
-                />
-                <p className="mt-3 text-sm text-gray-900 text-center">
-                  Imagen {i} - descripción breve
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Modal para ver imagen en grande */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
-              onClick={() => setSelectedImage(null)}
-            >
-              <img
-                src={selectedImage}
-                alt="Imagen ampliada"
-                className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
-              />
+        </div>
+        {/* Imagen */}
+        <div className="relative">
+          <img
+            src="/images/historia/portada.webp"
+            alt="Virgen de la Esperanza"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[825px] object-cover rounded-2xl shadow-xl"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+      </div>
+      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4 mb-8">
+        <div className="mt-6 font-body text-gray-900 space-y-6">
+          {/* Galería centrada */}
+          <div className="flex justify-center mt-12 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
+              {[1, 2, 3].map((i) => {
+                const imgSrc = `/images/historia/${i}.webp`;
+                return (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center cursor-pointer"
+                    onClick={() => setSelectedImage(imgSrc)}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`Imagen ${i}`}
+                      className="w-full h-80 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                  </div>
+                );
+              })}
             </div>
-          )}
+          </div>
 
           <SectionHeader>Coronación Canónica</SectionHeader>
 
@@ -167,7 +154,7 @@ export default function Historia() {
             </p>
           </div>
 
-          {/* Galería de imágenes */}
+          {/* Galería de imágenes 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {[1, 2, 3, 4].map((i) => (
               <div
@@ -188,7 +175,7 @@ export default function Historia() {
             ))}
           </div>
 
-          {/* Modal para ver imagen en grande */}
+          {/* Modal para ver imagen en grande 
           {selectedImage && (
             <div
               className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
@@ -202,6 +189,8 @@ export default function Historia() {
             </div>
           )}
 
+          */}
+
           <p className="text-sm sm:text-base leading-relaxed">
             Hoy, la Cofradía de la Virgen de la Esperanza continúa viva y
             activa, organizando cultos, procesiones y obras de caridad. Con la
@@ -212,28 +201,28 @@ export default function Historia() {
         </div>
       </div>
 
-      {/* Galería de imágenes 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[1, 2, 3, 4].map((i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => setSelectedImage("portada.jpg")}
-          >
-            <img
-              src="portada.jpg"
-              alt={`Imagen ${i}`}
-              className="w-full h-72 object-cover rounded-2xl shadow-md"
-              loading="lazy"
-            />
-            <p className="mt-3 text-sm text-gray-900 text-center">
-              Imagen {i} - descripción breve
-            </p>
-          </div>
-        ))}
+      {/* Galería de imágenes */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {["a1", "a2", "a3", "a4"].map((name, i) => {
+          const imgSrc = `/images/historia/${name}.webp`;
+          return (
+            <div
+              key={name}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => setSelectedImage(imgSrc)}
+            >
+              <img
+                src={imgSrc}
+                alt={`Imagen ${i + 1}`}
+                className="w-full h-72 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
+          );
+        })}
       </div>
 
-      {/* Modal para ver imagen en grande 
+      {/* Modal para ver imagen en grande */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
@@ -246,7 +235,6 @@ export default function Historia() {
           />
         </div>
       )}
-        */}
 
       <div>
         {/* Texto invitación a colaborar */}

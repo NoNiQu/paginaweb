@@ -60,7 +60,7 @@ export default function VirgenDeLaEsperanza() {
         {/* Imagen */}
         <div className="relative">
           <img
-            src="portada.jpg"
+            src="/images/ve/portada.webp"
             alt="Virgen de la Esperanza"
             className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover rounded-2xl shadow-xl"
             loading="eager"
@@ -126,24 +126,24 @@ export default function VirgenDeLaEsperanza() {
       </div>
 
       {/* Galería de imágenes */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[1, 2, 3, 4].map((i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => setSelectedImage("portada.jpg")}
-          >
-            <img
-              src="portada.jpg"
-              alt={`Imagen ${i}`}
-              className="w-full h-72 object-cover rounded-2xl shadow-md"
-              loading="lazy"
-            />
-            <p className="mt-3 text-sm text-gray-900 text-center">
-              Imagen {i} - descripción breve
-            </p>
-          </div>
-        ))}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {["trono_1", "trono_2", "trono_3", "trono_4"].map((name, i) => {
+          const imgSrc = `/images/ve/${name}.webp`;
+          return (
+            <div
+              key={name}
+              className="flex flex-col items-center cursor-pointer"
+              onClick={() => setSelectedImage(imgSrc)}
+            >
+              <img
+                src={imgSrc}
+                alt={`Imagen ${i + 1}`}
+                className="w-full h-72 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
+          );
+        })}
       </div>
 
       <div className="font-body text-gray-900 space-y-4 my-12">

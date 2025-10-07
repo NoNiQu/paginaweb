@@ -32,9 +32,9 @@ export default function Sedecanonica() {
         {/* Imagen -> derecha en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-2 w-full">
           <img
-            src="portada.jpg"
+            src="/images/sedecanonica/P1.webp"
             alt="Iglesia de San Cipriano"
-            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[525px] object-cover rounded-2xl shadow-xl mx-auto"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[675px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -78,9 +78,9 @@ export default function Sedecanonica() {
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-1 w-full">
           <img
-            src="portada.jpg"
+            src="/images/sedecanonica/P2.webp"
             alt="Capilla Mayor"
-            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl mx-auto"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[675px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -127,9 +127,9 @@ export default function Sedecanonica() {
         {/* Imagen -> derecha en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-2 w-full">
           <img
-            src="portada.jpg"
+            src="/images/sedecanonica/P3.webp"
             alt="Torre Mudéjar de San Cipriano"
-            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[500px] object-cover rounded-2xl shadow-xl mx-auto"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[675px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -250,25 +250,26 @@ export default function Sedecanonica() {
         </p>
       </div>
 
-      {/* Galería de imágenes simples */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div
-            key={i}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => setSelectedImage("portada.jpg")}
-          >
-            <img
-              src="portada.jpg"
-              alt={`Imagen ${i}`}
-              className="w-full h-100 object-cover rounded-2xl shadow-md"
-              loading="lazy"
-            />
-            <p className="mt-3 text-sm text-gray-900 text-center">
-              Imagen {i} - descripción breve
-            </p>
-          </div>
-        ))}
+      <div className="flex justify-center mt-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
+          {[1, 2, 3].map((i) => {
+            const imgSrc = `/images/sedecanonica/${i}.webp`;
+            return (
+              <div
+                key={i}
+                className="flex flex-col items-center cursor-pointer"
+                onClick={() => setSelectedImage(imgSrc)}
+              >
+                <img
+                  src={imgSrc}
+                  alt={`Imagen ${i}`}
+                  className="w-full h-80 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Modal para ver imagen en grande */}
