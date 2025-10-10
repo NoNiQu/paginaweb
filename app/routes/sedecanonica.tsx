@@ -276,6 +276,17 @@ export default function Sedecanonica() {
           vida espiritual de la cofradía, especialmente durante la festividad de
           la Virgen de la Esperanza, celebrada el 18 de diciembre.
         </p>
+
+        {/* Imagen panorámica final */}
+        <div className="w-full my-8">
+          <img
+            src="/images/sedecanonica/fotocamarin.webp"
+            alt="Camarín de la Virgen"
+            className="w-full h-auto max-h-[400px] object-cover rounded-2xl shadow-lg"
+            loading="lazy"
+          />
+        </div>
+
         <p className="text-sm sm:text-base leading-relaxed">
           Este espacio permite a los fieles reunirse, reforzar la fe y mantener
           viva la tradición, conectando generaciones y preservando el legado de
@@ -288,16 +299,6 @@ export default function Sedecanonica() {
           La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
           dedicación en la redacción y cuidado de los textos.
         </p>
-      </div>
-
-      {/* Imagen panorámica final */}
-      <div className="w-full mb-16">
-        <img
-          src="/images/sedecanonica/fotocamarin.webp"
-          alt="Camarín de la Virgen"
-          className="w-full h-auto max-h-[350px] object-cover rounded-2xl shadow-lg"
-          loading="lazy"
-        />
       </div>
 
       {/* Galería de imágenes */}
