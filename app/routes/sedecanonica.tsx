@@ -21,7 +21,6 @@ export default function Sedecanonica() {
     <SectionContainer className="relative overflow-hidden">
       {/* Título principal */}
       <SectionHeader>Sede Canónica</SectionHeader>
-
       {/* Bloque 1: img derecha en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16 mt-6">
         {/* Título (solo móvil, centrado) */}
@@ -56,7 +55,7 @@ export default function Sedecanonica() {
           <p className="text-sm sm:text-base leading-relaxed">
             La Iglesia de San Cipriano se remonta al siglo XII, siendo uno de
             los templos más antiguos de Toledo. En el año 1125 ya se cita como
-            parroquia latina y a comienzos del siglo XVII, Don Carlos Venero y
+            parroquia latina y, a comienzos del siglo XVII, Don Carlos Venero y
             Leyva, canónigo de la ciudad, promovió la reconstrucción del templo,
             siendo la torre lo único que se conserva de la primera época, tras
             atribuir su recuperación de una grave enfermedad a la Virgen de la
@@ -67,7 +66,6 @@ export default function Sedecanonica() {
           </p>
         </div>
       </div>
-
       {/* Bloque 2: img izquierda en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16">
         {/* Título (solo móvil, centrado) */}
@@ -116,7 +114,6 @@ export default function Sedecanonica() {
           </p>
         </div>
       </div>
-
       {/* Bloque 3: img derecha en desktop */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16">
         {/* Título (solo móvil, centrado) */}
@@ -163,19 +160,19 @@ export default function Sedecanonica() {
           </p>
         </div>
       </div>
+      {/* Bloque 2: img izquierda en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-16">
+        {/* Título (solo móvil, centrado) */}
+        <h2 className="text-xl sm:text-2xl font-semibold md:hidden text-center">
+          Capilla Mayor
+        </h2>
 
-      <SectionHeader>
-        Hermandad del Santísimo Cristo de la Esperanza
-      </SectionHeader>
-
-      {/* Bloque 4: img izquierda en desktop */}
-      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-12">
         {/* Imagen -> izquierda en desktop (centrada en móvil) */}
         <div className="relative order-2 md:order-1 w-full">
           <img
-            src="/images/cristodelaesperanza.jpg"
-            alt="Santísimo Cristo de la Esperanza"
-            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[570px] object-cover rounded-2xl shadow-xl mx-auto"
+            src="/images/sedecanonica/P4.webp"
+            alt="Fresco de la Asunción de la Virgen"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[675px] object-cover rounded-2xl shadow-xl mx-auto"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
@@ -183,6 +180,50 @@ export default function Sedecanonica() {
 
         {/* Texto -> derecha en desktop */}
         <div className="space-y-6 font-body text-gray-900 order-3 md:order-2 w-full">
+          <h2 className="text-xl sm:text-2xl font-semibold hidden md:block">
+            Fresco de la Asunción de la Virgen
+          </h2>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Mirando hacia arriba, vemos como se despliega un majestuoso fresco
+            que representa la Coronación de la Virgen María, una escena de
+            profunda carga espiritual y belleza artística. La composición se
+            abre en un cielo luminoso donde Dios Padre y Dios Hijo, rodeados de
+            resplandores dorados, coronan a la Virgen mientras la paloma del
+            Espíritu Santo desciende sobre ella como símbolo de gracia divina.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            La Virgen, envuelta en un manto azul que destaca sobre las nubes
+            blancas, eleva sus brazos en actitud de entrega y glorificación,
+            rodeada por coros celestiales de ángeles y querubines que portan
+            flores y coronas. El equilibrio de las figuras, la suavidad de las
+            tonalidades y la riqueza de los detalles crean una atmósfera de
+            armonía y trascendencia.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed">
+            Este fresco no es solo una obra decorativa: es una profesión visual
+            de fe, que invita al recogimiento, a la contemplación y a renovar la
+            devoción mariana bajo la mirada de la Reina del Cielo.
+          </p>
+        </div>
+      </div>
+      <SectionHeader>
+        Hermandad del Santísimo Cristo de la Esperanza
+      </SectionHeader>
+      {/* Bloque 4: img derecha en desktop */}
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-10 items-center md:items-start mb-12">
+        {/* Imagen -> derecha en desktop (centrada en móvil) */}
+        <div className="relative order-2 md:order-2 w-full">
+          <img
+            src="/images/cristodelaesperanza.jpg"
+            alt="Santísimo Cristo de la Esperanza"
+            className="w-full md:w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[575px] object-cover rounded-2xl shadow-xl mx-auto"
+            loading="eager"
+          />
+          <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
+        </div>
+
+        {/* Texto -> izquierda en desktop */}
+        <div className="space-y-6 font-body text-gray-900 order-3 md:order-1 w-full">
           <p className="text-sm sm:text-base leading-relaxed">
             Esta cofradía también comparte sede canónica con la Hermandad del
             Santísimo Cristo de la Esperanza.
@@ -208,7 +249,7 @@ export default function Sedecanonica() {
             veneración de los fieles.
           </p>
 
-          {/* Botones*/}
+          {/* Botón */}
           <div className="flex justify-center mt-6">
             <Card
               as="a"
@@ -241,7 +282,6 @@ export default function Sedecanonica() {
           devoción a la Virgen de la Esperanza en Toledo.
         </p>
       </div>
-
       {/* Agradecimiento */}
       <div className="font-body text-gray-900 space-y-4 mb-12">
         <p className="text-sm sm:text-base leading-relaxed text-center italic">
@@ -250,11 +290,21 @@ export default function Sedecanonica() {
         </p>
       </div>
 
+      {/* Imagen panorámica final */}
+      <div className="w-full mb-16">
+        <img
+          src="/images/sedecanonica/fotocamarin.webp"
+          alt="Camarín de la Virgen"
+          className="w-full h-auto max-h-[350px] object-cover rounded-2xl shadow-lg"
+          loading="lazy"
+        />
+      </div>
+
       {/* Galería de imágenes */}
       {/* Galería 1 (a, b) */}
       <div className="w-full mt-12 mb-12 flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full px-4">
-          {["a", "b", "c"].map((name, i) => {
+          {["a", "P4", "c"].map((name, i) => {
             const imgSrc = `/images/sedecanonica/${name}.webp`;
             return (
               <div
@@ -273,7 +323,6 @@ export default function Sedecanonica() {
           })}
         </div>
       </div>
-
       {/* Galería 2 (1, 2, 3) */}
       <div className="w-full mt-12 mb-12 flex justify-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full px-4">
@@ -296,7 +345,6 @@ export default function Sedecanonica() {
           })}
         </div>
       </div>
-
       {/* Modal para ver imagen en grande */}
       {selectedImage && (
         <div

@@ -62,6 +62,9 @@ export default function Cultos() {
   const octava = octavaTuesday(year); // Martes de la semana del Corpus
   const { start: novenaInicio, end: novenaFin } = novenaRange(year); // Novena
 
+  // Dentro del componente...
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <SectionContainer>
       <SectionHeader>Cultos</SectionHeader>
@@ -216,10 +219,31 @@ export default function Cultos() {
               incorporarnos con orden.
             </p>
             <p className="opacity-95">
-              Existen normas de vestimenta para los cofrades participantes.
+              Existen{" "}
+              <span
+                onClick={() => setSelectedImage("/images/portadores.webp")}
+                className="underline underline-offset-4 cursor-pointer hover:text-emerald-300 transition-colors"
+              >
+                normas de vestimenta
+              </span>{" "}
+              para los cofrades participantes.
             </p>
           </div>
         </Card>
+
+        {/* Modal para ver la imagen de las normas */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
+            onClick={() => setSelectedImage(null)}
+          >
+            <img
+              src={selectedImage}
+              alt="Normas de vestimenta"
+              className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
+            />
+          </div>
+        )}
 
         {/* Día de Patrocinio (largo) */}
         <Card

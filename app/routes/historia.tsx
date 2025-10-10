@@ -37,12 +37,12 @@ export default function Historia() {
           </p>
 
           <p className="text-sm sm:text-base leading-relaxed">
-            A lo largo de los siglos XVI y XVII se multiplicaron los relatos de
-            favores y milagros atribuidos a la Virgen: un albañil que salió
-            ileso tras caer de gran altura en 1616, una niña de Ajofrín
-            rescatada de un pozo en 1622, o la misteriosa iluminación espontánea
-            de una lámpara en San Cipriano en 1613. Estos hechos reforzaron su
-            fama de protectora y afianzaron su culto entre los toledanos.
+            A lo largo de los siglos se multiplicaron los relatos de favores y
+            milagros atribuidos a la Virgen: un albañil que salió ileso tras
+            caer de gran altura en 1616, una niña de Ajofrín rescatada de un
+            pozo en 1622, o la misteriosa iluminación espontánea de una lámpara
+            en San Cipriano en 1613. Estos hechos reforzaron su fama de
+            protectora y afianzaron su culto entre los toledanos.
           </p>
 
           <p className="text-sm sm:text-base leading-relaxed">
@@ -52,35 +52,41 @@ export default function Historia() {
             documental aparece en 1676 en los libros de la Cofradía,
             consolidando así su nuevo título y rivalizando en devoción con otras
             advocaciones marianas de Toledo, como las de San Justo y Pastor, San
-            Vicente o San Lucas. Desde entonces, la Virgen de la Esperanza fue
+            Vicente o San Lucas. Esta advocación, profundamente arraigada en la
+            tradición hispánica, honra a la Virgen María en el tiempo de la{" "}
+            <em>expectación del parto</em>, cuando espera con fe y serenidad el
+            nacimiento de su Hijo. Desde entonces, la Virgen de la Esperanza fue
             signo de confianza, consuelo y fe para los toledanos, recibiendo
             cariñosamente el nombre de la “Morenita de San Cebrián”.
           </p>
-          <p className="text-sm sm:text-base leading-relaxed">
-            La Cofradía quedó formalmente constituida en el siglo XVII, formada
-            por clérigos, artesanos y vecinos del barrio. Desde sus orígenes
-            organizó novenas, misas solemnes y la Procesión del Voto, además de
-            cultos en la fiesta de la Expectación de María (18 de diciembre) y
-            en Pentecostés. A pesar de las guerras y desamortizaciones, la
-            hermandad supo mantener viva la devoción y custodiar la iglesia de
-            San Cipriano como faro espiritual del barrio.
-          </p>
         </div>
+
         {/* Imagen */}
         <div className="relative">
           <img
             src="/images/historia/portada.webp"
             alt="Virgen de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[825px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[700px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
       </div>
+
+      <p className="font-body text-gray-900 text-sm sm:text-base leading-relaxed mt-8">
+        La Cofradía quedó formalmente constituida en el siglo XVII, formada por
+        clérigos, artesanos y vecinos del barrio. Desde sus orígenes organizó
+        novenas, misas solemnes y la Procesión del Voto, además de cultos en la
+        fiesta de la Expectación de María (18 de diciembre) y en Pentecostés. A
+        pesar de las guerras y desamortizaciones, la hermandad supo mantener
+        viva la devoción y custodiar la iglesia de San Cipriano como faro
+        espiritual del barrio.
+      </p>
+
       <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4 mb-8">
         <div className="mt-6 font-body text-gray-900 space-y-6">
           {/* Galería centrada */}
-          <div className="flex justify-center mt-12 mb-12">
+          <div className="flex justify-center my-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
               {[1, 2, 3].map((i) => {
                 const imgSrc = `/images/historia/${i}.webp`;
@@ -129,12 +135,14 @@ export default function Historia() {
               alcalde entregó la corona al cardenal Pla y Deniel, quien la
               impuso sobre la pequeña imagen en medio del júbilo popular:
               pañuelos ondeando, salvas de artillería, vuelo de palomas y lluvia
-              de flores. En ese instante se produjo un fenómeno que muchos
-              interpretaron como un milagro: un halo luminoso, circular y
-              anaranjado, envolvió el sol. Según un cronista de la época, fue
-              una coronación triple: la corona de metales preciosos sobre su
-              cabeza, la corona de oraciones de los fieles y la corona que se
-              dibujó en el cielo.
+              de flores. La corona, elaborada en oro y pedrería procedente de
+              Roma, simbolizaba la gratitud y devoción de todo el pueblo
+              toledano hacia su patrona. En ese instante se produjo un fenómeno
+              que muchos interpretaron como un milagro: un halo luminoso,
+              circular y anaranjado, envolvió el sol. Según un cronista de la
+              época, fue una coronación triple: la corona de metales preciosos
+              sobre su cabeza, la corona de oraciones de los fieles y la corona
+              que se dibujó en el cielo.
             </p>
 
             <p className="text-sm sm:text-base leading-relaxed">

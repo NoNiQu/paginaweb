@@ -133,7 +133,7 @@ export default function SerPortador() {
         {/* Qué implica */}
         <div className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-semibold">
-            Qué implica ser Portador/a
+            Qué implica ser portador/a
           </h2>
           <ul className="pl-0 space-y-1 text-base list-none">
             <li>
@@ -143,7 +143,7 @@ export default function SerPortador() {
                 to="/estatutos"
                 className="font-medium underline underline-offset-4 hover:text-emerald-600"
               >
-                reglamentos de los Portadores
+                reglamentos de los portadores
               </Link>{" "}
               de la Virgen de la Esperanza de Toledo.
             </li>
@@ -196,7 +196,7 @@ export default function SerPortador() {
             </li>
             <li>
               <span className="text-[14px] mr-2 text-emerald-700">●</span>
-              Un miembro de la plantilla de Portadores deberá{" "}
+              Un miembro de la plantilla de portadores deberá{" "}
               <span className="font-medium">apadrinar o amadrinar</span> tu
               solicitud.
             </li>

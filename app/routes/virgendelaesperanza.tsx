@@ -29,26 +29,24 @@ export default function VirgenDeLaEsperanza() {
           <p className="text-sm sm:text-base leading-relaxed">
             La imagen de la Virgen de la Esperanza es una pequeña talla románica
             (siglo XI) de una Virgen entronizada con el Niño en el regazo, de
-            apenas 50 cm. de alto. A finales del siglo XVI o principios del XVII
+            apenas 50 cm de alto. A finales del siglo XVI o principios del XVII
             fue transformada en imagen vestidera, desplazando al Niño a su
-            costado izquierdo para que fuese visible sobre el ropaje. La talla
-            ha sido restaurada en 2007 en el Centro de Restauración de
-            Castilla-La Mancha, recuperando su apariencia original. Actualmente
-            se la puede venerar medio año sin mantos (Noviembre a Abril) y medio
-            año con sus mantos (Mayo a Octubre). Su policromía medieval, de
-            tonos oscuros y serenos, refuerza su apodo popular de “la Morenita
-            de San Cipriano”. Cada detalle de la talla recuerda el vínculo
-            ininterrumpido de Toledo con esta antiquísima devoción.
+            costado izquierdo para que fuese visible sobre el ropaje.
+            Actualmente se la puede venerar medio año sin mantos (Noviembre a
+            Abril) y medio año con sus mantos (Mayo a Octubre). Su policromía
+            medieval, de tonos oscuros y serenos, refuerza su apodo popular de
+            “La Morenita de San Cipriano”. Cada detalle de la talla recuerda el
+            vínculo ininterrumpido de Toledo con esta antiquísima devoción.
           </p>
 
           <p className="text-sm sm:text-base leading-relaxed">
-            Hasta el siglo XVII esa talla románica que se venera en la Iglesia
+            Hasta el siglo XVII esa talla románica que se venera en la Iglesia,
             por aquel entonces de San Cebrián, se la denomina “Nuestra señora
             del Destierro”. Ya en 1676 aparece en su libro de cofradías con el
             título de “Virgen de la Esperanza”, compitiendo en su devoción con
             otras tres que había entonces en la ciudad: la de San Justo y
             Pastor, la de San Vicente y, la más prestigiosa de todas, la de San
-            Lucas, famosa por el “Milagro de la Salve”, donde eran cófrades la
+            Lucas, famosa por el “Milagro de la Salve”, donde eran cofrades la
             mayoría de los artistas toledanos y muchos personajes ilustres. La
             tradición recuerda que como Virgen del Destierro fue invocada en
             tiempos de peste, siendo considerada protectora de Toledo al
@@ -56,26 +54,27 @@ export default function VirgenDeLaEsperanza() {
             Esperanza, se consolidó como uno de los grandes referentes marianos
             de la urbe.
           </p>
+
+          <p className="text-sm sm:text-base font-body leading-relaxed mb-8">
+            En 2007, la talla fue restaurada en el Centro de Restauración de
+            Castilla-La Mancha, recuperando su policromía románica original.
+            Desde entonces, se mantiene la tradición de mostrarla medio año en
+            su sencillez medieval y medio año revestida con mantos y joyas,
+            recordando así la riqueza de una devoción que es a la vez humilde y
+            gloriosa.
+          </p>
         </div>
         {/* Imagen */}
         <div className="relative">
           <img
             src="/images/ve/portada.webp"
             alt="Virgen de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[800px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />
         </div>
       </div>
-
-      <p className="text-sm sm:text-base font-body leading-relaxed mb-8">
-        En 2007, la talla fue restaurada en el Centro de Restauración de
-        Castilla-La Mancha, recuperando su policromía románica original. Desde
-        entonces, se mantiene la tradición de mostrarla medio año en su
-        sencillez medieval y medio año revestida con mantos y joyas, recordando
-        así la riqueza de una devoción que es a la vez humilde y gloriosa.
-      </p>
 
       {/* Sección del Trono */}
       <div className="font-body text-gray-900 space-y-4 mb-12 mt-12">
@@ -105,7 +104,7 @@ export default function VirgenDeLaEsperanza() {
           Hoy, aunque aquel trono ya no existe, la Virgen de la Esperanza sigue
           recibiendo culto en un <strong>trono actual</strong>, heredero
           espiritual de aquel primero. Este trono moderno, realizado con
-          materiales más acordes a nuestro tiempo pero con el mismo sentido de
+          materiales más acordes a nuestro tiempo, pero con el mismo sentido de
           dignidad, acompaña a la imagen en sus cultos solemnes y procesiones.
           Es fruto del esfuerzo constante de la Cofradía y de las aportaciones
           de muchos hermanos que, generación tras generación, han querido
