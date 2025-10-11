@@ -1,5 +1,6 @@
 // src/pages/cultos.tsx
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
@@ -221,7 +222,7 @@ export default function Cultos() {
             <p className="opacity-95">
               Existen{" "}
               <span
-                onClick={() => setSelectedImage("/images/portadores.webp")}
+                onClick={() => setSelectedImage("normas")}
                 className="underline underline-offset-4 cursor-pointer hover:text-emerald-300 transition-colors"
               >
                 normas de vestimenta
@@ -231,17 +232,68 @@ export default function Cultos() {
           </div>
         </Card>
 
-        {/* Modal para ver la imagen de las normas */}
-        {selectedImage && (
+        {/* Modal de normas */}
+        {selectedImage === "normas" && (
           <div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
-            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="normas-title"
           >
-            <img
-              src={selectedImage}
-              alt="Normas de vestimenta"
-              className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
-            />
+            <div className="bg-white rounded-2xl w-full sm:max-w-xl md:max-w-2xl p-6 md:p-8 relative text-gray-800 shadow-2xl">
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl hover:cursor-pointer"
+                aria-label="Cerrar"
+              >
+                ✕
+              </button>
+
+              <h3
+                id="normas-title"
+                className="text-2xl md:text-3xl font-semibold mb-4 text-emerald-700 text-center"
+              >
+                Normas de Vestimenta
+              </h3>
+
+              <ul className="space-y-4 text-[15px] md:text-base leading-relaxed">
+                <li>
+                  <span className="text-emerald-700 mr-2">●</span>
+                  Los <strong>portadores</strong> que participen como tal,
+                  deberán asistir conforme a las normas establecidas en los{" "}
+                  <Link
+                    to="/estatutos"
+                    className="font-medium underline underline-offset-4 hover:text-emerald-600"
+                  >
+                    reglamentos de los portadores
+                  </Link>{" "}
+                  de la Virgen de la Esperanza.
+                </li>
+
+                <li>
+                  <span className="text-emerald-700 mr-2">●</span>
+                  Los <strong>hombres</strong> deberán vestir traje sobrio,
+                  camisa, corbata y zapatos formales.
+                </li>
+
+                <li>
+                  <span className="text-emerald-700 mr-2">●</span>
+                  Las <strong>mujeres</strong> que acudan con mantilla deberán
+                  seguir el protocolo de la procesión del Corpus. Puedes
+                  descargar las normas completas aquí:
+                  <br />
+                  <div className="flex justify-center mt-7">
+                    <a
+                      href="/descargas/ProtocoloCorpus_ChicasySeñoras.pdf"
+                      download
+                      className="px-4 py-2 text-sm md:text-[15px] font-medium text-white bg-emerald-700 rounded-lg hover:bg-emerald-800 transition"
+                    >
+                      Descargar normas de protocolo
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         )}
 
