@@ -1,9 +1,9 @@
-import type { ReactElement } from "react";
-import { SectionContainer } from "app/components/shared/SectionContainer";
+import type { ReactNode } from "react";
+import { SectionContainer } from "../shared/SectionContainer"; // ruta coherente con el resto
 
 type LegalPageProps = {
   title: string;
-  children: ReactElement | ReactElement[] | string;
+  children: ReactNode;
 };
 
 export function LegalPage({ title, children }: LegalPageProps) {
@@ -14,13 +14,18 @@ export function LegalPage({ title, children }: LegalPageProps) {
       </h1>
 
       <article
-        className="prose prose-slate prose-headings:font-display prose-headings:font-semibold prose-p:leading-relaxed md:prose-lg max-w-none
+        className="prose prose-slate md:prose-lg max-w-none
                    text-gray-900 font-body
+                   prose-headings:font-display prose-headings:font-semibold
+                   prose-p:leading-relaxed
                    [&_a]:text-emerald-800 [&_a:hover]:text-emerald-900 [&_a]:underline
                    space-y-4"
       >
         {children}
       </article>
+
+      {/* espacio extra móvil para consistencia con el resto del sitio */}
+      <div className="mb-12 md:mb-0" />
     </SectionContainer>
   );
 }

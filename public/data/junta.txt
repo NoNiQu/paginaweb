@@ -1,0 +1,10 @@
+Presidente | Manuel | Pulido Velasco
+Vicepresidente | Andrés | Torres Rafael de la Cruz
+Secretaria | Irene | Alarcón Alguacil
+Administrador | Francisco Javier | Moreno de Santiago
+Consiliario | José Ángel | Jiménez Frutos
+Mayordoma de Ceremonias | Esperanza | Alarza Campo
+Mayordomo de Alhajas | Luis | Sánchez Mora
+Mayordomo de Fiestas | Marcos | Alarcón Alguacil
+Capataz | Ángel | Sánchez de la Poza García
+Camarera titular | Isabel | Gutiérrez Morales

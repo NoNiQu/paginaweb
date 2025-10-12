@@ -1,30 +1,20 @@
-import { useState, useEffect } from "react";
+// src/pages/historia.tsx
 import { Link } from "react-router-dom";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
+import { Paragraph } from "../components/shared/Paragraph";
+import { FinalNote } from "../components/shared/FinalNote";
+import { ImageGallery } from "../components/shared/ImageGallery";
 
 export default function Historia() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  // Bloquea el scroll del body cuando el modal está abierto
-  useEffect(() => {
-    if (selectedImage) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    // Limpieza por si el componente se desmonta con el modal abierto
-    return () => document.body.classList.remove("overflow-hidden");
-  }, [selectedImage]);
   return (
     <SectionContainer>
-      {/* Título */}
       <SectionHeader>Historia</SectionHeader>
-      {/* Texto adicional */}
+
       <div className="grid md:grid-cols-2 gap-10 items-start mb-6 mt-6">
-        {/* Texto */}
-        <div className="space-y-6 font-body text-gray-900">
-          <p className="text-sm sm:text-base leading-relaxed">
+        {/* Texto (idéntico) */}
+        <div className="space-y-6">
+          <Paragraph>
             La devoción a la Virgen de la Esperanza en Toledo hunde sus raíces
             en la Edad Media. Según la tradición, en torno al año 1200, la
             ciudad sufría una terrible peste que cesó milagrosamente al ser
@@ -34,18 +24,18 @@ export default function Historia() {
             Toledo sigue renovando cada año con la histórica
             <strong> Procesión del Voto</strong>, una de las más antiguas que se
             conservan en la ciudad.
-          </p>
+          </Paragraph>
 
-          <p className="text-sm sm:text-base leading-relaxed">
+          <Paragraph>
             A lo largo de los siglos se multiplicaron los relatos de favores y
             milagros atribuidos a la Virgen: un albañil que salió ileso tras
             caer de gran altura en 1616, una niña de Ajofrín rescatada de un
             pozo en 1622, o la misteriosa iluminación espontánea de una lámpara
             en San Cipriano en 1613. Estos hechos reforzaron su fama de
             protectora y afianzaron su culto entre los toledanos.
-          </p>
+          </Paragraph>
 
-          <p className="text-sm sm:text-base leading-relaxed">
+          <Paragraph>
             En ese mismo tiempo, la advocación de “Destierro” fue dando paso a
             la de
             <strong> Virgen de la Esperanza</strong>. La primera referencia
@@ -58,10 +48,10 @@ export default function Historia() {
             nacimiento de su Hijo. Desde entonces, la Virgen de la Esperanza fue
             signo de confianza, consuelo y fe para los toledanos, recibiendo
             cariñosamente el nombre de la “Morenita de San Cebrián”.
-          </p>
+          </Paragraph>
         </div>
 
-        {/* Imagen */}
+        {/* Imagen (igual) */}
         <div className="relative">
           <img
             src="/images/historia/portada.webp"
@@ -73,7 +63,7 @@ export default function Historia() {
         </div>
       </div>
 
-      <p className="font-body text-gray-900 text-sm sm:text-base leading-relaxed mt-8">
+      <Paragraph className="mt-8">
         La Cofradía quedó formalmente constituida en el siglo XVII, formada por
         clérigos, artesanos y vecinos del barrio. Desde sus orígenes organizó
         novenas, misas solemnes y la Procesión del Voto, además de cultos en la
@@ -81,192 +71,114 @@ export default function Historia() {
         pesar de las guerras y desamortizaciones, la hermandad supo mantener
         viva la devoción y custodiar la iglesia de San Cipriano como faro
         espiritual del barrio.
-      </p>
+      </Paragraph>
 
-      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4 mb-8">
-        <div className="mt-6 font-body text-gray-900 space-y-6">
-          {/* Galería centrada */}
-          <div className="flex justify-center my-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
-              {[1, 2, 3].map((i) => {
-                const imgSrc = `/images/historia/${i}.webp`;
-                return (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center cursor-pointer"
-                    onClick={() => setSelectedImage(imgSrc)}
-                  >
-                    <img
-                      src={imgSrc}
-                      alt={`Imagen ${i}`}
-                      className="w-full h-80 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+      {/* Galería 1: mismas 3 imágenes */}
+      <ImageGallery
+        images={[
+          { src: "/images/historia/1.webp", alt: "Imagen 1" },
+          { src: "/images/historia/2.webp", alt: "Imagen 2" },
+          { src: "/images/historia/3.webp", alt: "Imagen 3" },
+        ]}
+        maxWidth="max-w-6xl"
+        /* altura media */
+        thumbClassName="h-[15rem] md:h-[20rem] lg:h-[25rem]"
+      />
 
-          <SectionHeader>Coronación Canónica</SectionHeader>
+      {/* Subtítulo de sección (coherente con el resto del sitio) */}
+      <SectionHeader>Coronación Canónica</SectionHeader>
 
-          <div className="font-body text-gray-900 space-y-6 mt-6 mb-8">
-            <p className="text-sm sm:text-base leading-relaxed">
-              La Virgen de la Esperanza tuvo el privilegio de ser coronada
-              canónicamente en una solemne ceremonia celebrada en la Plaza de
-              Zocodover el
-              <strong> 8 de junio de 1952</strong>. La Santa Sede autorizó la
-              petición del cardenal Pla y Deniel mediante decreto de la Basílica
-              Vaticana firmado por el cardenal Tedeschini, organizándose un
-              programa de cultos y novena entre los días 2 y 11 de junio.
-            </p>
+      <div className="space-y-6 mt-6 mb-8">
+        <Paragraph>
+          La Virgen de la Esperanza tuvo el privilegio de ser coronada
+          canónicamente en una solemne ceremonia celebrada en la Plaza de
+          Zocodover el
+          <strong> 8 de junio de 1952</strong>. La Santa Sede autorizó la
+          petición del cardenal Pla y Deniel mediante decreto de la Basílica
+          Vaticana firmado por el cardenal Tedeschini, organizándose un programa
+          de cultos y novena entre los días 2 y 11 de junio.
+        </Paragraph>
 
-            <p className="text-sm sm:text-base leading-relaxed">
-              El día 3 la Virgen fue llevada en procesión a la iglesia de San
-              Ildefonso, donde se celebraron solemnes misas y actos religiosos.
-              El día 7 fue trasladada a la Catedral, y al día siguiente presidió
-              una Misa de Pontifical antes de ser conducida en procesión hasta
-              la plaza de Zocodover, donde aguardaban más de{" "}
-              <strong>diez mil fieles</strong>.
-            </p>
-
-            <p className="text-sm sm:text-base leading-relaxed">
-              Una gran tribuna bajo el Arco de la Sangre acogió la ceremonia. El
-              alcalde entregó la corona al cardenal Pla y Deniel, quien la
-              impuso sobre la pequeña imagen en medio del júbilo popular:
-              pañuelos ondeando, salvas de artillería, vuelo de palomas y lluvia
-              de flores. La corona, elaborada en oro y pedrería procedente de
-              Roma, simbolizaba la gratitud y devoción de todo el pueblo
-              toledano hacia su patrona. En ese instante se produjo un fenómeno
-              que muchos interpretaron como un milagro: un halo luminoso,
-              circular y anaranjado, envolvió el sol. Según un cronista de la
-              época, fue una coronación triple: la corona de metales preciosos
-              sobre su cabeza, la corona de oraciones de los fieles y la corona
-              que se dibujó en el cielo.
-            </p>
-
-            <p className="text-sm sm:text-base leading-relaxed">
-              La Presidencia del Gobierno concedió a la Virgen los máximos
-              honores militares, asistiendo el Ayuntamiento en pleno y numerosas
-              delegaciones de pueblos de la comarca. Destacó la presencia de
-              sesenta mujeres de Bargas, vestidas con su traje regional, que
-              añadieron una nota de tipismo y alegría al acto.
-            </p>
-
-            <p className="text-sm sm:text-base leading-relaxed">
-              Finalizada la ceremonia, la Virgen fue devuelta a su parroquia de
-              San Cipriano, donde se celebró la novena y una misa cantada el día
-              11. Una placa cerámica junto al retablo mayor recuerda hasta hoy
-              aquel día memorable, cuando Toledo proclamó a su Esperanza como
-              Reina y Madre en presencia de toda la ciudad.
-            </p>
-          </div>
-
-          {/* Galería de imágenes 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setSelectedImage("portada.jpg")}
-              >
-                <img
-                  src="portada.jpg"
-                  alt={`Imagen ${i}`}
-                  className="w-full h-72 object-cover rounded-2xl shadow-md"
-                  loading="lazy"
-                />
-                <p className="mt-3 text-sm text-gray-900 text-center">
-                  Imagen {i} - descripción breve
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Modal para ver imagen en grande 
-          {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
-              onClick={() => setSelectedImage(null)}
-            >
-              <img
-                src={selectedImage}
-                alt="Imagen ampliada"
-                className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
-              />
-            </div>
-          )}
-
-          */}
-
-          <p className="text-sm sm:text-base leading-relaxed">
-            Hoy, la Cofradía de la Virgen de la Esperanza continúa viva y
-            activa, organizando cultos, procesiones y obras de caridad. Con la
-            <strong> Procesión del Voto</strong> y otras celebraciones, Toledo
-            sigue renovando su confianza en la Virgen, que permanece como faro
-            de fe y esperanza para generaciones pasadas, presentes y futuras.
-          </p>
-        </div>
-      </div>
-
-      {/* Galería de imágenes */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-        {["a1", "a2", "a3", "a4"].map((name, i) => {
-          const imgSrc = `/images/historia/${name}.webp`;
-          return (
-            <div
-              key={name}
-              className="flex flex-col items-center cursor-pointer"
-              onClick={() => setSelectedImage(imgSrc)}
-            >
-              <img
-                src={imgSrc}
-                alt={`Imagen ${i + 1}`}
-                className="w-full h-72 object-cover rounded-2xl shadow-md transition-transform duration-200 hover:scale-[1.02]"
-                loading="lazy"
-              />
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Modal para ver imagen en grande */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-60"
-          onClick={() => setSelectedImage(null)}
-        >
-          <img
-            src={selectedImage}
-            alt="Imagen ampliada"
-            className="max-w-[90%] max-h-[90%] object-contain rounded-2xl shadow-2xl"
-          />
-        </div>
-      )}
-
-      <div>
-        {/* Texto invitación a colaborar */}
-        <p className="text-sm sm:text-base font-body leading-relaxed text-center italic mt-12">
-          Estamos reuniendo con esmero la memoria y la historia de nuestra
-          Cofradía y de la venerada Virgen de la Esperanza. Si guardas algún
-          testimonio, documento, imagen o recuerdo que pueda enriquecer este
-          legado, te invitamos a compartirlo en{" "}
-          <Link
-            to="/contacto"
-            className="font-medium underline underline-offset-4 hover:text-emerald-700"
-          >
-            Contacto
-          </Link>
+        <Paragraph>
+          El día 3 la Virgen fue llevada en procesión a la iglesia de San
+          Ildefonso, donde se celebraron solemnes misas y actos religiosos. El
+          día 7 fue trasladada a la Catedral, y al día siguiente presidió una
+          Misa de Pontifical antes de ser conducida en procesión hasta la plaza
+          de Zocodover, donde aguardaban más de <strong>diez mil fieles</strong>
           .
-        </p>
+        </Paragraph>
+
+        <Paragraph>
+          Una gran tribuna bajo el Arco de la Sangre acogió la ceremonia. El
+          alcalde entregó la corona al cardenal Pla y Deniel, quien la impuso
+          sobre la pequeña imagen en medio del júbilo popular: pañuelos
+          ondeando, salvas de artillería, vuelo de palomas y lluvia de flores.
+          La corona, elaborada en oro y pedrería procedente de Roma, simbolizaba
+          la gratitud y devoción de todo el pueblo toledano hacia su patrona. En
+          ese instante se produjo un fenómeno que muchos interpretaron como un
+          milagro: un halo luminoso, circular y anaranjado, envolvió el sol.
+          Según un cronista de la época, fue una coronación triple: la corona de
+          metales preciosos sobre su cabeza, la corona de oraciones de los
+          fieles y la corona que se dibujó en el cielo.
+        </Paragraph>
+
+        <Paragraph>
+          La Presidencia del Gobierno concedió a la Virgen los máximos honores
+          militares, asistiendo el Ayuntamiento en pleno y numerosas
+          delegaciones de pueblos de la comarca. Destacó la presencia de sesenta
+          mujeres de Bargas, vestidas con su traje regional, que añadieron una
+          nota de tipismo y alegría al acto.
+        </Paragraph>
+
+        <Paragraph>
+          Finalizada la ceremonia, la Virgen fue devuelta a su parroquia de San
+          Cipriano, donde se celebró la novena y una misa cantada el día 11. Una
+          placa cerámica junto al retablo mayor recuerda hasta hoy aquel día
+          memorable, cuando Toledo proclamó a su Esperanza como Reina y Madre en
+          presencia de toda la ciudad.
+        </Paragraph>
+
+        <Paragraph>
+          Hoy, la Cofradía de la Virgen de la Esperanza continúa viva y activa,
+          organizando cultos, procesiones y obras de caridad. Con la
+          <strong> Procesión del Voto</strong> y otras celebraciones, Toledo
+          sigue renovando su confianza en la Virgen, que permanece como faro de
+          fe y esperanza para generaciones pasadas, presentes y futuras.
+        </Paragraph>
       </div>
 
-      <div className="font-body text-gray-900 space-y-4 my-12">
-        <p className="text-sm sm:text-base leading-relaxed text-center italic">
-          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
-          dedicación en la redacción y cuidado de los textos.
-        </p>
-      </div>
+      {/* Galería 2: mismas 4 imágenes */}
+      <ImageGallery
+        images={[
+          { src: "/images/historia/a1.webp", alt: "Imagen 1" },
+          { src: "/images/historia/a2.webp", alt: "Imagen 2" },
+          { src: "/images/historia/a3.webp", alt: "Imagen 3" },
+          { src: "/images/historia/a4.webp", alt: "Imagen 4" },
+        ]}
+      />
+
+      {/* Invitación y agradecimiento (idénticos) */}
+      <FinalNote>
+        Estamos reuniendo con esmero la memoria y la historia de nuestra
+        Cofradía y de la venerada Virgen de la Esperanza. Si guardas algún
+        testimonio, documento, imagen o recuerdo que pueda enriquecer este
+        legado, te invitamos a compartirlo en{" "}
+        <Link
+          to="/contacto"
+          className="font-medium underline underline-offset-4 hover:text-emerald-700"
+        >
+          Contacto
+        </Link>
+        .
+      </FinalNote>
+
+      <FinalNote>
+        La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+        dedicación en la redacción y cuidado de los textos.
+      </FinalNote>
+
+      {/* Espacio extra en móvil al final de la página */}
+      <div className="mb-12 md:mb-0" />
     </SectionContainer>
   );
 }

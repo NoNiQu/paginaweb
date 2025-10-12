@@ -1,9 +1,14 @@
 // src/pages/cultos.tsx
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SectionContainer } from "../components/shared/SectionContainer";
 import { SectionHeader } from "../components/shared/SectionHeader";
 import { Card } from "../components/ui/Card";
+import { Paragraph } from "../components/shared/Paragraph";
+import { FinalNote } from "../components/shared/FinalNote";
+import { Accordion } from "../components/ui/Accordion";
+import { NormasModal } from "../components/ui/NormasModal";
+import { useHashScroll } from "../components/hooks/useHashScroll";
 import {
   CURRENT_YEAR,
   formatLong,
@@ -15,73 +20,36 @@ import {
 } from "../utils/dates";
 import { formatRangeShort } from "../utils/cultos";
 
-// Acordeón simple (sin cambiar textos del contenido)
-function Accordion({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-t border-white/30 pt-2">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center font-medium text-white cursor-pointer"
-      >
-        {title}
-        <span aria-hidden>{open ? "–" : "+"}</span>
-      </button>
-      {open && <div className="mt-2 text-sm text-white/90">{children}</div>}
-    </div>
-  );
-}
-
 export default function Cultos() {
+  useHashScroll(); // scroll suave a #novena, #voto, etc.
+
   const year = CURRENT_YEAR;
 
-  // Scroll suave al ancla (ej. /cultos#voto)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const hash = window.location.hash.replace("#", "");
-    if (!hash) return;
-    setTimeout(() => {
-      document.getElementById(hash)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }, 0);
-  }, []);
-
-  // Fechas automáticas (año actual)
   const diaEsperanza = new Date(year, 11, 18); // 18 de diciembre
   const patrocinio = secondSundayOfNovember(year);
   const corpus = corpusThursday(year); // Jueves de Corpus
   const voto = pentecostTuesday(year); // Martes de Pentecostés
   const octava = octavaTuesday(year); // Martes de la semana del Corpus
-  const { start: novenaInicio, end: novenaFin } = novenaRange(year); // Novena
+  const { start: novenaInicio, end: novenaFin } = novenaRange(year);
 
-  // Dentro del componente...
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showNormas, setShowNormas] = useState(false);
 
   return (
     <SectionContainer>
       <SectionHeader>Cultos</SectionHeader>
 
       {/* Introductorio */}
-      <div className="mt-6 font-body text-base sm:text-lg text-gray-800 space-y-4">
-        <p className="leading-relaxed mb-6">
+      <div className="mt-6 space-y-4 mb-6">
+        <Paragraph>
           Aquí te presentamos los cultos más importantes de la Cofradía de la
           Virgen de la Esperanza, con las fechas aproximadas y una breve
           explicación para que puedas vivirlos y participar con nosotros.
-        </p>
+        </Paragraph>
       </div>
 
-      {/* Solo las cards de la sección "Todos nuestros cultos" */}
+      {/* Cards */}
       <div className="grid gap-6 lg:grid-cols-2 items-start">
-        {/* NOVENA (largo) */}
+        {/* NOVENA */}
         <Card
           id="novena"
           className="lg:col-span-2 flex flex-col gap-4 text-white scroll-mt-24"
@@ -95,13 +63,14 @@ export default function Cultos() {
             </p>
           </div>
 
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+          <div className="space-y-2">
+            <Paragraph color="light">
               Nueve días de oración y celebración en honor a Nuestra señora de
               la Esperanza. La Novena comienza el
               <strong> lunes de la semana anterior al Corpus</strong> y concluye
               el <strong>martes de la semana del Corpus</strong>.
-            </p>
+            </Paragraph>
+
             <Accordion title="Horarios orientativos:">
               <ul className="list-disc pl-5 space-y-1">
                 <li>
@@ -123,18 +92,20 @@ export default function Cultos() {
             <h3 className="text-3xl mb-1">Procesión del Voto</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(voto)}</p>
           </div>
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+
+          <div className="space-y-2">
+            <Paragraph color="light">
               La fecha es siempre el <strong>martes de Pentecostés</strong>.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Renovamos el voto de fidelidad y gratitud a Nuestra señora de la
               Esperanza, recordando el compromiso que en el año 1200 se hizo
               para agradecer a la Virgen la desaparición de la peste tras la
               procesión de rogativas. Siglos después, seguimos recorriendo las
               calles de Toledo con nuestra señora, manteniendo viva la memoria
               de aquel voto y confiando siempre en su amparo y protección.
-            </p>
+            </Paragraph>
+
             <Accordion title="Horarios orientativos:">
               <ul className="list-disc pl-5 space-y-1">
                 <li>08:45 — Salida de la procesión desde San Cipriano.</li>
@@ -147,8 +118,9 @@ export default function Cultos() {
                 </li>
               </ul>
             </Accordion>
+
             <Accordion title="Recorrido resumido:">
-              <p className="opacity-95">
+              <Paragraph color="light" className="!text-sm">
                 Parroquia de San Cipriano, Descalzos, Plaza del Conde, Santo
                 Tomé, Plaza del Salvador, Ciudad, Plaza del Ayuntamiento,
                 Catedral (entrada por Puerta Llana), Arco de Palacio, Hombre de
@@ -157,7 +129,7 @@ export default function Cultos() {
                 Alfonso XII, Rojas, Plaza del Salvador, Santa Úrsula,
                 Corredorcillo de San Bartolomé, calle de la Mano y llegada a la
                 Parroquia de San Cipriano.
-              </p>
+              </Paragraph>
             </Accordion>
           </div>
         </Card>
@@ -171,19 +143,21 @@ export default function Cultos() {
             <h3 className="text-3xl mb-1">Procesión de la Octava</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(octava)}</p>
           </div>
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+
+          <div className="space-y-2">
+            <Paragraph color="light">
               Durante esta procesión, la señora de la Esperanza recorre las
               calles de su barrio, ofreciendo a los fieles una oportunidad de
               participar en los cultos y manifestar su amor y gratitud hacia la
               Madre que nos protege.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               La Procesión de la Octava es un acto de continuidad devocional:
               uniendo tradición, historia y fe, mantiene vivo el vínculo de la
               ciudad y la Cofradía con su Titular, renovando cada año la
               confianza en su amparo maternal.
-            </p>
+            </Paragraph>
+
             <Accordion title="Horarios orientativos:">
               <ul className="list-disc pl-5 space-y-1">
                 <li>19:45 — Salida de la procesión desde San Cipriano.</li>
@@ -192,18 +166,19 @@ export default function Cultos() {
                 </li>
               </ul>
             </Accordion>
+
             <Accordion title="Recorrido resumido:">
-              <p className="opacity-95">
+              <Paragraph color="light" className="!text-sm">
                 Parroquia de San Cipriano, calle de la Mano, Corredorcillo de
                 San Bartolomé, (acto en Santa Isabel), Santa Úrsula, Plaza del
                 Salvador, Santo Tomé, Plaza del Conde, Descalzos y llegada a la
                 Parroquia de San Cipriano.
-              </p>
+              </Paragraph>
             </Accordion>
           </div>
         </Card>
 
-        {/* Corpus (largo) */}
+        {/* CORPUS */}
         <Card
           id="corpus"
           className="lg:col-span-2 flex flex-col gap-4 text-white scroll-mt-24"
@@ -212,92 +187,71 @@ export default function Cultos() {
             <h3 className="text-3xl mb-1">Corpus Christi</h3>
             <p className="text-sm opacity-90 font-body">{formatLong(corpus)}</p>
           </div>
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+
+          <div className="space-y-2">
+            <Paragraph color="light">
               Nuestra Cofradía participa cada año en la Procesión del Corpus
               Christi. Citamos a todos los cofrades en la
               <strong> Puerta del Arco de Palacio a las 10:30</strong> para
               incorporarnos con orden.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Existen{" "}
               <span
-                onClick={() => setSelectedImage("normas")}
+                onClick={() => setShowNormas(true)}
                 className="underline underline-offset-4 cursor-pointer hover:text-emerald-300 transition-colors"
               >
                 normas de vestimenta
               </span>{" "}
               para los cofrades participantes.
-            </p>
+            </Paragraph>
           </div>
         </Card>
 
-        {/* Modal de normas */}
-        {selectedImage === "normas" && (
-          <div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="normas-title"
-          >
-            <div className="bg-white rounded-2xl w-full sm:max-w-xl md:max-w-2xl p-6 md:p-8 relative text-gray-800 shadow-2xl">
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl hover:cursor-pointer"
-                aria-label="Cerrar"
+        {/* Modal de Normas (cierre al click fuera) */}
+        <NormasModal
+          open={showNormas}
+          onClose={() => setShowNormas(false)}
+          title="Normas de Vestimenta"
+        >
+          <ul className="space-y-4 text-[15px] md:text-base leading-relaxed">
+            <li>
+              <span className="text-emerald-700 mr-2">●</span>
+              Los <strong>portadores</strong> que participen como tal, deberán
+              asistir conforme a las normas establecidas en los{" "}
+              <Link
+                to="/estatutos"
+                className="font-medium underline underline-offset-4 hover:text-emerald-600"
               >
-                ✕
-              </button>
+                reglamentos de los portadores
+              </Link>{" "}
+              de la Virgen de la Esperanza.
+            </li>
+            <li>
+              <span className="text-emerald-700 mr-2">●</span>
+              Los <strong>hombres</strong> deberán vestir traje sobrio, camisa,
+              corbata y zapatos formales.
+            </li>
+            <li>
+              <span className="text-emerald-700 mr-2">●</span>
+              Las <strong>mujeres</strong> que acudan con mantilla deberán
+              seguir el protocolo de la procesión del Corpus. Puedes descargar
+              las normas completas aquí:
+              <br />
+              <div className="flex justify-center mt-7">
+                <a
+                  href="/descargas/ProtocoloCorpus_ChicasySeñoras.pdf"
+                  download
+                  className="px-4 py-2 text-sm md:text-[15px] font-medium text-white bg-emerald-700 rounded-lg hover:bg-emerald-800 transition"
+                >
+                  Descargar normas de protocolo
+                </a>
+              </div>
+            </li>
+          </ul>
+        </NormasModal>
 
-              <h3
-                id="normas-title"
-                className="text-2xl md:text-3xl font-semibold mb-4 text-emerald-700 text-center"
-              >
-                Normas de Vestimenta
-              </h3>
-
-              <ul className="space-y-4 text-[15px] md:text-base leading-relaxed">
-                <li>
-                  <span className="text-emerald-700 mr-2">●</span>
-                  Los <strong>portadores</strong> que participen como tal,
-                  deberán asistir conforme a las normas establecidas en los{" "}
-                  <Link
-                    to="/estatutos"
-                    className="font-medium underline underline-offset-4 hover:text-emerald-600"
-                  >
-                    reglamentos de los portadores
-                  </Link>{" "}
-                  de la Virgen de la Esperanza.
-                </li>
-
-                <li>
-                  <span className="text-emerald-700 mr-2">●</span>
-                  Los <strong>hombres</strong> deberán vestir traje sobrio,
-                  camisa, corbata y zapatos formales.
-                </li>
-
-                <li>
-                  <span className="text-emerald-700 mr-2">●</span>
-                  Las <strong>mujeres</strong> que acudan con mantilla deberán
-                  seguir el protocolo de la procesión del Corpus. Puedes
-                  descargar las normas completas aquí:
-                  <br />
-                  <div className="flex justify-center mt-7">
-                    <a
-                      href="/descargas/ProtocoloCorpus_ChicasySeñoras.pdf"
-                      download
-                      className="px-4 py-2 text-sm md:text-[15px] font-medium text-white bg-emerald-700 rounded-lg hover:bg-emerald-800 transition"
-                    >
-                      Descargar normas de protocolo
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        )}
-
-        {/* Día de Patrocinio (largo) */}
+        {/* DÍA DE PATROCINIO */}
         <Card
           id="patrocinio"
           className="lg:col-span-2 flex flex-col gap-3 text-white scroll-mt-24"
@@ -308,31 +262,31 @@ export default function Cultos() {
               {formatLong(patrocinio)}
             </p>
           </div>
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+          <div className="space-y-2">
+            <Paragraph color="light">
               Cada segundo domingo del mes de noviembre, la Cofradía se reúne
               para honrar a su Madre y Titular en la fiesta del Patrocinio de la
               Virgen de la Esperanza. Es un día de especial significado para
               todos los hermanos, en el que expresamos nuestra gratitud a la
               Virgen por su constante protección y renovamos nuestro compromiso
               de vivir bajo su mirada y ejemplo.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Durante la Santa Misa tendrá lugar la imposición de medallas a los
               nuevos hermanos, que pasan así a formar parte de la Cofradía de
               manera oficial, acogidos bajo el manto de Nuestra Madre de la
               Esperanza.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Tras los cultos, compartiremos un momento de fraternidad
               ofreciendo a los asistentes las tradicionales migas y limonada,
               expresión de la alegría y la unión que nos regala nuestra
               Cofradía.
-            </p>
+            </Paragraph>
           </div>
         </Card>
 
-        {/* Día de la Esperanza (largo) */}
+        {/* DÍA DE LA ESPERANZA */}
         <Card
           id="esperanza"
           className="lg:col-span-2 flex flex-col gap-3 text-white scroll-mt-24"
@@ -343,38 +297,34 @@ export default function Cultos() {
               {formatLong(diaEsperanza)}
             </p>
           </div>
-          <div className="font-body space-y-2">
-            <p className="opacity-95">
+          <div className="space-y-2">
+            <Paragraph color="light">
               La fiesta de la Virgen de la Esperanza se celebra cada 18 de
               diciembre, justo en la última semana del tiempo de Adviento. Esta
               advocación mariana simboliza la esperanza y la expectación del
               nacimiento de Cristo.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Para la Cofradía de la Esperanza, este día es un momento de
               reafirmación de la devoción a nuestra Titular, recordando el
               mensaje de esperanza y confianza que María nos transmite en esta
               temporada de Adviento.
-            </p>
-            <p className="opacity-95">
+            </Paragraph>
+            <Paragraph color="light">
               Tras la Santa Misa se comparte chocolate caliente con bollo como
               signo de fraternidad.
-            </p>
+            </Paragraph>
           </div>
         </Card>
       </div>
 
-      <div className="font-body text-gray-900 space-y-4 mt-12">
-        <p className="text-sm sm:text-base leading-relaxed text-center italic">
-          La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
-          dedicación en la redacción y cuidado de los textos.
-        </p>
-      </div>
+      <FinalNote>
+        La Cofradía manifiesta su gratitud a Teresa López-Brea Alarza por su
+        dedicación en la redacción y cuidado de los textos.
+      </FinalNote>
 
-      <p className="mt-8 text-center text-sm font-body text-white/80">
-        Las fechas y horarios pueden variar por causas pastorales. Consulta
-        nuestras redes oficiales para avisos de última hora.
-      </p>
+      {/* espacio extra móvil */}
+      <div className="mb-12 md:mb-0" />
     </SectionContainer>
   );
 }
