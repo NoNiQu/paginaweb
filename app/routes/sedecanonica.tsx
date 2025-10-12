@@ -254,7 +254,7 @@ export default function Sedecanonica() {
           es un espacio de encuentro, oración y comunidad. Cada rincón refleja
           la fe de los cofrades, y la iglesia se convierte en el centro de la
           vida espiritual de la cofradía, especialmente durante la festividad de
-          la Virgen de la Esperanza, celebrada el 18 de diciembre.
+          la Virgen de la Esperanza, celebrada en su novena.
         </Paragraph>
 
         <div className="w-full my-8">
