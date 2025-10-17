@@ -59,7 +59,7 @@ export default function VirgenDeLaEsperanza() {
           <img
             src="/images/ve/portada.webp"
             alt="Virgen de la Esperanza"
-            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[800px] object-cover rounded-2xl shadow-xl"
+            className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[780px] object-cover rounded-2xl shadow-xl"
             loading="eager"
           />
           <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10 pointer-events-none" />

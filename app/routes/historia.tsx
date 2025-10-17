@@ -12,8 +12,8 @@ export default function Historia() {
       <SectionHeader>Historia</SectionHeader>
 
       <div className="grid md:grid-cols-2 gap-10 items-start mb-6 mt-6">
-        {/* Texto (idéntico) */}
-        <div className="space-y-6">
+        {/* Texto */}
+        <div className="space-y-6 order-2 md:order-1">
           <Paragraph>
             La devoción a la Virgen de la Esperanza en Toledo hunde sus raíces
             en la Edad Media. Según la tradición, en torno al año 1200, la
@@ -37,13 +37,12 @@ export default function Historia() {
 
           <Paragraph>
             En ese mismo tiempo, la advocación de “Destierro” fue dando paso a
-            la de
-            <strong> Virgen de la Esperanza</strong>. La primera referencia
-            documental aparece en 1676 en los libros de la Cofradía,
+            la de <strong> Virgen de la Esperanza</strong>. La primera
+            referencia documental aparece en 1676 en los libros de la Cofradía,
             consolidando así su nuevo título y rivalizando en devoción con otras
             advocaciones marianas de Toledo, como las de San Justo y Pastor, San
             Vicente o San Lucas. Esta advocación, profundamente arraigada en la
-            tradición hispánica, honra a la Virgen María en el tiempo de la{" "}
+            tradición hispánica, honra a la Virgen María en el tiempo de la
             <em>expectación del parto</em>, cuando espera con fe y serenidad el
             nacimiento de su Hijo. Desde entonces, la Virgen de la Esperanza fue
             signo de confianza, consuelo y fe para los toledanos, recibiendo
@@ -51,8 +50,8 @@ export default function Historia() {
           </Paragraph>
         </div>
 
-        {/* Imagen (igual) */}
-        <div className="relative">
+        {/* Imagen */}
+        <div className="relative order-1 md:order-2">
           <img
             src="/images/historia/portada.webp"
             alt="Virgen de la Esperanza"

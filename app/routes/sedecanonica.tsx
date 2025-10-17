@@ -239,7 +239,7 @@ export default function Sedecanonica() {
               href="https://semanasantatoledo.com/hermandad-del-santisimo-cristo-de-la-esperanza"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-3 py-3 h-14 w-full max-w-md rounded-2xl bg-[#053C2F] text-white font-semibold shadow-md"
+              className="inline-flex items-center justify-center gap-3 px-6 py-3 h-14 w-full max-w-lg rounded-2xl bg-[#053C2F] text-white font-semibold shadow-md text-center"
               aria-label="Página de la Junta de Cofradías de Toledo - Cristo de la Esperanza"
             >
               Página de la Junta de Semana Santa

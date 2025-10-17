@@ -12,6 +12,8 @@ import {
 import "./app.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useDayTheme } from "./components/hooks/useDayTheme";
+
 import { useEffect, useState } from "react";
 
 /** Título global (y meta básicos) */
@@ -144,6 +146,7 @@ function BackToTopButton() {
 }
 
 export default function App() {
+  useDayTheme();
   const location = useLocation();
   const isHome = location.pathname === "/";
 
