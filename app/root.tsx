@@ -18,11 +18,10 @@ import { useEffect, useState } from "react";
 
 /** Título global (y meta básicos) */
 export const meta = () => [
-  { title: "Cofradía de Nuestra Señora de la Esperanza de Toledo" },
+  { title: "TEST GHVSPEST" },
   {
     name: "description",
-    content:
-      "Web oficial de la Cofradía de Nuestra Señora de la Esperanza de Toledo.",
+    content: "TEST GHVSPEST",
   },
   { name: "theme-color", content: "#053C2F" },
 ];
